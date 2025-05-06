@@ -28,4 +28,23 @@
     color: #4a0072;
     text-decoration: underline;
   }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main, section {
+    flex: 1;
+  }
+  
+  #footer-placeholder {
+    margin-top: auto;
+  }
   

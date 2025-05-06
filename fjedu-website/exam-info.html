@@ -41,6 +41,29 @@
       document.querySelector(".main-nav").classList.toggle("active");
     }
   });
+
+  let lastScrollTop = 0;
+const navBar = document.querySelector(".navbar-floating");
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+
+  if (scrollTop > lastScrollTop) {
+    // 往下滑 => 隱藏
+    navBar.classList.add("navbar-hidden");
+  } else {
+    // 往上滑 => 顯示
+    navBar.classList.remove("navbar-hidden");
+  }
+
+  lastScrollTop = scrollTop;
+});
+
 </script>
+
+<div class="wrapper">
+    <!-- nav-placeholder -->
+    <!-- 頁面主內容 -->
+    <!-- footer-placeholder -->
 </body>
 </html>
