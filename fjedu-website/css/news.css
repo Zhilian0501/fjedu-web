@@ -1,0 +1,28 @@
+.news-section {
+    padding: 60px 20px;
+    background-color: #fef2ff;
+    text-align: center;
+  }
+  
+  .news-section h1 {
+    color: #4a0072;
+    margin-bottom: 30px;
+  }
+  
+  .news-list {
+    list-style: none;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+    color: #4a0072;
+  }
+  
+  .news-list li {
+    margin-bottom: 25px;
+    text-align: left;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>線上報名｜飛翔少年</title>
+  <link rel="stylesheet" href="components/nav_footer.css">
+  <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <div id="nav-placeholder"></div>
+
+  <section class="register-section">
+    <h1>線上報名</h1>
+    <form action="form-handler/send-to-gmail.php" method="POST" class="register-form">
+      <label for="name">學生姓名</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="phone">電話</label>
+      <input type="tel" name="phone" id="phone" required>
+
+      <label for="email">電子郵件</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="course">報名課程</label>
+      <select name="course" id="course" required>
+        <option value="">請選擇課程</option>
+        <option value="國中會考衝刺班">國中會考衝刺班</option>
+        <option value="高中學測專班">高中學測專班</option>
+        <option value="SAT">SAT</option>
+        <option value="IELTS">IELTS</option>
+      </select>
+
+      <label for="guardian">監護人／家長姓名</label>
+      <input type="text" name="guardian" id="guardian" required>
+
+      <button type="submit">送出報名</button>
+    </form>
+  </section>
+
+  <!-- 頁尾 -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    fetch("components/nav.html").then(res => res.text()).then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+    });
+    fetch("components/footer.html").then(res => res.text()).then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("hamburger")) {
+        document.querySelector(".main-nav").classList.toggle("active");
+      }
+    });
+  </script>
+</body>
+</html>

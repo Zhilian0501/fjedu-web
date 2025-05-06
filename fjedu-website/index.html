@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>飛翔少年專業教育機構｜首頁</title>
+  <link rel="stylesheet" href="components/nav_footer.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <div id="nav-placeholder"></div>
+
+  <!-- 首頁主體 -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>啟發未來 · 飛翔少年</h1>
+      <p>我們致力於打造最優質的教育環境，讓每位孩子都能找到自己的翅膀。</p>
+      <a href="register.html" class="hero-btn">立即報名</a>
+    </div>
+  </header>
+
+  <section class="intro-section">
+    <h2>為什麼選擇我們？</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>專業師資</h3>
+        <p>來自頂尖大學的教學團隊，教學經驗豐富。</p>
+      </div>
+      <div class="feature-box">
+        <h3>多元課程</h3>
+        <p>從基礎到進階，涵蓋台灣與國際各種升學需求。</p>
+      </div>
+      <div class="feature-box">
+        <h3>學習成果</h3>
+        <p>歷年升學成果輝煌，眾多學生進入心目標學府。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="news-preview">
+    <h2>最新消息</h2>
+    <ul>
+      <li><a href="news.html">📢 2025 暑期課程開放報名！</a></li>
+      <li><a href="news.html">🎓 恭賀本校學員榮登建中榜首</a></li>
+      <li><a href="news.html">📌 國際部升學說明會即將登場</a></li>
+    </ul>
+  </section>
+
+  <!-- 頁尾 -->
+  <div id="footer-placeholder"></div>
+
+  <!-- 載入 JS 模組與漢堡選單 -->
+  <script>
+    fetch("components/nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("hamburger")) {
+          document.querySelector(".main-nav").classList.toggle("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

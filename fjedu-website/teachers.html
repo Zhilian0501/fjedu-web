@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>飛翔少年｜師資介紹</title>
+  <link rel="stylesheet" href="components/nav_footer.css">
+  <link rel="stylesheet" href="css/teachers.css">
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <div id="nav-placeholder"></div>
+
+  <!-- 主體內容 -->
+  <section class="teachers-section">
+    <h1>師資介紹</h1>
+
+    <div class="filter-buttons">
+      <button onclick="filterTeachers('all')">全部</button>
+      <button onclick="filterTeachers('math')">數學老師</button>
+      <button onclick="filterTeachers('english')">英文老師</button>
+      <button onclick="filterTeachers('science')">理化老師</button>
+    </div>
+
+    <div class="teachers-grid">
+      <div class="teacher-card math">
+        <img src="images/teachers/math1.jpg" alt="數學老師 A">
+        <h3>林俊銘 老師</h3>
+        <p>學歷：國立台灣大學 數學系</p>
+        <p>教學經歷：超過 10 年高中補教經驗</p>
+      </div>
+      <div class="teacher-card english">
+        <img src="images/teachers/english1.jpg" alt="英文老師 A">
+        <h3>王詩涵 老師</h3>
+        <p>學歷：國立政治大學 英文系</p>
+        <p>教學經歷：IELTS 專業輔導</p>
+      </div>
+      <div class="teacher-card science">
+        <img src="images/teachers/science1.jpg" alt="理化老師 A">
+        <h3>陳彥宏 老師</h3>
+        <p>學歷：國立清華大學 化學系</p>
+        <p>教學經歷：理化命題專家</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 -->
+  <div id="footer-placeholder"></div>
+
+  <!-- 載入 nav/footer 與 JS -->
+  <script>
+    fetch("components/nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("hamburger")) {
+          document.querySelector(".main-nav").classList.toggle("active");
+        }
+      });
+    });
+
+    // JS 篩選功能
+    function filterTeachers(subject) {
+      const cards = document.querySelectorAll('.teacher-card');
+      cards.forEach(card => {
+        if (subject === 'all' || card.classList.contains(subject)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

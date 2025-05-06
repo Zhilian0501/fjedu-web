@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>國際部課程介紹｜飛翔少年</title>
+  <link rel="stylesheet" href="../components/nav_footer.css">
+  <link rel="stylesheet" href="../css/courses.css">
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <section class="course-section">
+    <h1>國際部課程介紹</h1>
+    <div class="course-grid">
+      <div class="course-card">
+        <h3>SAT 考試準備班</h3>
+        <p>系統性規劃 SAT 進度與模擬測驗。</p>
+      </div>
+      <div class="course-card">
+        <h3>IB 國際文憑課程</h3>
+        <p>針對 IB 課程架構設計，協助學生全球升學。</p>
+      </div>
+      <div class="course-card">
+        <h3>IELTS 英語強化班</h3>
+        <p>針對 IELTS 四大面向進行密集訓練。</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    fetch("../components/nav.html").then(res => res.text()).then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+    });
+    fetch("../components/footer.html").then(res => res.text()).then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("hamburger")) {
+        document.querySelector(".main-nav").classList.toggle("active");
+      }
+    });
+  </script>
+</body>
+</html>

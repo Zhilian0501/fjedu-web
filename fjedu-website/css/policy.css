@@ -1,0 +1,24 @@
+.policy-section {
+    padding: 60px 20px;
+    background-color: #fefaff;
+    text-align: center;
+  }
+  
+  .policy-section h1 {
+    color: #4a0072;
+    margin-bottom: 30px;
+  }
+  
+  .policy-text {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    color: #4a0072;
+    font-size: 16px;
+    line-height: 1.8;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  

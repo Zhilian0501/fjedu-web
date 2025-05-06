@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台灣部課程介紹｜飛翔少年</title>
+  <link rel="stylesheet" href="../components/nav_footer.css">
+  <link rel="stylesheet" href="../css/courses.css">
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <section class="course-section">
+    <h1>台灣部課程介紹</h1>
+    <div class="course-grid">
+      <div class="course-card">
+        <h3>國中會考衝刺班</h3>
+        <p>針對國中會考設計，精選題型解析，協助同學提升成績。</p>
+      </div>
+      <div class="course-card">
+        <h3>高中學測專班</h3>
+        <p>以學測題型為核心，針對弱點進行個別指導。</p>
+      </div>
+      <div class="course-card">
+        <h3>數學解題技巧班</h3>
+        <p>針對數學科目進行邏輯與解題技巧訓練。</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    fetch("../components/nav.html").then(res => res.text()).then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+    });
+    fetch("../components/footer.html").then(res => res.text()).then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("hamburger")) {
+        document.querySelector(".main-nav").classList.toggle("active");
+      }
+    });
+  </script>
+</body>
+</html>

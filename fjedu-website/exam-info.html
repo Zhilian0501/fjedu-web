@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>備考情報｜飛翔少年</title>
+  <link rel="stylesheet" href="components/nav_footer.css">
+  <link rel="stylesheet" href="css/exam.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="exam-section">
+  <h1>備考情報</h1>
+  <div class="exam-box">
+    <h3>📘 會考時間表</h3>
+    <p>113 年國中會考時間：5 月 18 日 - 5 月 19 日</p>
+  </div>
+  <div class="exam-box">
+    <h3>🧪 學測模擬試題下載</h3>
+    <p><a href="#">下載模擬試題 PDF</a>（會員限定）</p>
+  </div>
+  <div class="exam-box">
+    <h3>🗓 補習班總複習時間表</h3>
+    <p>每週三、六晚間開課，需事先預約。</p>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch("components/nav.html").then(res => res.text()).then(data => {
+    document.getElementById("nav-placeholder").innerHTML = data;
+  });
+  fetch("components/footer.html").then(res => res.text()).then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("hamburger")) {
+      document.querySelector(".main-nav").classList.toggle("active");
+    }
+  });
+</script>
+</body>
+</html>

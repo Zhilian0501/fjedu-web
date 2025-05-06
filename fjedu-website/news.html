@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最新消息｜飛翔少年</title>
+  <link rel="stylesheet" href="components/nav_footer.css">
+  <link rel="stylesheet" href="css/news.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="news-section">
+  <h1>最新消息</h1>
+  <ul class="news-list">
+    <li><strong>📢 2025 暑期課程開放報名</strong><br>即日起可於線上報名系統報名。</li>
+    <li><strong>🎓 賀！本校學員榮登台大榜首</strong><br>感謝所有師長與學生努力！</li>
+    <li><strong>📌 國際部升學說明會即將舉辦</strong><br>時間：5/20，採線上形式。</li>
+  </ul>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch("components/nav.html").then(res => res.text()).then(data => {
+    document.getElementById("nav-placeholder").innerHTML = data;
+  });
+  fetch("components/footer.html").then(res => res.text()).then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("hamburger")) {
+      document.querySelector(".main-nav").classList.toggle("active");
+    }
+  });
+</script>
+</body>
+</html>

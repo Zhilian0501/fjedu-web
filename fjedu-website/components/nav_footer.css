@@ -1,0 +1,102 @@
+/* components/nav_footer.css */
+
+/* 通用樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans TC", sans-serif;
+  }
+  
+  .main-nav {
+    background: linear-gradient(to right, #d2a3ff, #fcd6f6, #ffffff);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  
+  .main-nav .logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a0072;
+    text-decoration: none;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #4a0072;
+    font-weight: 500;
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff0ff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    top: 100%;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .dropdown-content li {
+    padding: 10px;
+    white-space: nowrap;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #ffffff;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+    }
+  
+    .main-nav.active .nav-links {
+      display: flex;
+    }
+  
+    .hamburger {
+      display: block;
+    }
+  }
+  
+  /* Footer 樣式 */
+  .main-footer {
+    background: linear-gradient(to right, #d2a3ff, #fcd6f6, #ffffff);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #4a0072;
+  }
+  
+  .main-footer a {
+    color: #4a0072;
+    text-decoration: underline;
+  }
+  

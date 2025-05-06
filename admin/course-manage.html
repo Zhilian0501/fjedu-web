@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>課程管理</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../admin/CSS/admin.css">
+</head>
+<body>
+
+<div class="admin-container">
+  <h1>課程資訊管理</h1>
+
+  <form class="admin-form">
+    <input type="text" placeholder="課程名稱">
+    <textarea placeholder="課程簡介"></textarea>
+    <select>
+      <option value="tw">台灣部</option>
+      <option value="intl">國際部</option>
+    </select>
+    <button type="submit">新增課程</button>
+  </form>
+
+  <hr>
+
+  <ul class="admin-list">
+    <li><span>會考衝刺班 - 台灣部</span> <button>刪除</button></li>
+    <li><span>IELTS 英文班 - 國際部</span> <button>刪除</button></li>
+  </ul>
+</div>
+
+</body>
+</html>

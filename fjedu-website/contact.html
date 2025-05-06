@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聯絡我們｜飛翔少年</title>
+  <link rel="stylesheet" href="components/nav_footer.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="contact-section">
+  <h1>聯絡我們</h1>
+  <div class="contact-info">
+    <p>電話：02-1234-5678</p>
+    <p>Email：info@flyingschool.edu.tw</p>
+    <p>地址：台北市信義區光復南路100號</p>
+    <p>客服時間：週一至週五 10:00 - 18:00</p>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch("components/nav.html").then(res => res.text()).then(data => {
+    document.getElementById("nav-placeholder").innerHTML = data;
+  });
+  fetch("components/footer.html").then(res => res.text()).then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("hamburger")) {
+      document.querySelector(".main-nav").classList.toggle("active");
+    }
+  });
+</script>
+</body>
+</html>

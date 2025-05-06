@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常見問題｜飛翔少年</title>
+  <link rel="stylesheet" href="components/nav_footer.css">
+  <link rel="stylesheet" href="css/faq.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="faq-section">
+  <h1>常見問題</h1>
+  <div class="faq-box">
+    <h3>Q：課程是否提供線上教學？</h3>
+    <p>A：大多數課程皆提供線上版，請洽客服確認。</p>
+  </div>
+  <div class="faq-box">
+    <h3>Q：可以試聽課程嗎？</h3>
+    <p>A：每位新生皆可申請一次免費試聽，歡迎體驗。</p>
+  </div>
+  <div class="faq-box">
+    <h3>Q：報名後如何確認是否成功？</h3>
+    <p>A：系統將寄出確認信，若未收到請聯絡客服。</p>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch("components/nav.html").then(res => res.text()).then(data => {
+    document.getElementById("nav-placeholder").innerHTML = data;
+  });
+  fetch("components/footer.html").then(res => res.text()).then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("hamburger")) {
+      document.querySelector(".main-nav").classList.toggle("active");
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於我們｜飛翔少年</title>
+  <link rel="stylesheet" href="components/nav_footer.css">
+  <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="about-section">
+  <h1>關於我們</h1>
+
+  <div class="about-content">
+    <h2>我們的使命</h2>
+    <p>飛翔少年教育機構致力於打造一個多元、創新、啟發潛能的學習環境。透過專業師資、完整課程與個別化輔導，幫助每位學生實現夢想、飛向未來。</p>
+
+    <h2>教學理念</h2>
+    <p>我們相信每個孩子都是獨一無二的。透過啟發式教學、精緻課程規劃與鼓勵探索的學習氣氛，讓學生學會思考、主動學習、建立自信。</p>
+
+    <h2>發展沿革</h2>
+    <p>自 2010 年成立以來，我們已協助超過 5,000 名學生進入理想學府，課程涵蓋國中會考、高中學測、國際升學、語言檢定等。</p>
+
+    <h2>創辦人寄語</h2>
+    <p>「我們教育的目標，不僅是成績，更是讓每個孩子找到熱情與人生方向。」—— 飛翔少年創辦人 陳育謙</p>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch("components/nav.html").then(res => res.text()).then(data => {
+    document.getElementById("nav-placeholder").innerHTML = data;
+  });
+  fetch("components/footer.html").then(res => res.text()).then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("hamburger")) {
+      document.querySelector(".main-nav").classList.toggle("active");
+    }
+  });
+</script>
+</body>
+</html>

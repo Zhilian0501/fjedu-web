@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>學習成果｜飛翔少年</title>
+  <link rel="stylesheet" href="components/nav_footer.css">
+  <link rel="stylesheet" href="css/results.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="results-section">
+  <h1>學習成果</h1>
+  <div class="result-grid">
+    <div class="result-card">
+      <h3>王小明</h3>
+      <p>錄取學校：建國中學</p>
+      <p>課程：國中會考衝刺班</p>
+    </div>
+    <div class="result-card">
+      <h3>李詩婷</h3>
+      <p>錄取學校：台灣大學</p>
+      <p>課程：學測專班</p>
+    </div>
+    <div class="result-card">
+      <h3>張安安</h3>
+      <p>錄取學校：英國劍橋大學</p>
+      <p>課程：IELTS + IB 國際班</p>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch("components/nav.html").then(res => res.text()).then(data => {
+    document.getElementById("nav-placeholder").innerHTML = data;
+  });
+  fetch("components/footer.html").then(res => res.text()).then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("hamburger")) {
+      document.querySelector(".main-nav").classList.toggle("active");
+    }
+  });
+</script>
+</body>
+</html>
