@@ -110,3 +110,27 @@
     margin-top: auto;
   }
   
+  .carousel {
+    width: 200%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 1s ease;
+    width: 300%;
+  }
+  
+  .slide {
+    width: 200%;
+    flex-shrink: 0;
+    display: none;
+  }
+  
+  .slide.active {
+    display: block;
+  }
+  

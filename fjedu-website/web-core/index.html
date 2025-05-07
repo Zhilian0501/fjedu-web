@@ -21,6 +21,14 @@
     </div>
   </header>
 
+  <div class="carousel">
+    <div class="slides">
+      <img src="image1.jpg" class="slide active" />
+      <img src="image2.jpg" class="slide" />
+      <img src="image3.jpg" class="slide" />
+    </div>
+  </div>
+
   <section class="intro-section">
     <h2>為什麼選擇我們？</h2>
     <div class="features">
@@ -85,6 +93,25 @@ window.addEventListener("scroll", () => {
 
   lastScrollTop = scrollTop;
 });
+
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  // 自動每 3 秒切換一次
+  setInterval(nextSlide, 3000);
+
+  // 初始顯示第一張
+  showSlide(currentIndex);
 
   </script>
 
