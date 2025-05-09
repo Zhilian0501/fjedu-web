@@ -1,7 +1,7 @@
 .course-section {
     padding: 60px 20px;
     text-align: center;
-    background-color: #fef2ff;
+    background-color: #b944c4;
   }
   
   .course-section h1 {
@@ -17,11 +17,11 @@
   }
   
   .course-card {
-    background-color: white;
+    background-color: rgb(107, 49, 146);
     padding: 20px;
     width: 280px;
     border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(184, 99, 184, 0.1);
     text-align: left;
   }
   
