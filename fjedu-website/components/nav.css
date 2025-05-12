@@ -1,6 +1,6 @@
 /* nav.css */
 
-.main-nav {
+.mainnav {
   background-color: #7c3ab3;
   box-shadow: 0 2px 8px rgba(148, 55, 55, 0.1);
   padding: 10px 20px;
@@ -14,7 +14,7 @@
   font-family: 'Noto Sans TC', sans-serif;
 }
 
-.main-nav .logo a {
+.mainnav .logo a {
   font-size: 1.5rem;
   font-weight: bold;
   color: #007BFF;
