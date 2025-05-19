@@ -1,6 +1,6 @@
 /* nav.css */
 
-.mainnav {
+.mainNav {
   background-color: #7c3ab3;
   box-shadow: 0 2px 8px rgba(148, 55, 55, 0.1);
   padding: 10px 20px;
@@ -14,10 +14,10 @@
   font-family: 'Noto Sans TC', sans-serif;
 }
 
-.mainnav .logo a {
+.mainNav .logo a {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #007BFF;
+  color: #5296df;
   text-decoration: none;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .nav-links a {
-  color: #333;
+  color: #9910cf;
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 6px;
@@ -42,14 +42,14 @@
 }
 
 .nav-links a:hover {
-  background-color: #f0f0f0;
+  background-color: #77f3e9;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #d4167f;
-  box-shadow: 0 2px 8px rgba(214, 38, 126, 0.15);
+  background-color: #d3599c;
+  box-shadow: 0 2px 8px rgba(216, 91, 154, 0.15);
   top: 100%;
   left: 0;
   z-index: 1000;
@@ -69,7 +69,7 @@
 }
 
 .dropdown-content li a:hover {
-  background-color: #eeeeee;
+  background-color: #bd9cbb;
 }
 
 /* 手機漢堡選單 */

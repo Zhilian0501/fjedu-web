@@ -1,6 +1,6 @@
 /* footer.css */
 
-.mainfooter {
+.main-footer {
   background-color: #f2f2f2;
   color: #333;
   padding: 30px 20px;
@@ -12,18 +12,18 @@
   z-index: 10;
 }
 
-.mainfooter .footer-content p {
+.main-footer .footer-content p {
   margin: 8px 0;
 }
 
-.mainfooter a {
+.main-footer a {
   color: #007BFF;
   text-decoration: none;
   margin: 0 5px;
   transition: color 0.3s ease;
 }
 
-.mainfooter a:hover {
+.main-footer a:hover {
   color: #0056b3;
 }
 
