@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>飛翔少年專業教育機構｜首頁</title>
-  <link rel="stylesheet" href="../components/nav.css">
-  <link rel="stylesheet" href="../components/footer.css">
+  <link rel="stylesheet" href="/components/nav.css">
+  <link rel="stylesheet" href="/components/footer.css">
   <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
@@ -61,11 +61,11 @@
 
   <!-- 載入 JS 模組與漢堡選單 -->
   <script>
-    fetch("../components/nav.html")
+    fetch("/components/nav.html")
       .then(res => res.text())
       .then(data => document.getElementById("nav-placeholder").innerHTML = data);
 
-    fetch(".,/components/footer.html")
+    fetch("/components/footer.html")
       .then(res => res.text())
       .then(data => document.getElementById("footer-placeholder").innerHTML = data);
 
