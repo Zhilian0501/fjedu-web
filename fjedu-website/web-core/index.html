@@ -21,15 +21,35 @@
       <a href="../web-core/register.html" class="hero-btn">立即報名</a>
     </div>
   </header>
+  <title>圖片輪播</title>
+  <style>
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 400px; /* 固定高度 */
+      margin: auto;
+      overflow: hidden;
+    }
 
-  <div class="carousel">
-    <div class="slides">
-      <img src="../image/2024 AP_AP  新一季課程招募.png" class="slide active" />
-      <img src="../image/IMG_4316.webp" class="slide" />
-      <img src="../image/課程宣傳_Algebra _ Geometry課程_Pre-Algebra.jpg" class="slide" />
-      <img src="../image/課程宣傳_Algebra _ Geometry課程_Pre-Algebra.jpg" class="slide" />
-      <img src="../image/課程宣傳_AMC 課程_高中自然總複習班 複本 2.jpg" class="slide" />
-    </div>
+    .mySlides {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .mySlides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 保持比例填滿，圖片不會變形 */
+    }
+  </style>
+   <div class="slideshow-container">
+    <img class="mySlides" src="../image/2024 AP_AP  新一季課程招募.png" alt="圖片1">
+    <img class="mySlides" src="../image/IMG_4316.webp" alt="圖片2">
+    <img class="mySlides" src="../image/IyC5GtFQ.jpeg" alt="圖片3">
+    <img class="mySlides" src="../image/課程宣傳_Algebra _ Geometry課程_Pre-Algebra.jpg" alt="圖片4">
+    <img class="mySlides" src="../image/課程宣傳_AMC 課程_高中自然總複習班 複本 2.jpg" alt="圖片5">
   </div>
 
   <section class="intro-section">
@@ -107,12 +127,20 @@ window.addEventListener("scroll", () => {
     showSlide(currentIndex);
   }
 
-  // 自動每 3 秒切換一次
-  setInterval(nextSlide, 3000);
+  //圖片輪播//
+   let slideIndex = 0;
+    showSlides();
 
-  // 初始顯示第一張
-  showSlide(currentIndex);
-
+    function showSlides() {
+      let slides = document.getElementsByClassName("mySlides");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1; }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000); // 每3秒切換
+    }
   </script>
 
   <!-- 頁尾 -->
