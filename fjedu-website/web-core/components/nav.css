@@ -42,7 +42,7 @@
 }
 
 .nav-links a:hover {
-  background-color: #77f3e9;
+  background-color: #dad2dd;
 }
 
 .dropdown-content {
@@ -64,7 +64,7 @@
 .dropdown-content li a {
   display: block;
   padding: 10px 15px;
-  color: #64174d;
+  color: #d822a1;
   white-space: nowrap;
 }
 
