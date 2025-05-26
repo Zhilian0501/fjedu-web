@@ -23,5 +23,19 @@
       <li><a href="/contact.html">聯絡我們</a></li>
     </ul>
     <div class="hamburger">&#9776;</div>
+
+<script>
+  const navbar = document.querySelector('.mainNav');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+</script>
+
+
   </nav>
   
