@@ -47,7 +47,7 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
     guardian: document.getElementById('guardian').value
   };
 
-  fetch('http://localhost:3000/send-email', {
+  fetch('https://fjedu-web.onrender.com/send-email', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData)
