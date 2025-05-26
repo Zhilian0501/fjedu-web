@@ -15,31 +15,54 @@
 
   <section class="register-section">
     <h1>線上報名</h1>
-    <form action="../form-handler/send-to-gmail.php" method="POST" class="register-form">
-      <label for="name">學生姓名</label>
-      <input type="text" name="name" id="name" required>
+    <form id="signupForm">
+  <label for="name">學生姓名</label>
+  <input type="text" id="name" name="name" required />
 
-      <label for="phone">電話</label>
-      <input type="tel" name="phone" id="phone" required>
+  <label for="email">電子郵件</label>
+  <input type="email" id="email" name="email" required />
 
-      <label for="email">電子郵件</label>
-      <input type="email" name="email" id="email" required>
+  <label for="course">報名課程</label>
+  <select id="course" name="course" required>
+    <option value="">請選擇課程</option>
+    <option value="國中會考衝刺班">國中會考衝刺班</option>
+    <option value="高中學測專班">高中學測專班</option>
+    <option value="SAT">SAT</option>
+    <option value="IELTS">IELTS</option>
+  </select>
 
-      <label for="course">報名課程</label>
-      <select name="course" id="course" required>
-        <option value="">請選擇課程</option>
-        <option value="國中會考衝刺班">國中會考衝刺班</option>
-        <option value="高中學測專班">高中學測專班</option>
-        <option value="SAT">SAT</option>
-        <option value="IELTS">IELTS</option>
-      </select>
+  <label for="guardian">監護人姓名</label>
+  <input type="text" id="guardian" name="guardian" required />
 
-      <label for="guardian">監護人／家長姓名</label>
-      <input type="text" name="guardian" id="guardian" required>
+  <button type="submit">送出報名</button>
+</form>
 
-      <button type="submit">送出報名</button>
-    </form>
-  </section>
+<script>
+document.getElementById('signupForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const formData = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    course: document.getElementById('course').value,
+    guardian: document.getElementById('guardian').value
+  };
+
+  fetch('http://localhost:3000/send-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  })
+    .then(res => res.text())
+    .then(data => {
+      alert(data);
+      document.getElementById('signupForm').reset();
+    })
+    .catch(err => {
+      alert('送出失敗，請稍後再試');
+      console.error(err);
+    });
+});
+</script>
 
   <!-- 頁尾 -->
 <div id="footer-placeholder"></div>
