@@ -25,7 +25,7 @@ app.post('/send-email', async (req, res) => {
 
   const mailOptions = {
     from: '"學生報名表單" <your.email@gmail.com>',
-    to: 'drte0000@example.com', // 收件者（老師的 Email）
+    to: 'easy.fjedu@gmail.com', // 收件者（老師的 Email)
     subject: '新的課程報名',
     html: `
       <h3>有學生報名課程</h3>
