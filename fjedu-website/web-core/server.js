@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 // 郵件發送設定
 const transporter = nodemailer.createTransport({
-  service: 'drte0000@gmail.com', // 你也可以用 Outlook、Yahoo 等
+  service: 'gmail', // 你也可以用 Outlook、Yahoo 等
   auth: {
     user: 'drte0000@gmail.com',      // 用來寄信的 Gmail 帳號
     pass: 'paxu zkqu cujc yous'          // 建議使用應用程式密碼，不是 Gmail 登入密碼
