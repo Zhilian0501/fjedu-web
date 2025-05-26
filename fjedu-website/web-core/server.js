@@ -14,8 +14,8 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
   service: 'gmail', // 你也可以用 Outlook、Yahoo 等
   auth: {
-    user: 'drte0000@gmail.com',      // 用來寄信的 Gmail 帳號
-    pass: 'paxu zkqu cujc yous'          // 建議使用應用程式密碼，不是 Gmail 登入密碼
+    user: 'drte0004@gmail.com',      // 用來寄信的 Gmail 帳號
+    pass: 'opmu chma psuz wber'          // 建議使用應用程式密碼，不是 Gmail 登入密碼
   }
 });
 
@@ -25,7 +25,7 @@ app.post('/send-email', async (req, res) => {
 
   const mailOptions = {
     from: '"學生報名表單" <your.email@gmail.com>',
-    to: 'teacher.email@example.com', // 收件者（老師的 Email）
+    to: 'drte0000@example.com', // 收件者（老師的 Email）
     subject: '新的課程報名',
     html: `
       <h3>有學生報名課程</h3>
