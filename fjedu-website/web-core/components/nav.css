@@ -1,29 +1,40 @@
 .mainNav {
-  background-color: rgba(255, 255, 255, 0.15); /* 半透明白 */
-  backdrop-filter: blur(12px); /* 毛玻璃效果 */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  padding: 12px 28px;
   position: fixed;
-  top: 20px;
+  top: 20px; /* 離畫面頂部一些距離 */
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   max-width: 1100px;
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.18); /* 半透明白 */
+  backdrop-filter: blur(16px); /* 毛玻璃 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 22px; /* 動態島圓角 */
   z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: 'Noto Sans TC', sans-serif;
-  border-radius: 20px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translate(-50%, -30px);
+  animation: navIn 0.6s ease forwards;
 }
 
-.mainNav .logo a {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #ffffff;
-  text-decoration: none;
+@keyframes navIn {
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
+
+.mainNav.scrolled {
+  padding: 10px 22px;
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transform: translateX(-50%) scale(0.96);
+}
+
 
 .nav-links {
   list-style: none;
@@ -77,13 +88,41 @@
   color: #000;
 }
 
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+
 /* 漢堡選單 */
 .hamburger {
   display: none;
-  font-size: 28px;
+  font-size: 26px;
   color: #ffffff;
   cursor: pointer;
+  z-index: 1001;
 }
+
+/* 響應式顯示 */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 18px;
+  }
+}
+
 
 /* 響應式設計 */
 @media screen and (max-width: 768px) {
@@ -111,6 +150,32 @@
     display: block;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 12px 0;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .mainNav.active .nav-links {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+  }
+}
+
 
 .mainNav.scrolled {
   padding: 8px 20px;
