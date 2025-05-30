@@ -4,7 +4,7 @@
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 40%;
+  width: 60%;
   max-width: 1100px;
   padding: 14px 32px;
   background: rgba(228, 118, 154, 0.747); /* 淺粉底 */
@@ -22,13 +22,14 @@
 }
 
 .nav-container {
-  max-width: 1100px;
+  max-width: 1300px;
   margin: 0 auto;
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  flex-wrap: nowrap; /* ⬅️ 禁止換行 */
+  overflow-x: auto;  /* ⬅️ 防止擠爆，會變成可滑動 */
+  gap: 20px;
 }
 
 @keyframes navIn {
