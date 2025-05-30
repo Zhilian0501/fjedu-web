@@ -1,9 +1,14 @@
 <!-- components/nav.html -->
-<nav id="mainNav" class="main-nav">
-  <link rel="stylesheet" href="../components/nav.css">
-    <div class="logo"><a href="../web-core/index.html">飛翔少年</a></div>
+<nav class="main-nav">
+  <link rel="stylesheet" href="../components/nav.css" />
+
+  <div class="nav-container">
+    <div class="logo">
+      <a href="../web-core/index.html">飛翔少年</a>
+    </div>
+
     <ul class="nav-links">
-      <li><a href="/admin/login.html"></a>後臺</a></li>
+      <li><a href="/admin/login.html">後臺</a></li>
       <li><a href="/index.html">首頁</a></li>
       <li><a href="/about.html">關於我們</a></li>
       <li><a href="/news.html">最新消息</a></li>
@@ -22,36 +27,28 @@
       <li><a href="/policy.html">隱私條款</a></li>
       <li><a href="/contact.html">聯絡我們</a></li>
     </ul>
-    <div class="hamburger">&#9776;</div>
+
+    <div class="hamburger" id="hamburger"></div>
+  </div>
+</nav>
 
 <script>
-  const nav = document.querySelector('.mainNav');
+  const nav = document.querySelector('.main-nav');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-</script>
-<script>
-  const navbar = document.querySelector('.mainNav');
-  const hamburger = document.querySelector('.hamburger');
-
+  // 切換漢堡選單與 nav
   hamburger.addEventListener('click', () => {
-    navbar.classList.toggle('active');
+    nav.classList.toggle('active');
+    hamburger.classList.toggle('active');
   });
 
+  // 滾動時變化樣式
   window.addEventListener('scroll', () => {
     if (window.scrollY > 10) {
-      navbar.classList.add('scrolled');
+      nav.classList.add('scrolled');
     } else {
-      navbar.classList.remove('scrolled');
+      nav.classList.remove('scrolled');
     }
   });
 </script>
-
-
-  </nav>
-  
