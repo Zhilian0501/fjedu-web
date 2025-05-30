@@ -125,7 +125,7 @@
 }
 .hamburger::before {
   content: '≡';
-  font-size: 28px;
+  font-size: 32px;
   color: #a020f0;
 }
 .hamburger.active::before {
