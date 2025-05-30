@@ -25,40 +25,26 @@
   <label for="lineID">lineID</label>
   <input type="lineID" id="lineID" name="lineID" required />
 
-  <label for="course">報名課程</label>
-  <select id="course" name="course" required>
-    <option value="">請選擇課程</option>
-      <option value="">請選擇部門</option>
-      <option value="台灣部">台灣部</option>
-        <option value="">請選擇課程</option>
-        <option value="國小數理資優課程">國小數理資優課程</option>
-        <option value="國中數理資優課程">國中數理資優課程</option>
-        <option value="國小英文主題式課程">國小英文主題式課程</option>
-        <option value="高中國文課程">高中國文課程</option>
-        <option value="高中英文課程">高中英文課程</option>
-        <option value="高中數學課程">高中數學課程</option>
-        <option value="高中理化課程">高中理化課程</option>
-        <option value="高中學習歷程證照課程">高中學習歷程證照課程</option>
-        <option value="APX中級 中高級 高級證照資優課程">APX中級 中高級 高級證照資優課程</option>
-      <option value="國際部">國際部</option>
-        <option value="AMC8,10,12">AMC8,10,12</option>
-        <option value="Algebra l,ll,pre cualculus">Algebra l,ll,pre cualculus</option>
-        <option value="Biology">Biology</option>
-        <option value="Chemistry">Chmistry</option>
-        <option value="Physics">Physics</option>
-        <option value="AP Physcics">AP Physics</option>
-        <option value="AP Chemistry">AP Chemistry</option>
-        <option value="AP calculus">AP calculus</option>
-        <option value="AP biology">AP biology</option>
-        <option value="AP statistics">AP statistics</option>
-  </select>
-
- <label for="course">欲報名科目班級性質</label>
-  <select id="course" name="course" required>
+ <label for="classtype">欲報名科目班級性質</label>
+  <select id="classtype" name="classtype" required>
     <option value="">請選擇性質</option>
     <option value="1對1">1對1</option>
     <option value="團班">團班</option>
   </select>
+
+  <!-- ✅ 新增：部門選擇 -->
+<label for="department">選擇部門</label>
+<select id="department" name="department" required onchange="updateCourses()">
+  <option value="">請選擇部門</option>
+  <option value="taiwan">台灣部</option>
+  <option value="international">國際部</option>
+</select>
+
+<!-- ✅ 根據部門顯示課程 -->
+<label for="course">報名課程</label>
+<select id="course" name="course" required>
+  <option value="">請先選擇部門</option>
+</select>
 
   <label for="guardian">監護人姓名</label>
   <input type="text" id="guardian" name="guardian" required />
@@ -93,6 +79,52 @@ document.getElementById('signupForm').addEventListener('submit', function (e) {
 });
 </script>
 
+<script>
+const courseOptions = {
+  taiwan: [
+    "國小數理資優課程",
+    "國中數理資優課程",
+    "國小英文主題式課程",
+    "高中國文課程",
+    "高中英文課程",
+    "高中數學課程",
+    "高中理化課程",
+    "高中學習歷程證照課程",
+    "APX中級 中高級 高級證照資優課程"
+  ],
+  international: [
+    "AMC8,10,12",
+    "Algebra l,ll,pre cualculus",
+    "Biology",
+    "Chemistry",
+    "Physics",
+    "AP Physics",
+    "AP Chemistry",
+    "AP calculus",
+    "AP biology",
+    "AP statistics"
+  ]
+};
+
+function updateCourses() {
+  const dept = document.getElementById('department').value;
+  const courseSelect = document.getElementById('course');
+  courseSelect.innerHTML = '';
+
+  if (!dept) {
+    courseSelect.innerHTML = '<option value="">請先選擇部門</option>';
+    return;
+  }
+
+  const courses = courseOptions[dept];
+  courses.forEach(course => {
+    const option = document.createElement("option");
+    option.value = course;
+    option.textContent = course;
+    courseSelect.appendChild(option);
+  });
+}
+</script>
 
   <!-- 頁尾 -->
 <div id="footer-placeholder"></div>
