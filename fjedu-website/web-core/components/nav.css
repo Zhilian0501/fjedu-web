@@ -7,7 +7,7 @@
   width: 90%;
   max-width: 1700px;
   padding: 14px 32px;
-  background: rgba(228, 118, 154, 0.747); /* 淺粉底 */
+  background: rgba(243, 126, 233, 0.747); /* 淺粉底 */
   backdrop-filter: blur(12px);
   border-radius: 22px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -59,7 +59,7 @@
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 32px; /* Apple 官網感的平均間隔 */
+  gap: 50px; /* Apple 官網感的平均間隔 */
   margin: 0;
   padding: 0;
 }
