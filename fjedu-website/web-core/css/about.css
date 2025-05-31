@@ -1,3 +1,7 @@
+body {
+  padding-top: 20px; /* 上方加 20px 空間 */
+}
+
 .about-section {
     padding: 60px 20px;
     background-color: #e48dee;
