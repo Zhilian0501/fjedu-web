@@ -1,16 +1,16 @@
 body {
   padding-top: 20px; /* 上方加 20px 空間 */
-  color: #f1b8ed;
+  background-color: #FFD9EC;
 }
 
 .about-section {
     padding: 60px 20px;
-    background-color: #e48dee;
+    background-color: #FFD9EC;
     text-align: center;
   }
   
   .about-section h6 {
-    color: #88d60a;
+    color: #F75000;
     margin-bottom: 40px;
   }
   
