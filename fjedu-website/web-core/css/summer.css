@@ -25,6 +25,7 @@ body {
 
 .taiwan{
   background-color: #ffe0f0;
+  height: 100px;
 }
 
 .card {
@@ -124,6 +125,15 @@ body {
 /* 中間過渡區 */
 .transition-section {
   background: linear-gradient(to bottom, #ffe0f0, #d0e8ff);
+  text-align: center;
+  padding: 60px 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+}
+
+.taiwan-section {
+  background: #ffe0f0;
   text-align: center;
   padding: 60px 0;
   font-size: 24px;
