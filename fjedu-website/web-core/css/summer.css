@@ -23,6 +23,10 @@ body {
   height: 100px;
 }
 
+.taiwan{
+  background-color: #ffe0f0;
+}
+
 .card {
   background: white;
   padding: 24px;
@@ -71,7 +75,7 @@ body {
 /* 彈性容器：圖片和文字左右排列 */
 .carousel-container {
   display: flex;
-  gap: 40px;
+  gap: 90px;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -88,7 +92,7 @@ body {
 .text-block {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #a020f0;
+  color: #02DF82;
   min-width: 150px;
   text-align: center;
 }
