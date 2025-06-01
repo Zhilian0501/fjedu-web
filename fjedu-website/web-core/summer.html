@@ -1,20 +1,71 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>飛翔少年專業教育機構｜暑期專區</title>
-  <link rel="stylesheet" href="/components/nav.css">
-  <link rel="stylesheet" href="/components/footer.css">
-  <link rel="stylesheet" href="../css/summer.css">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>雙圖片輪播</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
 
+    .section {
+      padding: 60px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pink {
+      background-color: #ffe0f0;
+    }
+
+    .blue {
+      background-color: #cce4ff;
+    }
+
+    .transition {
+      background: linear-gradient(to bottom, #ffe0f0, #cce4ff);
+      height: 100px;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      max-width: 800px;
+      width: 90%;
+    }
+
+    .swiper {
+      width: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    .swiper-pagination {
+      margin-top: 16px;
+      text-align: center;
+    }
+  </style>
+</head>
 <body>
 
-  <!-- 導覽列 -->
   <div id="nav-placeholder"></div>
-
-  <!-- 首頁主體 -->
+  <!-- 粉色背景區 -->
   <section class="section pink">
     <div class="card">
       <div class="swiper mySwiper1">
@@ -29,54 +80,95 @@
           <div class="swiper-slide"><img src="images/summer/S__15966238_0.jpg" /></div>
           <div class="swiper-slide"><img src="images/summer/S__15966239_0.jpg" /></div>
         </div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination swiper-pagination1"></div>
       </div>
     </div>
   </section>
 
   <!-- 過渡區塊 -->
-  <div class="transition">
-    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
-      <path fill="#ffdee9" d="M0,160 C480,0 960,320 1440,160 L1440,0 L0,0 Z"></path>
-    </svg>
-  </div>
+  <div class="transition"></div>
 
-  <!-- 藍色區塊 -->
+  <!-- 藍色背景區 -->
   <section class="section blue">
     <div class="card">
       <div class="swiper mySwiper2">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="image4.jpg" /></div>
-          <div class="swiper-slide"><img src="image5.jpg" /></div>
-          <div class="swiper-slide"><img src="image6.jpg" /></div>
+          <div class="swiper-slide"><img src="https://picsum.photos/id/1021/800/400" alt="圖4"></div>
+          <div class="swiper-slide"><img src="https://picsum.photos/id/1022/800/400" alt="圖5"></div>
+          <div class="swiper-slide"><img src="https://picsum.photos/id/1023/800/400" alt="圖6"></div>
         </div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination swiper-pagination2"></div>
       </div>
     </div>
   </section>
 
-  <!-- Swiper JS -->
+  <!-- Swiper Script -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     new Swiper(".mySwiper1", {
       loop: true,
       pagination: {
-        el: ".swiper-pagination",
+        el: ".swiper-pagination1",
         clickable: true,
       },
     });
+
     new Swiper(".mySwiper2", {
       loop: true,
       pagination: {
-        el: ".swiper-pagination",
+        el: ".swiper-pagination2",
         clickable: true,
       },
     });
   </script>
 
-<div class="wrapper">
-    <!-- nav-placeholder -->
-    <!-- 頁面主內容 -->
-    <!-- footer-placeholder -->
+  <script>
+    fetch("/components/nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("hamburger")) {
+          document.querySelector(".main-nav").classList.toggle("active");
+        }
+      });
+    });
+
+    // JS 篩選功能
+    function filterTeachers(subject) {
+      const cards = document.querySelectorAll('.teacher-card');
+      cards.forEach(card => {
+        if (subject === 'all' || card.classList.contains(subject)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    let lastScrollTop = 0;
+const navBar = document.querySelector(".navbar-floating");
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+
+  if (scrollTop > lastScrollTop) {
+    // 往下滑 => 隱藏
+    navBar.classList.add("navbar-hidden");
+  } else {
+    // 往上滑 => 顯示
+    navBar.classList.remove("navbar-hidden");
+  }
+
+  lastScrollTop = scrollTop;
+});
+
+  </script>
+  <div id="footer-placeholder"></div>
 </body>
 </html>
