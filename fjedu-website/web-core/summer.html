@@ -8,13 +8,7 @@
   <link rel="stylesheet" href="/components/footer.css">
   <link rel="stylesheet" href="/css/index.css">
 </head>
- <header class="hero">
-    <div class="hero-content">
-      <h1>啟發未來 · 飛翔少年</h1>
-      <p>我們致力於打造最優質的教育環境，讓每位孩子都能找到自己的翅膀。</p>
-      <a href="/fjedu-website/web-core/register.html" class="hero-btn">立即報名</a>
-    </div>
-  </header>
+
 <body>
 
   <!-- 導覽列 -->
@@ -59,6 +53,37 @@
   <div id="footer-placeholder"></div>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 
+  <script>
+  fetch("/components/nav.html").then(res => res.text()).then(data => {
+    document.getElementById("nav-placeholder").innerHTML = data;
+  });
+  fetch("/components/footer.html").then(res => res.text()).then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("hamburger")) {
+      document.querySelector(".main-nav").classList.toggle("active");
+    }
+  });
+
+  let lastScrollTop = 0;
+const navBar = document.querySelector(".navbar-floating");
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+
+  if (scrollTop > lastScrollTop) {
+    // 往下滑 => 隱藏
+    navBar.classList.add("navbar-hidden");
+  } else {
+    // 往上滑 => 顯示
+    navBar.classList.remove("navbar-hidden");
+  }
+
+  lastScrollTop = scrollTop;
+});
+
+</script>
 
 <div class="wrapper">
     <!-- nav-placeholder -->
