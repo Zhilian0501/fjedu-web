@@ -64,20 +64,28 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     new Swiper(".mySwiper1", {
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination1",
-        clickable: true,
-      },
-    });
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination1",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: true,
+    },
+  });
 
-    new Swiper(".mySwiper2", {
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination2",
-        clickable: true,
-      },
-    });
+  new Swiper(".mySwiper2", {
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination2",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: true,
+    },
+  });
 
     fetch("/components/nav.html")
       .then(res => res.text())
