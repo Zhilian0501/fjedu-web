@@ -7,18 +7,44 @@
   width: 90%;
   max-width: 1700px;
   padding: 14px 32px;
-  background: rgba(243, 126, 233, 0.747); /* 淺粉底 */
+  background: rgba(243, 126, 233, 0.747);
   backdrop-filter: blur(12px);
   border-radius: 22px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   z-index: 999;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   font-family: 'Noto Sans TC', sans-serif;
   transition: all 0.3s ease;
   opacity: 0;
   animation: navIn 0.6s ease forwards;
+}
+
+/* Logo 靠左 */
+.main-nav .logo {
+  margin-right: 40px;
+}
+
+/* nav-links 置中 */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+/* hamburger 靠右 */
+.hamburger {
+  display: none;
+  justify-self: end;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
 }
 
 .nav-container {
