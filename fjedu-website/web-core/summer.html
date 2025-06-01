@@ -10,51 +10,57 @@
 <body>
 
   <div id="nav-placeholder"></div>
-  <!-- 粉色背景區 -->
-   <section class="taiwan-section">
+
+  <!-- 粉色區塊 -->
+  <section class="taiwan-section">
     <div class="taiwan-text">✨ 歡迎來到台灣部 ✨</div>
   </section>
   
-  <section class="section pink-bg">
+  <section class="section pink">
     <div class="carousel-container" id="pink-carousel">
-    <div class="text-block">台灣部</div>
-    <div class="card">
-      <div class="carousel-card">
-        <div class="carousel-images">
-          <div class="swiper-slide"><img src="images/summer/S__15966231_0.jpg" /></div>
-          <div class="swiper-slide"><img src="images/summer/S__15966232_0.jpg" /></div>
-          <div class="swiper-slide"><img src="images/summer/S__15966233_0.jpg" /></div>
-          <div class="swiper-slide"><img src="images/summer/S__15966234_0.jpg" /></div>
-          <div class="swiper-slide"><img src="images/summer/S__15966235_0.jpg" /></div>
-          <div class="swiper-slide"><img src="images/summer/S__15966236_0.jpg" /></div>
-          <div class="swiper-slide"><img src="images/summer/S__15966237_0.jpg" /></div>
-          <div class="swiper-slide"><img src="images/summer/S__15966238_0.jpg" /></div>
+      <div class="text-block">台灣部</div>
+      <div class="card">
+        <div class="swiper mySwiper1">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/summer/S__15966231_0.jpg" /></div>
+            <div class="swiper-slide"><img src="images/summer/S__15966232_0.jpg" /></div>
+            <div class="swiper-slide"><img src="images/summer/S__15966233_0.jpg" /></div>
+            <div class="swiper-slide"><img src="images/summer/S__15966234_0.jpg" /></div>
+            <div class="swiper-slide"><img src="images/summer/S__15966235_0.jpg" /></div>
+            <div class="swiper-slide"><img src="images/summer/S__15966236_0.jpg" /></div>
+            <div class="swiper-slide"><img src="images/summer/S__15966237_0.jpg" /></div>
+            <div class="swiper-slide"><img src="images/summer/S__15966238_0.jpg" /></div>
+          </div>
+          <div class="swiper-pagination swiper-pagination1"></div>
         </div>
-        <div class="swiper-pagination swiper-pagination1"></div>
       </div>
     </div>
   </section>
 
-  <!-- 過渡區塊 -->
+  <!-- 中間過渡區 -->
   <section class="transition-section">
     <div class="transition-text">✨ 歡迎來到國際部 ✨</div>
   </section>
 
-  <!-- 藍色背景區 -->
-  <section class="section blue-bg">
-  <div class="carousel-container reverse" id="blue-carousel">
-    <div class="carousel-card">
-      <div class="carousel-images">
-          <div class="swiper-slide"><img src="https://picsum.photos/id/1021/800/400" alt="圖4"></div>
-          <div class="swiper-slide"><img src="https://picsum.photos/id/1022/800/400" alt="圖5"></div>
-          <div class="swiper-slide"><img src="https://picsum.photos/id/1023/800/400" alt="圖6"></div>
+  <!-- 藍色區塊 -->
+  <section class="section blue">
+    <div class="carousel-container reverse">
+      <div class="text-block">國際部</div>
+      <div class="card">
+        <div class="swiper mySwiper2">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://picsum.photos/id/1021/800/400" /></div>
+            <div class="swiper-slide"><img src="https://picsum.photos/id/1022/800/400" /></div>
+            <div class="swiper-slide"><img src="https://picsum.photos/id/1023/800/400" /></div>
+          </div>
+          <div class="swiper-pagination swiper-pagination2"></div>
         </div>
-        <div class="swiper-pagination swiper-pagination2"></div>
       </div>
     </div>
   </section>
 
-  <!-- Swiper Script -->
+  <div id="footer-placeholder"></div>
+
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     new Swiper(".mySwiper1", {
@@ -72,9 +78,7 @@
         clickable: true,
       },
     });
-  </script>
 
-  <script>
     fetch("/components/nav.html")
       .then(res => res.text())
       .then(data => document.getElementById("nav-placeholder").innerHTML = data);
@@ -91,49 +95,18 @@
       });
     });
 
-    // JS 篩選功能
-    function filterTeachers(subject) {
-      const cards = document.querySelectorAll('.teacher-card');
-      cards.forEach(card => {
-        if (subject === 'all' || card.classList.contains(subject)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
     let lastScrollTop = 0;
-const navBar = document.querySelector(".navbar-floating");
+    const navBar = document.querySelector(".navbar-floating");
 
-window.addEventListener("scroll", () => {
-  const scrollTop = window.scrollY;
-
-  if (scrollTop > lastScrollTop) {
-    // 往下滑 => 隱藏
-    navBar.classList.add("navbar-hidden");
-  } else {
-    // 往上滑 => 顯示
-    navBar.classList.remove("navbar-hidden");
-  }
-
-  lastScrollTop = scrollTop;
-});
-
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > lastScrollTop) {
+        navBar.classList.add("navbar-hidden");
+      } else {
+        navBar.classList.remove("navbar-hidden");
+      }
+      lastScrollTop = scrollTop;
+    });
   </script>
-  <script>
-  document.querySelectorAll('.carousel').forEach(carousel => {
-    let index = 0;
-    const images = carousel.querySelectorAll('img');
-    const total = images.length;
-
-    // 自動輪播
-    setInterval(() => {
-      index = (index + 1) % total;
-      carousel.style.transform = `translateX(-${index * 100}%)`;
-    }, 3000);
-  });
-  </script>
-  <div id="footer-placeholder"></div>
 </body>
 </html>

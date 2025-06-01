@@ -1,153 +1,80 @@
 body {
-  padding-top: 60px;
-  background-color: #ffe0f0;
   margin: 0;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
 }
+
 .section {
-  padding: 60px 0;
+  padding: 40px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.pink {
-  background-color: #ffe0f0;
+  flex-wrap: wrap;
 }
 
-.blue {
-  background-color: #cce4ff;
+.section.pink {
+  background-color: #ffe0e9;
 }
 
-.transition {
-  background: linear-gradient(to bottom, #ffe0f0, #cce4ff);
-  height: 100px;
+.section.blue {
+  background-color: #e0f0ff;
 }
 
-.taiwan{
-  background-color: #ffe0f0;
-  height: 100px;
-}
-
-.card {
-  background: white;
-  padding: 24px;
-  border-radius: 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  max-width: 800px;
-  width: 90%;
-}
-
-.swiper {
-  width: 100%;
-}
-
-.swiper-slide {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  width: 100%;
-  border-radius: 16px;
-}
-
-.swiper-pagination {
-  margin-top: 16px;
-  text-align: center;
-}
-
-.carousel-section {
-  padding: 100px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.carousel-section.pink {
-  background-color: #ffe0f0;
-}
-
-.carousel-section.blue {
-  background-color: #d0e8ff;
-}
-
-/* 彈性容器：圖片和文字左右排列 */
 .carousel-container {
   display: flex;
-  gap: 90px;
   align-items: center;
-  justify-content: center;
+  gap: 40px;
+  flex-direction: row;
   flex-wrap: wrap;
-  max-width: 1200px;
-  width: 100%;
 }
 
-/* 反轉排列（藍色區使用） */
 .carousel-container.reverse {
   flex-direction: row-reverse;
 }
 
-/* 文字方塊 */
-.text-block {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #02DF82;
-  min-width: 150px;
-  text-align: center;
-}
-
-/* 懸浮卡片 */
-.carousel-card {
-  background: white;
+.card {
+  width: 800px;
+  max-width: 100%;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  max-width: 600px;
-  width: 90%;
-  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: white;
 }
 
-/* 輪播容器 */
-.carousel {
-  display: flex;
+.text-block {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 20px;
+  color: #333;
+}
+
+.swiper-slide img {
   width: 100%;
-  transition: transform 0.5s ease-in-out;
+  height: auto;
+  display: block;
 }
 
-.carousel img {
-  width: 100%;
-  flex-shrink: 0;
-  object-fit: cover;
-}
-
-/* 中間過渡區 */
+.taiwan-section,
 .transition-section {
-  background: linear-gradient(to bottom, #ffe0f0, #d0e8ff);
+  background: #fff5f8;
   text-align: center;
-  padding: 60px 0;
-  font-size: 24px;
-  font-weight: bold;
-  color: #555;
+  padding: 40px 20px;
 }
 
-.taiwan-section {
-  background: #ffe0f0;
-  text-align: center;
-  padding: 60px 0;
-  font-size: 24px;
+.taiwan-text,
+.transition-text {
+  font-size: 1.8rem;
   font-weight: bold;
-  color: #555;
+  color: #d6336c;
 }
 
-/* 響應式調整 */
-@media (max-width: 768px) {
-  .carousel-container {
-    flex-direction: column !important;
-  }
+.navbar-floating {
+  transition: top 0.3s;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
 
-  .text-block {
-    font-size: 2rem;
-  }
+.navbar-hidden {
+  top: -100px;
 }
