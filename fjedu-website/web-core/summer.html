@@ -168,6 +168,19 @@ window.addEventListener("scroll", () => {
 });
 
   </script>
+  <script>
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    let index = 0;
+    const images = carousel.querySelectorAll('img');
+    const total = images.length;
+
+    // 自動輪播
+    setInterval(() => {
+      index = (index + 1) % total;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }, 3000);
+  });
+  </script>
   <div id="footer-placeholder"></div>
 </body>
 </html>
