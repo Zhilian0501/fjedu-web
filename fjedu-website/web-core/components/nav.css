@@ -183,6 +183,10 @@
     opacity: 1;
   }
 
+  .hamburger{
+    display: block;
+  }
+
   .nav-links li {
     text-align: center;
   }
