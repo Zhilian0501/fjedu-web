@@ -185,6 +185,9 @@
 
   .hamburger{
     display: block;
+    position: absolute;
+    right: 20px;
+    top: 18px;
   }
 
   .nav-links li {
