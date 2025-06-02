@@ -177,7 +177,7 @@
     opacity: 0;
   }
 
-  .mainNav.active .nav-links {
+  .main-nav.active .nav-links {
     display: flex;
     transform: translateX(0);
     opacity: 1;
