@@ -113,7 +113,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: rgba(37, 233, 220, 0.95);
+  background-color: rgba(219, 180, 193, 0.95);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   top: 100%;
   left: 0;
@@ -158,39 +158,6 @@
   content: '✕';
 }
 
-@media screen and (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 100%;
-    background: rgba(219, 180, 193, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 12px 0;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform: translateX(100%);
-    opacity: 0;
-  }
-
-  .main-nav.active .nav-links {
-    display: flex;
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .nav-links li {
-    text-align: center;
-  }
-}
-
 /* 響應式設計 */
 @media screen and (max-width: 768px) {
   .nav-links {
@@ -200,7 +167,7 @@
     top: 70px;
     left: 0;
     width: 100%;
-    background: rgba(207, 164, 178, 0.95);
+    background: rgba(37, 233, 220, 0.95);
     backdrop-filter: blur(10px);
     padding: 12px 0;
     border-radius: 0 0 20px 20px;
