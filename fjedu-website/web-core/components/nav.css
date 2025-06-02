@@ -173,21 +173,17 @@
     border-radius: 0 0 20px 20px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     transition: transition 0.3s ease, opacity 0.3s ease;
+    transform: translateX(100%);
     opacity: 0;
   }
 
   .mainNav.active .nav-links {
     display: flex;
+    transform: translateX(0);
+    opacity: 1;
   }
 
   .nav-links li {
     text-align: center;
-  }
-
-  .hamburger {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 18px;
   }
 }
