@@ -76,7 +76,7 @@ body {
 /* 彈性容器：圖片和文字左右排列 */
 .carousel-container {
   display: flex;
-  gap: 50%;
+  gap: 100px;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
