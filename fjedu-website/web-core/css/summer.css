@@ -76,7 +76,7 @@ body {
 /* 彈性容器：圖片和文字左右排列 */
 .carousel-container {
   display: flex;
-  gap: 90px;
+  gap: 50%;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -105,7 +105,7 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   max-width: 600px;
-  width: 90%;
+  width: 100%;
   position: relative;
 }
 
