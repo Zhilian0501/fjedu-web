@@ -165,14 +165,15 @@
     flex-direction: column;
     position: absolute;
     top: 70px;
-    left: 0;
+    right: 0;
     width: 100%;
     background: rgba(37, 233, 220, 0.95);
     backdrop-filter: blur(10px);
     padding: 12px 0;
     border-radius: 0 0 20px 20px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    transition: transition 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
   }
 
   .mainNav.active .nav-links {
