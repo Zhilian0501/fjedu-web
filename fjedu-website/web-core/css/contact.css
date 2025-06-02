@@ -1,10 +1,11 @@
 body {
   padding-top: 60px; /* 上方加 20px 空間 */
+  background-color: rgba(72, 72, 153, 0.534);
 }
 
 .contact-section {
     padding: 60px 20px;
-    background-color: rgba(91, 124, 153, 0.75);
+    background-color: rgba(72, 72, 153, 0.534);
     text-align: center;
   }
   
