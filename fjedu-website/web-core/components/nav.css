@@ -172,7 +172,7 @@
     padding: 12px 0;
     border-radius: 0 0 20px 20px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    transition: transition 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     transform: translateX(100%);
     opacity: 0;
   }
