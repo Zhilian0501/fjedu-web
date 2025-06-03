@@ -5,7 +5,7 @@ body {
 .course-section {
     padding: 60px 20px;
     text-align: center;
-    background-color: #b944c4;
+    background-color: #b959c2;
   }
   
   .course-section h1 {
@@ -21,7 +21,7 @@ body {
   }
   
   .course-card {
-    background-color: rgb(107, 49, 146);
+    background-color: white;
     padding: 20px;
     width: 280px;
     border-radius: 20px;
