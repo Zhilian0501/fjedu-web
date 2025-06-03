@@ -21,10 +21,6 @@
   animation: navIn 0.6s ease forwards;
 }
 
-.navbar .main-nav.active a {
-  color: #40e0d0; /* 你想要的顏色 */
-}
-
 /* Logo 靠左 */
 .main-nav .logo {
   margin-right: 40px;
@@ -185,6 +181,7 @@
     display: flex;
     transform: translateX(0);
     opacity: 1;
+    color: #40e0d0; /* 你想要的顏色 */
   }
 
   .hamburger{
