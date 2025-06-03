@@ -95,7 +95,7 @@
 }
 
 .nav-links a {
-  color: #00ced1;
+  color: #a020f0;
   text-decoration: none;
   padding: 10px 16px;
   font-size: 1rem;
@@ -177,11 +177,13 @@
     opacity: 0;
   }
 
-  .main-nav.active .nav-links {
-    display: flex;
-    transform: translateX(0);
-    opacity: 1;
-    color: #40e0d0; /* 你想要的顏色 */
+  .main-nav.active .nav-links a {
+    color: #00ced1; /* ⚠️ 自訂漢堡展開後文字顏色，可改成你想要的，例如 #ffcc00 */
+  }
+
+  .main-nav.active .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #000; /* hover 時想要變成什麼色 */
   }
 
   .hamburger{
