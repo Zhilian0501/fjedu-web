@@ -14,19 +14,27 @@ body {
   }
   
   .filter-buttons {
-    margin-bottom: 30px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  padding: 10px;
+}
   
   .filter-buttons button {
+    flex: 1 1 auto;
+    width: auto;
     margin: 0 10px;
     padding: 10px 18px;
     border: none;
+    font-size: 1rem;
     background: #d2a3ff;
     color: white;
     border-radius: 20px;
     cursor: pointer;
     font-weight: bold;
     transition: background 0.3s;
+    box-sizing: border-box;
   }
   
   .filter-buttons button:hover {
