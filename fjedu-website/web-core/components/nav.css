@@ -158,7 +158,6 @@
   content: '✕';
 }
 
-/* 響應式設計 */
 @media screen and (max-width: 768px) {
   .nav-links {
     display: none;
@@ -172,16 +171,28 @@
     padding: 12px 0;
     border-radius: 0 0 20px 20px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, opacity 0.3s ease;
     transform: translateX(100%);
     opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
+  .main-nav.active .nav-links {
+    display: flex;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  /* ✅ 手機版 nav link 顏色修改在這裡 */
   .main-nav.active .nav-links a {
-    color: #00ced1; /* ⚠️ 自訂漢堡展開後文字顏色，可改成你想要的，例如 #ffcc00 */
+    color: #00ced1; /* 例如象牙白 */
   }
 
-  .hamburger{
+  .main-nav.active .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #000;
+  }
+
+  .hamburger {
     display: block;
     position: absolute;
     right: 20px;
