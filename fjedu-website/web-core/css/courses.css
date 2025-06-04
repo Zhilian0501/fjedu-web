@@ -29,3 +29,20 @@
   border-radius: 12px;
   transition: background 0.3s ease, transform 0.2s ease;
 }
+
+/* 下拉選單 */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(219, 180, 193, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  top: 100%;
+  left: 0;
+  border-radius: 10px;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
