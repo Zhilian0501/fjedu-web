@@ -25,6 +25,16 @@ body {
   animation: navIn 0.6s ease forwards;
 }
 
+.nav-links a {
+  color: #ffeb3c;
+  text-decoration: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
 .about-section {
     padding: 60px 20px;
     background-color: #FFD9EC;
