@@ -6,7 +6,7 @@
     text-align: center;
   }
 
-  .main-nav {
+.main-nav {
   position: fixed;
   top: 20px;
   left: 50%;
@@ -14,7 +14,7 @@
   width: 90%;
   max-width: 1700px;
   padding: 14px 32px;
-  background: rgba(230, 36, 10, 0.856);
+  background: #fc2e2e;
   backdrop-filter: blur(12px);
   border-radius: 22px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -29,7 +29,7 @@
 }
 
 .nav-links a {
-  color: #ff8bff;
+  color: #ff82d9;
   text-decoration: none;
   padding: 10px 16px;
   font-size: 1rem;
