@@ -28,6 +28,16 @@
   animation: navIn 0.6s ease forwards;
 }
 
+.nav-links a {
+  color: #9457e4;
+  text-decoration: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
   .hero h1 {
     font-size: 48px;
     margin-bottom: 20px;
