@@ -5,7 +5,29 @@
     padding: 100px 20px;
     text-align: center;
   }
-  
+
+  .main-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1700px;
+  padding: 14px 32px;
+  background: rgba(230, 36, 10, 0.856);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  font-family: 'Noto Sans TC', sans-serif;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: navIn 0.6s ease forwards;
+}
+
   .hero h1 {
     font-size: 48px;
     margin-bottom: 20px;
