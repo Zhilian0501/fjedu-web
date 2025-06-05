@@ -1,3 +1,6 @@
+body{
+  padding-top: 10px
+}
 /* 首頁 banner 區塊 */
 .hero-content {
     background: linear-gradient(to right, #d2a3ff, #fcd6f6, #ffffff);
