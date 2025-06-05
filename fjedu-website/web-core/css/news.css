@@ -39,12 +39,12 @@ body {
 
 .main-nav {
   position: fixed;
-  top: 20px;
+  top: 0px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
-  max-width: 1700px;
-  padding: 14px 32px;
+  width: 100%;
+  max-width: 2000px;
+  padding: 0;
   background: #FFD306;
   backdrop-filter: blur(12px);
   border-radius: 22px;
