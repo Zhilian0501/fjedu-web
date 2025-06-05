@@ -30,6 +30,10 @@
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.dropdown {
+  position: relative;
+}
+
 /* 下拉選單 */
 .dropdown-content {
   display: none;

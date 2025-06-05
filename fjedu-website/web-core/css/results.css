@@ -3,6 +3,10 @@ body {
   background-color: #fef0ff;
 }
 
+.dropdown {
+  position: relative;
+}
+
 /* 下拉選單 */
 .dropdown-content {
   display: none;

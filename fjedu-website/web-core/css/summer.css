@@ -5,6 +5,10 @@ body {
   font-family: 'Noto Sans TC', sans-serif;
 }
 
+.dropdown {
+  position: relative;
+}
+
 /* 下拉選單 */
 .dropdown-content {
   display: none;
@@ -31,6 +35,10 @@ body {
   font-size: 0.95rem;
 }
 
+.dropdown-content li a:hover {
+  background-color: #cccccc;
+  color: #000;
+}
 .dropdown-content li a:hover {
   background-color: #cccccc;
   color: #000;

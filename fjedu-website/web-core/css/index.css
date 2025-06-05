@@ -6,6 +6,10 @@
     text-align: center;
   }
 
+.dropdown {
+  position: relative;
+}
+
 /* 下拉選單 */
 .dropdown-content {
   display: none;

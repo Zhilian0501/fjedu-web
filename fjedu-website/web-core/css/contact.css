@@ -3,6 +3,10 @@ body {
   background-color: rgba(72, 72, 153, 0.534);
 }
 
+.dropdown {
+  position: relative;
+}
+
 /* 下拉選單 */
 .dropdown-content {
   display: none;
