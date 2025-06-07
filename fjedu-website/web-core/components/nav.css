@@ -152,8 +152,15 @@
   cursor: pointer;
 }
 
-.hamburger::before {
-  content: '≡';
+.hamburger::before,
+.hamburger::after,
+.hamburger div {
+  content: "≡";
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: white; /* 三條線顏色 */
+  transition: 0.3s ease;
 }
 
 .hamburger.active::before {
