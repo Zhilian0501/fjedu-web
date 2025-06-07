@@ -23,7 +23,16 @@
 
 /* Logo 靠左 */
 .main-nav .logo {
-  margin-right: 40px;
+  justify-self: start;
+  max-width: 160px;
+  height: auto;
+  overflow: hidden;
+}
+
+.main-nav .logo img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* nav-links 置中 */
