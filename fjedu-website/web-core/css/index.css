@@ -206,7 +206,6 @@ body{
   
   .image-index {
     width: 100%;
-    aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
 }
