@@ -9,7 +9,7 @@ body {
   transform: translateX(-50%);
   width: 100%;
   max-width: 2000px;
-  padding: 14px 32px;
+  padding: 0;
   background: #ff31f5;
   backdrop-filter: blur(12px);
   border-radius: 22px;
