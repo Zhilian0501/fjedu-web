@@ -204,3 +204,16 @@ body{
     display: block;
   }
   
+  .image-index {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .image-index {
+    width: 100%;
+    height: auto;
+  }
+}
