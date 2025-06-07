@@ -159,7 +159,7 @@
   position: absolute;
   width: 20px;
   height: 2px;
-  background-color: white; /* 三條線顏色 */
+  background-color: rgb(250, 232, 255); /* 三條線顏色 */
   transition: 0.3s ease;
 }
 
