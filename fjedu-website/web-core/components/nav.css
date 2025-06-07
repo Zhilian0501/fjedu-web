@@ -181,6 +181,9 @@
     display: flex;
     transform: translateX(0);
     opacity: 1;
+    flex-direction: column;
+    max-height: 80vh; /* 限高但不切斷 */
+    overflow-y: auto;  /* 可捲動顯示所有項目 */
   }
 
   /* ✅ 手機版 nav link 顏色修改在這裡 */
