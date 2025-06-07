@@ -212,6 +212,12 @@ body{
   display: block;
 }
 
+.image-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
   .image-index {
     width: 100%;
