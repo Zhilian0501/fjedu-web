@@ -6,7 +6,7 @@
   transform: translateX(-50%);
   width: 100%;
   max-width: 1700px;
-  padding: 0;
+  padding: 20px;
   background: rgba(245, 180, 2, 0.747);
   backdrop-filter: blur(12px);
   border-radius: 0px 0px 22px 22px;
