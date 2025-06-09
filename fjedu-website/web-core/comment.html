@@ -79,67 +79,70 @@
 <div id="nav-placeholder"></div>
 
   <h2>留下評論</h2>
-  <div class="review-form">
-    <div class="stars" id="starInput">
-      <i data-value="1">&#9733;</i>
-      <i data-value="2">&#9733;</i>
-      <i data-value="3">&#9733;</i>
-      <i data-value="4">&#9733;</i>
-      <i data-value="5">&#9733;</i>
-    </div>
-    <textarea id="comment" placeholder="輸入你的評論..."></textarea>
-    <button onclick="submitReview()">送出評論</button>
-  </div>
+  <div id="starInput"></div>
+  <textarea id="comment" placeholder="輸入評論內容..."></textarea><br>
+  <button onclick="submitReview()">送出</button>
 
   <h3>所有評論</h3>
-  <div class="review-list" id="reviewList"></div>
-  <div id="footer-placeholder"></div>
+  <div id="reviewList"></div>
 
   <script>
     let selectedRating = 0;
-
     const starInput = document.getElementById('starInput');
-    const stars = starInput.querySelectorAll('i');
+    const reviewList = document.getElementById('reviewList');
 
-    stars.forEach(star => {
-      star.addEventListener('click', () => {
-        selectedRating = parseInt(star.dataset.value);
-        updateStarDisplay();
-      });
-    });
+    // 顯示 5 顆星
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement('span');
+      star.innerHTML = '★';
+      star.classList.add('star');
+      star.dataset.value = i;
+      star.onclick = () => {
+        selectedRating = i;
+        updateStars();
+      };
+      starInput.appendChild(star);
+    }
 
-    function updateStarDisplay() {
-      stars.forEach(star => {
+    function updateStars() {
+      document.querySelectorAll('.star').forEach(star => {
         star.classList.toggle('filled', parseInt(star.dataset.value) <= selectedRating);
       });
     }
 
-    function submitReview() {
+    async function submitReview() {
       const comment = document.getElementById('comment').value.trim();
-      if (selectedRating === 0 || comment === '') {
-        alert('請選擇星數並輸入評論');
-        return;
-      }
+      if (!selectedRating || !comment) return alert('請填寫星數與評論');
 
-      const reviewList = document.getElementById('reviewList');
-      const reviewDiv = document.createElement('div');
-      reviewDiv.className = 'review';
+      await fetch('/api/submitReview', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rating: selectedRating, comment })
+      });
 
-      let starHTML = '';
-      for (let i = 1; i <= 5; i++) {
-        starHTML += `<i class="${i <= selectedRating ? 'filled' : ''}">&#9733;</i>`;
-      }
-
-      reviewDiv.innerHTML = `
-        <div class="stars">${starHTML}</div>
-        <p>${comment}</p>
-      `;
-
-      reviewList.prepend(reviewDiv); // 新的放最上面
       document.getElementById('comment').value = '';
       selectedRating = 0;
-      updateStarDisplay();
+      updateStars();
+      loadReviews();
     }
+
+    async function loadReviews() {
+      const res = await fetch('/api/getReviews');
+      const data = await res.json();
+      reviewList.innerHTML = '';
+      data.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'review';
+        div.innerHTML = `
+          <div>${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+          <p>${r.comment}</p>
+          <small>${new Date(r.timestamp).toLocaleString('zh-TW')}</small>
+        `;
+        reviewList.appendChild(div);
+      });
+    }
+
+    loadReviews();
   </script>
   <script>
   fetch("/components/nav.html").then(res => res.text()).then(data => {
