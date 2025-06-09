@@ -71,7 +71,8 @@
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 50px; /* Apple 官網感的平均間隔 */
+  justify-content: center;
+  gap: 50px;
   margin: 0;
   padding: 0;
 }
