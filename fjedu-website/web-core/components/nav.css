@@ -20,6 +20,10 @@
   animation: navIn 0.6s ease forwards;
 }
 
+.main-nav a {
+  text-decoration: none;
+}
+
 /* Logo 靠左 */
 .main-nav .logo {
   justify-self: start;
@@ -32,16 +36,6 @@
   width: 100%;
   height: auto;
   display: block;
-}
-
-/* nav-links 置中 */
-.nav-links {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  margin: 0;
-  padding: 0;
 }
 
 /* hamburger 靠右 */
@@ -71,22 +65,6 @@
     opacity: 1;
     transform: translateX(-50%);
   }
-}
-
-/* 滾動後效果 */
-.mainNav.scrolled {
-  padding: 10px 28px;
-  background: rgba(252, 228, 236, 0.95);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  transform: translateX(-50%) scale(0.96);
-}
-
-/* Logo */
-.mainNav .logo a {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #a020f0; /* 紫色 */
-  text-decoration: none;
 }
 
 /* 導覽連結 */
