@@ -38,25 +38,7 @@ body {
 }
 
 .main-nav {
-  position: fixed;
-  top: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 2000px;
-  padding: 0;
   background: #FFD306;
-  backdrop-filter: blur(12px);
-  border-radius: 22px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  z-index: 999;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  font-family: 'Noto Sans TC', sans-serif;
-  transition: all 0.3s ease;
-  opacity: 0;
-  animation: navIn 0.6s ease forwards;
 }
 
 .nav-links a {
