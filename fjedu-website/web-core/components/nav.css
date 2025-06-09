@@ -1,11 +1,10 @@
 /* 主導航條 */
 .main-nav {
   position: fixed;
-  top: 20px;
-  left: 50%;
+  top: 0px;
+  left: 0;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1700px;
   padding: 20px;
   background: rgba(245, 180, 2, 0.747);
   backdrop-filter: blur(12px);
