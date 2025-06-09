@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/components/nav.css">
+  <link rel="stylesheet" href="/components/nav.js">
+  <link rel="stylesheet" href="/components/footer.css">
+  <link rel="stylesheet" href="/css/about.css">
+  <title>評論系統</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f8f9fa;
+    }
+
+    .review-form {
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    .stars {
+      display: flex;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .stars i {
+      font-style: normal;
+      font-size: 24px;
+      color: #ccc;
+    }
+
+    .stars i.filled {
+      color: gold;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 10px;
+      resize: vertical;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .review-list {
+      max-width: 500px;
+    }
+
+    .review {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .review .stars {
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+  <h2>留下評論</h2>
+  <div class="review-form">
+    <div class="stars" id="starInput">
+      <i data-value="1">&#9733;</i>
+      <i data-value="2">&#9733;</i>
+      <i data-value="3">&#9733;</i>
+      <i data-value="4">&#9733;</i>
+      <i data-value="5">&#9733;</i>
+    </div>
+    <textarea id="comment" placeholder="輸入你的評論..."></textarea>
+    <button onclick="submitReview()">送出評論</button>
+  </div>
+
+  <h3>所有評論</h3>
+  <div class="review-list" id="reviewList"></div>
+  <div id="footer-placeholder"></div>
+
+  <script>
+    let selectedRating = 0;
+
+    const starInput = document.getElementById('starInput');
+    const stars = starInput.querySelectorAll('i');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.dataset.value);
+        updateStarDisplay();
+      });
+    });
+
+    function updateStarDisplay() {
+      stars.forEach(star => {
+        star.classList.toggle('filled', parseInt(star.dataset.value) <= selectedRating);
+      });
+    }
+
+    function submitReview() {
+      const comment = document.getElementById('comment').value.trim();
+      if (selectedRating === 0 || comment === '') {
+        alert('請選擇星數並輸入評論');
+        return;
+      }
+
+      const reviewList = document.getElementById('reviewList');
+      const reviewDiv = document.createElement('div');
+      reviewDiv.className = 'review';
+
+      let starHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        starHTML += `<i class="${i <= selectedRating ? 'filled' : ''}">&#9733;</i>`;
+      }
+
+      reviewDiv.innerHTML = `
+        <div class="stars">${starHTML}</div>
+        <p>${comment}</p>
+      `;
+
+      reviewList.prepend(reviewDiv); // 新的放最上面
+      document.getElementById('comment').value = '';
+      selectedRating = 0;
+      updateStarDisplay();
+    }
+  </script>
+  <script>
+  fetch("/components/nav.html").then(res => res.text()).then(data => {
+    document.getElementById("nav-placeholder").innerHTML = data;
+  });
+  fetch("/components/footer.html").then(res => res.text()).then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("hamburger")) {
+      document.querySelector(".main-nav").classList.toggle("active");
+    }
+  });
+
+    let prevScrollPos = window.pageYOffset;
+  const scrollThreshold = 10;
+
+  window.addEventListener("scroll", () => {
+    const currentScrollPos = window.pageYOffset;
+    const diff = prevScrollPos - currentScrollPos;
+
+    if (diff > scrollThreshold) {
+      navbar.style.top = "0";
+      navbar.classList.remove("transparent");
+    } else if (diff < -scrollThreshold) {
+      navbar.style.top = "-80px";
+      navbar.classList.add("transparent");
+    }
+
+    prevScrollPos = currentScrollPos;
+  });
+
+</script>
+</body>
+</html>
