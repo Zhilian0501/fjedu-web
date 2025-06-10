@@ -88,8 +88,8 @@ body{
 
 .slideshow-container {
   position: relative;
-  width: 500px;
-  height: 350px;
+  width: 400px;
+  height: 250px;
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -109,7 +109,7 @@ body{
 }
 
 .intro-section {
-  max-width: 500px;
+  max-width: 800px;
 }
 
 .intro-section h2 {
