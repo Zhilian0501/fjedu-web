@@ -125,24 +125,18 @@
 
     prevScrollPos = currentScrollPos;
   });
-
-  document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".mySlides");
-  let currentSlide = 0;
-
-  function showSlides() {
-    slides.forEach((slide, index) => {
-      slide.style.display = index === currentSlide ? "block" : "none";
-    });
-
-    currentSlide = (currentSlide + 1) % slides.length;
-    setTimeout(showSlides, 3500);
-  }
-
-  if (slides.length > 0) {
-    showSlides();
-  }
-});
+  new Swiper(".slideshow-container", {
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination2",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+  });
+  
   </script>
 
   <!-- 頁尾 -->
