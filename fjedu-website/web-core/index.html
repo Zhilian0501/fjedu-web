@@ -137,10 +137,9 @@
     showSlides();
 
     function showSlides() {
-      let slides = document.getElementsByClassName("mySlides");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
+      slides.forEach(slide => slide.classList.remove("active"));
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add("active");
       slideIndex++;
       if (slideIndex > slides.length) { slideIndex = 1; }
       slides[slideIndex - 1].style.display = "block";
