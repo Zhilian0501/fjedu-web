@@ -1,5 +1,6 @@
 body {
   padding-top: 60px; /* 上方加 20px 空間 */
+  background-color: #b092b8;
 }
 
 .dropdown {
@@ -50,12 +51,11 @@ body {
     margin: 0 auto;
     text-align: left;
     padding: 60px 20px;
-    background-color: #fefaff;
+    background-color: #e3b6ee;
     color: #000000;
     text-align: center;
     font-size: 16px;
     line-height: 1.8;
-    background: white;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
