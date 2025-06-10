@@ -125,14 +125,14 @@
 
     prevScrollPos = currentScrollPos;
   });
-  
+
   let slideIndex = 0;
     showSlides();
 
     function showSlides() {
-      slides.forEach(slide => slide.classList.remove("active"));
+      slides.forEach(slide => slide.classList.remove("slideshow-container"));
       slideIndex = (slideIndex + 1) % slides.length;
-      slides[slideIndex].classList.add("active");
+      slides[slideIndex].classList.add("slideshow-container");
       slideIndex++;
       if (slideIndex > slides.length) { slideIndex = 1; }
       slides[slideIndex - 1].style.display = "block";
