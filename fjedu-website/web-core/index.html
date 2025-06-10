@@ -127,18 +127,23 @@
   });
 
   let slideIndex = 0;
-    showSlides();
+  const slides = document.querySelectorAll(".mySlides");
 
-    function showSlides() {
-      slides.forEach(slide => slide.classList.remove("slideshow-container"));
-      slideIndex = (slideIndex + 1) % slides.length;
-      slides[slideIndex].classList.add("slideshow-container");
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1; }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 3000); // 每3秒切換
+  function showSlides() {
+    slides.forEach((slide, i) => {
+      slide.style.display = "none"; // 全部先隱藏
+    });
+
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
     }
-  
+
+    slides[slideIndex - 1].style.display = "block"; // 顯示當前的
+    setTimeout(showSlides, 3000); // 每 3 秒切換一次
+  }
+
+  document.addEventListener("DOMContentLoaded", showSlides);
   </script>
 
   <!-- 頁尾 -->
