@@ -132,19 +132,23 @@
     showSlide(currentIndex);
   }
 
-  //圖片輪播//
-   let slideIndex = 0;
-    showSlides();
+  document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".mySlides");
+  let currentSlide = 0;
 
-    function showSlides() {
-      slides.forEach(slide => slide.classList.remove("active"));
-      slideIndex = (slideIndex + 1) % slides.length;
-      slides[slideIndex].classList.add("active");
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1; }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 3000); // 每3秒切換
-    }
+  function showSlides() {
+    slides.forEach((slide, index) => {
+      slide.style.display = index === currentSlide ? "block" : "none";
+    });
+
+    currentSlide = (currentSlide + 1) % slides.length;
+    setTimeout(showSlides, 3000);
+  }
+
+  if (slides.length > 0) {
+    showSlides();
+  }
+});
   </script>
 
   <!-- 頁尾 -->
