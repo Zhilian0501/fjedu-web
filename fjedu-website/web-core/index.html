@@ -127,23 +127,31 @@
   });
 
   let slideIndex = 0;
-  const slides = document.querySelectorAll(".mySlides");
 
-  function showSlides() {
-    slides.forEach((slide, i) => {
-      slide.style.display = "none"; // 全部先隱藏
-    });
+  // 等 DOM 載入完後才執行
+  document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".mySlides");
 
-    slideIndex++;
-    if (slideIndex > slides.length) {
-      slideIndex = 1;
+    function showSlides() {
+      // 先把所有圖片都隱藏
+      slides.forEach(slide => {
+        slide.style.display = "none";
+      });
+
+      // 顯示目前要顯示的那一張圖片
+      slides[slideIndex].style.display = "block";
+
+      // 下一張圖片的 index
+      slideIndex = (slideIndex + 1) % slides.length;
+
+      // 每 3 秒切換一次
+      setTimeout(showSlides, 3000);
     }
 
-    slides[slideIndex - 1].style.display = "block"; // 顯示當前的
-    setTimeout(showSlides, 3000); // 每 3 秒切換一次
-  }
-
-  document.addEventListener("DOMContentLoaded", showSlides);
+    // 先手動顯示第一張圖片，避免一開始閃一下
+    slides[slideIndex].style.display = "block";
+    setTimeout(showSlides, 3000);
+  });
   </script>
 
   <!-- 頁尾 -->
