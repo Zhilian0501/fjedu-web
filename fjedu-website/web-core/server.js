@@ -17,6 +17,11 @@ app.use(cors({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
+// 專門處理 /api/member 預檢請求
+app.options('/api/member', cors(), (req, res) => {
+  res.sendStatus(200);
+});
+
 // 郵件寄送功能
 const transporter = nodemailer.createTransport({
   service: 'gmail',
