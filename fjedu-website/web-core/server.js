@@ -20,7 +20,12 @@ app.use(cors({
   credentials: true,
 }));
 
-app.options('*', cors());
+app.options('*', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://fjedu-web.pages.dev');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.sendStatus(204);
+});
 
 app.use('/api', memberRouter);
 
