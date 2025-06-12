@@ -20,14 +20,15 @@ app.use(cors({
   origin: function(origin, callback) {
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) {
-      callback(null, true);
+      return callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      return callback(new Error('Not allowed by CORS'));
     }
   },
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
+  preflightContinue: false // 讓 cors middleware 自動回覆預檢請求
 }));
 
 app.options('*', cors(corsOptions));
