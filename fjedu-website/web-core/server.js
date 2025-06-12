@@ -47,6 +47,11 @@ app.use(cors({
   preflightContinue: false // 讓 cors middleware 自動回覆預檢請求
 }));
 
+app.get('/', (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.send('hello world');
+});
+
 app.options('*', cors(corsOptions));
 
 app.use('/api', memberRouter);
