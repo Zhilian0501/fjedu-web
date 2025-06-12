@@ -11,10 +11,11 @@ app.use(express.json()); // ⬅️ 這個非常重要，解析 JSON 請求
 
 // 建立資料庫連線
 const db = await mysql.createConnection({
-  host: 'your-host',
-  user: 'your-username',
-  password: 'your-password',
-  database: 'your-database'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306,
 });
 
 // 註冊 API
