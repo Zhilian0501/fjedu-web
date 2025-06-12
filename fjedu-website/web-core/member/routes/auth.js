@@ -8,9 +8,12 @@ const router = express.Router();
 router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
   try {
+    // 密碼加密
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const [rows] = await db.execute(
       'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
-      [username, email, password]
+      [username, email, hashedPassword]
     );
     res.json({ message: '註冊成功！' });
   } catch (error) {
