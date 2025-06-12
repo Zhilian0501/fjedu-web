@@ -36,4 +36,4 @@ app.listen(3000, () => {
   console.log('伺服器已啟動在 http://localhost:3000');
 });
 
-export default router;
+export { router };
