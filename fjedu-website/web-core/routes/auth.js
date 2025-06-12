@@ -5,7 +5,7 @@ import { db } from '/db.js';
 const router = express.Router();
 
 // 註冊
-router.post('/register', async (req, res) => {
+router.post('/member', async (req, res) => {
   const { username, email, password } = req.body;
   try {
     // 密碼加密
