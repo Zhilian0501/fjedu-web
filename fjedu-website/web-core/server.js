@@ -1,7 +1,7 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
-import memberRouter from './api/member.js'; 
+import { router as memberRouter } from './api/member.js'; 
 
 const app = express();
 const PORT = process.env.PORT || 3000;

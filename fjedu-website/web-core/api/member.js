@@ -4,6 +4,7 @@ import mysql from 'mysql2/promise';
 import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 
+const router = express.Router();
 const app = express();
 app.use(express.json()); // ⬅️ 這個非常重要，解析 JSON 請求
 
@@ -36,3 +37,5 @@ app.post('/api/member', async (req, res) => {
 app.listen(3000, () => {
   console.log('伺服器已啟動在 http://localhost:3000');
 });
+
+export { router };
