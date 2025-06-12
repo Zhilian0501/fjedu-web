@@ -7,7 +7,13 @@ import cors from 'cors';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://fjedu-web.pages.dev',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+app.options('*', cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -18,6 +24,12 @@ const transporter = nodemailer.createTransport({
     user: 'drte0004@gmail.com',
     pass: 'opmu chma psuz wber'
   }
+});
+
+// 你的其他路由
+app.post('/api/member', (req, res) => {
+  console.log('收到註冊資料', req.body);
+  res.json({ success: true });
 });
 
 app.post('/send-email', async (req, res) => {
@@ -47,6 +59,7 @@ app.post('/send-email', async (req, res) => {
 
 // ✅ 註冊與登入路由
 app.use('/api', authRoutes);
+app.use(express.static('public'));
 
 // ✅ 啟動伺服器
 app.listen(PORT, () => {
