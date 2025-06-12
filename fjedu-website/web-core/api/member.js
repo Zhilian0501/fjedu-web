@@ -3,7 +3,7 @@ import express from 'express';
 import mysql from 'mysql2/promise';
 import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
-import pool from './db.js';
+import pool from '../db.js';
 
 const router = express.Router();
 const app = express();
