@@ -1,70 +1,26 @@
 import express from 'express';
-import nodemailer from 'nodemailer';
 import cors from 'cors';
-import memberRouter from './api/member.js';
-
-console.log('Mounting server routes...');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
-// 解析 body (要放在路由之前)
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
-// CORS 設定，允許來自特定前端的請求
 app.use(cors({
-  origin: ['https://fjedu-web.pages.dev', 'https://fjedu.online'], // 多來源可用陣列
+  origin: 'https://fjedu-web.pages.dev',
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
+  credentials: true
 }));
 
 app.options('*', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://fjedu-web.pages.dev');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.sendStatus(204);
 });
 
-app.use('/api', memberRouter);
-
-// 郵件寄送功能設定
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'drte0004@gmail.com',
-    pass: 'opmu chma psuz wber' // 你的 Gmail App 密碼
-  }
+app.post('/api/member', (req, res) => {
+  res.json({ message: 'POST /api/member success' });
 });
 
-// 郵件寄送 API
-app.post('/send-email', async (req, res) => {
-  const { name, email, course, guardian } = req.body;
-
-  const mailOptions = {
-    from: '"學生報名表單" <drte0004@gmail.com>', // 改成你的信箱或顯示名稱
-    to: 'easy.fjedu@gmail.com',
-    subject: '新的課程報名',
-    html: `
-      <h3>有學生報名課程</h3>
-      <p><strong>姓名：</strong> ${name}</p>
-      <p><strong>電子郵件：</strong> ${email}</p>
-      <p><strong>報名課程：</strong> ${course}</p>
-      <p><strong>監護人姓名：</strong> ${guardian}</p>
-    `
-  };
-
-  try {
-    await transporter.sendMail(mailOptions);
-    res.status(200).send('報名資料已成功寄出！');
-  } catch (err) {
-    console.error('郵件寄送失敗：', err);
-    res.status(500).send('寄送失敗');
-  }
-});
-
-// 啟動伺服器
 app.listen(PORT, () => {
-  console.log(`伺服器已啟動，埠號: ${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
