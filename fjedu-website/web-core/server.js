@@ -1,10 +1,8 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import authRoutes from '/routes/auth.js'; // 處理註冊登入路由
-import bcrypt from 'bcrypt';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { db } from '/db.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
