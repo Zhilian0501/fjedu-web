@@ -18,9 +18,8 @@ const allowedOrigins = ['https://fjedu-web.pages.dev', 'https://fjedu.online'];
 
 app.use(cors({
   origin: function(origin, callback) {
-    // 如果沒有 origin（如 Postman），允許通過
     if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
