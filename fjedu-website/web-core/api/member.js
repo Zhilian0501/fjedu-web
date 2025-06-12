@@ -22,7 +22,7 @@ router.post('/member', async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const [rows] = await pool.execute(
+    await pool.execute(
       'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
       [username, email, hashedPassword]
     );
@@ -36,4 +36,4 @@ app.listen(3000, () => {
   console.log('伺服器已啟動在 http://localhost:3000');
 });
 
-export { router };
+export default router;
