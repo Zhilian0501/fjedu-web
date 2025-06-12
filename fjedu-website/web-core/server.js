@@ -10,13 +10,14 @@ const PORT = process.env.PORT || 3000;
 
 // CORS 設定，允許來自特定前端的請求
 app.use(cors({
-  origin: 'https://fjedu-web.pages.dev',
+  origin: 'https://fjedu.online',
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
-app.options('*', cors());
 
+app.options('*', cors());
+app.options('/api/member', cors());
 // 解析 body
 app.use('/api', memberRouter);
 app.use(express.json());
