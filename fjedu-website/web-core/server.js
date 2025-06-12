@@ -8,20 +8,21 @@ console.log('Mounting server routes...');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// 解析 body (要放在路由之前)
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // CORS 設定，允許來自特定前端的請求
 app.use(cors({
-  origin: 'https://fjedu.online',
+  origin: ['https://fjedu-web.pages.dev', 'https://fjedu.online'], // 多來源可用陣列
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  credentials: true,
 }));
 
 app.options('*', cors());
-app.options('/api/member', cors());
-// 解析 body
+
 app.use('/api', memberRouter);
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
 // 郵件寄送功能設定
 const transporter = nodemailer.createTransport({
