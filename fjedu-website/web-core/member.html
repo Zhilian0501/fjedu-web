@@ -20,7 +20,7 @@
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
-      const res = await fetch('/api/register', {
+      const res = await fetch('/api/member', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

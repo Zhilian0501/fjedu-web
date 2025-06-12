@@ -15,7 +15,7 @@ const db = await mysql.createConnection({
 });
 
 // 註冊 API
-app.post('/api/register', async (req, res) => {
+app.post('/api/member', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
