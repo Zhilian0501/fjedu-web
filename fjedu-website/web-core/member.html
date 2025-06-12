@@ -14,29 +14,23 @@
   </form>
 
   <script>
-    const form = document.getElementById('registerForm');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      const res = await fetch('https://fjedu.online/api/member', {
-       method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-       body: JSON.stringify(data)
-      });
-
-      let result;
-      try {
-       result = await res.json();
-      } catch (e) {
-        const text = await res.text(); // 若不是 JSON，就印出原始錯誤訊息
-        alert('非預期錯誤：' + text);
-       return;
-      }
-
-      alert(result.message || result.error);
-    })
+    fetch('https://fjedu.online/api/member', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  credentials: 'include', // 如果需要帶 cookie
+  body: JSON.stringify({
+    username: 'example',
+    email: 'test@example.com',
+    password: '123456'
+  })
+})
+.then(res => res.json())
+.then(data => {
+  console.log('成功:', data);
+})
+.catch(err => console.error('錯誤:', err));
   </script>
 </body>
 </html>

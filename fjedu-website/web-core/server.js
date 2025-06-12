@@ -13,15 +13,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // CORS 設定，允許來自特定前端的請求
-
-const cors = require('cors');
-app.use(cors({
-  origin: 'https://fjedu-web.pages.dev', // or '*' if allowing all
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-  exposedHeaders: ['Access-Control-Allow-Origin'], // Headers to expose
-}));
-
 const allowedOrigins = ['https://fjedu-web.pages.dev', 'https://fjedu.online'];
 
 const corsOptions = {
@@ -39,7 +30,6 @@ const corsOptions = {
   preflightContinue: false
 };
 
-app.use(cors(corsOptions));
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin) return callback(null, true);
