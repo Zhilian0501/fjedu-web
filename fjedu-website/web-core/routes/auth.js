@@ -5,7 +5,7 @@ import { db } from '/db.js';
 const router = express.Router();
 
 // 註冊
-router.post('../member', async (req, res) => {
+router.post('/member', async (req, res) => {
   const { username, email, password } = req.body;
   console.log('收到註冊資料：', req.body);
   try {
@@ -24,7 +24,7 @@ router.post('../member', async (req, res) => {
 
 
 // 登入
-router.post('../login', async (req, res) => {
+router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const [rows] = await db.execute('SELECT * FROM users WHERE email = ?', [email]);
