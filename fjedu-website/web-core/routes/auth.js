@@ -7,6 +7,7 @@ const router = express.Router();
 // 註冊
 router.post('/member', async (req, res) => {
   const { username, email, password } = req.body;
+  console.log('收到註冊資料：', req.body);
   try {
     // 密碼加密
     const hashedPassword = await bcrypt.hash(password, 10);
