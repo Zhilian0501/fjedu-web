@@ -7,17 +7,17 @@ const router = express.Router();
 // 註冊
 router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
   try {
-    const [result] = await db.execute(
+    const [rows] = await db.execute(
       'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
-      [username, email, hashedPassword]
+      [username, email, password]
     );
-    res.status(201).json({ message: '註冊成功', userId: result.insertId });
+    res.json({ message: '註冊成功！' });
   } catch (error) {
-    res.status(500).json({ error: '註冊失敗', details: error.message });
+    res.status(500).json({ error: '註冊失敗：' + error.message });
   }
 });
+
 
 // 登入
 router.post('/login', async (req, res) => {

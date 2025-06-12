@@ -1,31 +1,32 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const app = express();
-const PORT = 3000;
+import express from 'express';
+import nodemailer from 'nodemailer';
+import authRoutes from './routes/auth.js'; // 處理註冊登入路由
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
-// 中介層
+const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.json());
 
-// 郵件發送設定
+// ✅ 郵件寄送功能
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // 你也可以用 Outlook、Yahoo 等
+  service: 'gmail',
   auth: {
-    user: 'drte0004@gmail.com',      // 用來寄信的 Gmail 帳號
-    pass: 'opmu chma psuz wber'          // 建議使用應用程式密碼，不是 Gmail 登入密碼
+    user: 'drte0004@gmail.com',
+    pass: 'opmu chma psuz wber'
   }
 });
 
-// 接收表單 POST 請求
 app.post('/send-email', async (req, res) => {
   const { name, email, course, guardian } = req.body;
 
   const mailOptions = {
     from: '"學生報名表單" <your.email@gmail.com>',
-    to: 'easy.fjedu@gmail.com', // 收件者（老師的 Email)
+    to: 'easy.fjedu@gmail.com',
     subject: '新的課程報名',
     html: `
       <h3>有學生報名課程</h3>
@@ -45,6 +46,10 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
+// ✅ 註冊與登入路由
+app.use('/api', authRoutes);
+
+// ✅ 啟動伺服器
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`伺服器已啟動：http://localhost:${PORT}`);
 });
