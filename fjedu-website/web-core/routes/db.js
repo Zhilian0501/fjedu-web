@@ -9,3 +9,5 @@ export const db = await mysql.createConnection({
   database: process.env.DB_NAME,
   port: process.env.DB_PORT,
 });
+
+export default pool;
