@@ -1,6 +1,6 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
-import authRoutes from './routes/auth.js'; // 處理註冊登入路由
+import authRoutes from './routes/auth.js';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
@@ -13,23 +13,17 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
-app.options('*', cors());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
-// ✅ 郵件寄送功能
+// 郵件寄送功能
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'drte0004@gmail.com',
     pass: 'opmu chma psuz wber'
   }
-});
-
-// 你的其他路由
-app.post('/api/member', (req, res) => {
-  console.log('收到註冊資料', req.body);
-  res.json({ success: true });
 });
 
 app.post('/send-email', async (req, res) => {
@@ -57,11 +51,12 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-// ✅ 註冊與登入路由
+// 註冊與登入路由
 app.use('/api', authRoutes);
+
+// 靜態資源放最後
 app.use(express.static('public'));
 
-// ✅ 啟動伺服器
 app.listen(PORT, () => {
   console.log(`伺服器已啟動：http://localhost:${PORT}`);
 });
