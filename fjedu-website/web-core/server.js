@@ -31,6 +31,8 @@ app.use(cors({
   credentials: true,
 }));
 
+app.options('*', cors());
+
 app.use('/api', memberRouter);
 
 // 郵件寄送功能設定
