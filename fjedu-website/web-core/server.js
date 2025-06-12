@@ -1,6 +1,7 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
+import memberRouter from './api/member.js'; 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ app.use(cors({
 app.options('*', cors());
 
 // 解析 body
+app.use('/api', memberRouter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -25,12 +27,6 @@ const transporter = nodemailer.createTransport({
     user: 'drte0004@gmail.com',
     pass: 'opmu chma psuz wber' // 你的 Gmail App 密碼
   }
-});
-
-// 會員註冊範例路由
-app.post('/api/member', (req, res) => {
-  console.log('收到註冊資料:', req.body);
-  res.json({ success: true });
 });
 
 // 郵件寄送 API
