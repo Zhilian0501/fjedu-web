@@ -21,14 +21,21 @@
       const data = Object.fromEntries(formData.entries());
 
       const res = await fetch('https://fjedu.online/api/member', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data)
-});
+       method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify(data)
+      });
 
-      const result = await res.json();
+      let result;
+      try {
+       result = await res.json();
+      } catch (e) {
+        const text = await res.text(); // 若不是 JSON，就印出原始錯誤訊息
+        alert('非預期錯誤：' + text);
+       return;
+      }
+
       alert(result.message || result.error);
-    });
   </script>
 </body>
 </html>
