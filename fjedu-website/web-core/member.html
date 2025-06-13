@@ -12,7 +12,7 @@
     <input type="password" name="password" placeholder="密碼" required><br>
     <button type="submit">註冊</button>
   </form>
-
+  <p id="message"></p>
   <script>
   document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -23,6 +23,8 @@
       password: formData.get('password')
     };
 
+    const messageBox = document.getElementById('message');
+
     try {
       const res = await fetch('https://fjedu.online/api/member', {
         method: 'POST',
@@ -32,10 +34,16 @@
         body: JSON.stringify(data)
       });
 
-      if (!res.ok) throw new Error('伺服器錯誤：' + res.status);
-      const result = await res.json();
-      console.log('成功：', result);
+      const resText = await res.text(); // 用 text() 避免 JSON 錯誤
+
+      if (!res.ok) {
+        messageBox.textContent = '註冊失敗：' + resText;
+        return;
+      }
+
+      messageBox.textContent = '註冊成功！';
     } catch (err) {
+      messageBox.textContent = '請求錯誤：' + err.message;
       console.error('錯誤：', err);
     }
   });
