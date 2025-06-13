@@ -46,7 +46,7 @@
   cursor: pointer;
   justify-self: end; /* 仍靠右對齊 */
   max-width: 100%; /* 限制寬度不超出 */
-  padding-right: 8px; /* 改用 padding 取代 margin-right */
+  padding-right: 24px; /* 改用 padding 取代 margin-right */
   box-sizing: border-box; /* 避免 overflow */
 }
 
