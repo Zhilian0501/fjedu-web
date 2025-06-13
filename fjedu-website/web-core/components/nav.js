@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 漢堡選單控制
+  // 漢堡選單邏輯 (你之前的也放這裡)
   const hamburger = document.querySelector('.hamburger');
   const mainNav = document.querySelector('.main-nav');
 
@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.classList.toggle('active');
   });
 
-  // 會員資訊顯示控制
-  const memberArea = document.querySelector('.member-area');
+  // 會員登入狀態處理
   const avatarImg = document.getElementById('member-avatar-img');
   const memberName = document.getElementById('member-name');
   const notLoggedInDiv = document.getElementById('not-logged-in');
@@ -19,14 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const dropdownPhone = document.getElementById('dropdown-phone');
   const logoutBtn = document.getElementById('logout-btn');
 
-  // 從 localStorage 取用戶資料
+  // 從 localStorage 讀取用戶資訊
   const user = JSON.parse(localStorage.getItem('user'));
 
   if (user && user.username) {
-    // 已登入
+    // 已登入狀態
     memberName.textContent = user.username;
-    memberName.style.display = 'inline-block';
-
     avatarImg.src = user.avatarUrl || '/images/default-avatar.png';
 
     notLoggedInDiv.style.display = 'none';
@@ -40,10 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.removeItem('user');
       window.location.reload();
     });
-
   } else {
-    // 未登入
-    memberName.style.display = 'none';
+    // 未登入狀態
+    memberName.textContent = '訪客';
     avatarImg.src = '/images/default-avatar.png';
 
     notLoggedInDiv.style.display = 'block';
