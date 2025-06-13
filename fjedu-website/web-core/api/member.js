@@ -17,9 +17,10 @@ router.post('/member', async (req, res) => {
       'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
       [username, email, hashedPassword]
     );
-    res.json({ message: '註冊成功！' });
+    res.status(200).json({ message: '註冊成功' });
   } catch (err) {
-    res.status(500).json({ error: '註冊失敗：' + err.message });
+    console.error('註冊錯誤：', err);
+    res.status(500).json({ error: '伺服器錯誤' });
   }
 });
 
