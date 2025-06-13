@@ -15,23 +15,23 @@ app.use(express.urlencoded({ extended: false }));
 // CORS 設定，允許來自特定前端的請求
 const allowedOrigins = ['https://fjedu-web.pages.dev', 'https://fjedu.online'];
 
-const corsOptions = {
+app.use(cors({
   origin: function(origin, callback) {
-    if (!origin) return callback(null, true); // 允許 Postman 這類沒有 Origin 的請求
+    // allow requests with no origin (like curl or Postman)
+    if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) {
-      callback(null, true);
+      return callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      return callback(new Error('Not allowed by CORS'));
     }
   },
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  preflightContinue: false,
-};
+  credentials: true
+}));
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));  // 處理 OPTIONS 預檢請求
+// 必須處理 preflight OPTIONS 請求
+app.options('*', cors());
 
 app.use('/api', memberRouter);
 
