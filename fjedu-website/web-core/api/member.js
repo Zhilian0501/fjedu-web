@@ -4,9 +4,9 @@ import pool from '../routes/db.js';
 
 const router = express.Router();
 
-router.options('*', (req, res) => {
-  res.sendStatus(204);
-});
+//router.options('*', (req, res) => {
+//  res.sendStatus(204);
+//}); 
 
 // 註冊 API
 router.post('/member', async (req, res) => {
