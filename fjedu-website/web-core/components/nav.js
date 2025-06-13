@@ -46,3 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
     loggedInDiv.style.display = 'none';
   }
 });
+
+window.addEventListener("DOMContentLoaded", () => {
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+  const username = localStorage.getItem("username");
+  const memberName = document.querySelector(".member-name");
+  const memberArea = document.querySelector(".member-area");
+
+  if (isLoggedIn && username && memberName) {
+    memberName.textContent = username;
+    memberArea.classList.add("logged-in");
+  }
+});
