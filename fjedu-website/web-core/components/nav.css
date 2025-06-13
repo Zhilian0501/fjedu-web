@@ -207,32 +207,47 @@
   color: #000;
 }
 
-/* 漢堡選單圖示 */
 .hamburger {
-  display: none;
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  z-index: 1001;
-  background-color: #ffffff00;
-  font-size: 28px;
-  color: #000000;
+  width: 30px;
+  height: 22px;
+  position: relative;
   cursor: pointer;
 }
 
-.hamburger::before,
-.hamburger::after,
-.hamburger div {
-  content: "≡";
+.hamburger span {
   position: absolute;
-  width: 20px;
-  height: 2px;
-  background-color: rgb(250, 232, 255); /* 三條線顏色 */
-  transition: 0.3s ease;
+  height: 3px;
+  width: 100%;
+  background: rgb(250, 232, 255);
+  border-radius: 3px;
+  transition: 0.3s;
 }
 
-.hamburger.active::before {
-  content: '✕';
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 9px;
+}
+
+.hamburger span:nth-child(3) {
+  bottom: 0;
+}
+
+/* 動畫切換為 X */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  bottom: 9px;
 }
 
 @media screen and (max-width: 768px) {
