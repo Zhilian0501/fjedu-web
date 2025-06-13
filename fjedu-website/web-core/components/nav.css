@@ -44,8 +44,10 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  justify-self: end; /* ✅ 使用 grid 的對齊方式 */
-  margin-right: 12px; /* ✅ 不要太寬 */
+  justify-self: end; /* 仍靠右對齊 */
+  max-width: 100%; /* 限制寬度不超出 */
+  padding-right: 8px; /* 改用 padding 取代 margin-right */
+  box-sizing: border-box; /* 避免 overflow */
 }
 
 .member-avatar {
