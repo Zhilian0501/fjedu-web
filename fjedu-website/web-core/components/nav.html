@@ -32,7 +32,27 @@
   <li><a href="/policy.html">條款</a></li>
   <li><a href="/contact.html">聯絡</a></li>
 </ul>
-
+<div class="member-area">
+    <div class="member-avatar" tabindex="0">
+      <img id="member-avatar-img" src="/images/default-avatar.png" alt="會員頭貼" />
+      <span id="member-name" class="member-name"></span>
+    </div>
+    <div class="member-dropdown" id="member-dropdown">
+      <!-- 未登入內容 -->
+      <div id="not-logged-in" class="dropdown-content">
+        請先 <a href="/login.html">登入</a>
+      </div>
+      <!-- 已登入內容 -->
+      <div id="logged-in" class="dropdown-content" style="display:none;">
+        <p><strong id="dropdown-username"></strong></p>
+        <p>Email: <span id="dropdown-email"></span></p>
+        <p>電話: <span id="dropdown-phone"></span></p>
+        <a href="/account-edit.html">修改電子郵件</a><br>
+        <a href="/account-edit.html">修改電話號碼</a><br>
+        <button id="logout-btn">登出</button>
+      </div>
+    </div>
+  </div>
   <!-- 右：漢堡 -->
   <div class="hamburger" id="hamburger"></div>
 </nav>

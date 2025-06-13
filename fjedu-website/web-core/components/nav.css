@@ -38,6 +38,81 @@
   display: block;
 }
 
+.member-area {
+  position: relative;
+  margin-left: auto;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.member-avatar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.member-avatar img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.member-name {
+  font-weight: 600;
+  color: #333;
+  display: none; /* 預設未登入不顯示 */
+}
+
+/* 下拉選單 */
+.member-dropdown {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  min-width: 180px;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+  z-index: 999;
+  font-size: 14px;
+  color: #555;
+}
+
+.member-dropdown a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.member-dropdown a:hover {
+  text-decoration: underline;
+}
+
+.member-dropdown button {
+  background: #f44336;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* hover 或 focus 顯示下拉 */
+.member-area:hover .member-dropdown,
+.member-area:focus-within .member-dropdown {
+  display: block;
+}
+
+/* 已登入顯示名稱 */
+.logged-in .member-name {
+  display: inline-block;
+}
+
 /* hamburger 靠右 */
 .hamburger {
   display: none;
