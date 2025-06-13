@@ -282,4 +282,8 @@
   .nav-links li {
     text-align: center;
   }
+
+  .member-area {
+    padding-right: 4px;
+  }
 }
