@@ -44,7 +44,7 @@ app.use(session({
   cookie: { secure: false } // 如果用 HTTPS 請設為 true
 }));
 
-app.use('/api', loginRouter);
+app.use('/api/login', loginRouter);
 
 // 郵件寄送功能
 const transporter = nodemailer.createTransport({
