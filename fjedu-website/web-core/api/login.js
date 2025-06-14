@@ -1,21 +1,29 @@
-document.getElementById('loginForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-  const res = await fetch('/api/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password })
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ email, password })
+    });
+
+    const msg = document.getElementById('message');
+    try {
+      const data = await res.json();
+      if (res.ok) {
+        alert('登入成功，正在跳轉...');
+        window.location.href = '/member-profile.html';
+      } else {
+        msg.textContent = data.error;
+      }
+    } catch (err) {
+      msg.textContent = '伺服器回傳資料異常';
+    }
   });
-
-  const data = await res.json();
-  const msg = document.getElementById('message');
-  if (res.ok) {
-    window.location.href = '/dashboard.html';
-  } else {
-    msg.textContent = data.error;
-  }
 });
 
 // login.js（登入處理檔案）
