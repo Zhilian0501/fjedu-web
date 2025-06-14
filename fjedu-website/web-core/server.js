@@ -28,7 +28,10 @@ const corsOptions = {
   credentials: true
 };
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: ['https://fjedu.online'],
+  credentials: true
+}));
 app.options('*', cors(corsOptions));
 
 app.use(session({
