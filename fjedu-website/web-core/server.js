@@ -39,8 +39,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true, // 若部署 HTTPS，請改成 true
-    sameSite: 'none'
+    secure: true,    // 測試用 HTTP 時用 false，正式 HTTPS 用 true
+    sameSite: 'lax'   // 同源
   }
 }));
 
