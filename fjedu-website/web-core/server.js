@@ -48,6 +48,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api', memberRouter);
 app.use('/api', loginRouter);
 
+app.get('/api/check-session', (req, res) => {
+  if (req.session.user) {
+    res.json({ username: req.session.user.username });
+  } else {
+    res.status(401).json({ error: '尚未登入' });
+  }
+});
+
 // 郵件寄送功能
 const transporter = nodemailer.createTransport({
   service: 'gmail',
