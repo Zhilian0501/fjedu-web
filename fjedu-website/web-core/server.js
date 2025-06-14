@@ -34,6 +34,8 @@ app.options('*', cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use('/api/login', loginRouter);
+
 // member 註冊 API
 app.use('/api', memberRouter);
 
@@ -43,8 +45,6 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false } // 如果用 HTTPS 請設為 true
 }));
-
-app.use('/api/login', loginRouter);
 
 // 郵件寄送功能
 const transporter = nodemailer.createTransport({
