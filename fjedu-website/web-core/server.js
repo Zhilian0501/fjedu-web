@@ -2,6 +2,7 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
 import memberRouter from './api/member.js';
+import session from 'express-session';
 
 console.log('Mounting server routes...');
 
@@ -34,6 +35,13 @@ app.use(express.urlencoded({ extended: false }));
 
 // member 註冊 API
 app.use('/api', memberRouter);
+
+app.use(session({
+  secret: 'mySecretKey',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // 如果用 HTTPS 請設為 true
+}));
 
 // 郵件寄送功能
 const transporter = nodemailer.createTransport({

@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>登入</title>
-  <script src="/api/login.js"></script>
 </head>
 <body>
   <h2>登入帳號</h2>
@@ -20,32 +19,20 @@
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    try {
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+      credentials: 'include' // ✅ 讓 cookie（session）傳送到後端
+    });
 
-      const result = await res.json();
+    const result = await res.json();
 
-      if (res.ok && result.success) {
-        alert("登入成功，正在跳轉...");
-        // 儲存登入狀態與名稱（視後端回傳欄位調整）
-        localStorage.setItem("loggedIn", "true");
-        localStorage.setItem("username", result.username || data.email);
-
-        // 取得 redirect 參數（如果有）
-        const params = new URLSearchParams(window.location.search);
-        const redirect = params.get("redirect");
-        // 跳轉：有 redirect 優先，否則回首頁
-        window.location.href = redirect || '/index.html';
-      } else {
-        alert(result.message || "登入失敗，請檢查帳號密碼");
-      }
-    } catch (err) {
-      console.error("登入錯誤", err);
-      alert("登入錯誤，請稍後再試");
+    if (res.ok) {
+      alert('登入成功，正在跳轉');
+      window.location.href = '/member.html'; // ✅ 成功轉跳
+    } else {
+      alert(result.error || result.message || '登入失敗');
     }
   });
 </script>
