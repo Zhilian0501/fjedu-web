@@ -28,9 +28,16 @@ const corsOptions = {
 };
 
 // ✅ 順序非常重要：先套 CORS
-app.use(cors(corsOptions));
-// ✅ 預檢請求也要允許
-app.options('*', cors(corsOptions));
+// CORS 一定要允許 origin 和 credentials
+app.use(cors({
+  origin: ['https://fjedu.online'], // frontend domain
+  credentials: true
+}));
+
+app.options('*', cors({
+  origin: ['https://fjedu.online'],
+  credentials: true
+}));
 
 // ✅ 再套 session（CORS 要先）
 app.use(session({
@@ -39,7 +46,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     secure: false,         // 若使用 HTTPS，請設為 true
-    sameSite: 'lax'
+    sameSite: 'none'
   }
 }));
 
