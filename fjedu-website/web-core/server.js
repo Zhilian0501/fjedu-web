@@ -36,7 +36,6 @@ app.use(express.urlencoded({ extended: false }));
 
 // member 註冊 API
 app.use('/api', memberRouter);
-app.use('/api', loginRouter);
 
 app.use(session({
   secret: 'mySecretKey',
@@ -44,6 +43,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false } // 如果用 HTTPS 請設為 true
 }));
+
+app.use('/api', loginRouter);
 
 // 郵件寄送功能
 const transporter = nodemailer.createTransport({
