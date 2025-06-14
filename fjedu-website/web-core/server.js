@@ -30,6 +30,16 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
+app.use(session({
+  secret: 'mySecretKey',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: true, // 若部署 HTTPS，請改成 true
+    sameSite: 'none'
+  }
+}));
+
 // 解析 body (放在 CORS 之後)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,16 +47,6 @@ app.use(express.urlencoded({ extended: false }));
 // member 註冊 API
 app.use('/api', memberRouter);
 app.use('/api', loginRouter);
-
-app.use(session({
-  secret: 'mySecretKey',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: false, // 若部署 HTTPS，請改成 true
-    sameSite: 'lax'
-  }
-}));
 
 // 郵件寄送功能
 const transporter = nodemailer.createTransport({
