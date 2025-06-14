@@ -15,33 +15,36 @@
   <p id="message" style="color: red;"></p>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('loginForm').addEventListener('submit', async e => {
       e.preventDefault();
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
-      fetch('https://fjedu-web-460q.onrender.com/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ email, password })
-      });
-
       const msg = document.getElementById('message');
+
       try {
+        const res = await fetch('https://fjedu-web-460q.onrender.com/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ email, password })
+        });
+
         const data = await res.json();
+
         if (res.ok) {
           alert('登入成功，正在跳轉...');
           window.location.href = '/member-profile.html';
         } else {
-          msg.textContent = data.error;
+          msg.textContent = data.error || '登入失敗';
         }
       } catch (err) {
-        msg.textContent = '伺服器回傳資料異常';
+        msg.textContent = '伺服器回傳資料異常：' + err.message;
+        console.error(err);
       }
     });
   });
-  </script>
+</script>
 </body>
 </html>
