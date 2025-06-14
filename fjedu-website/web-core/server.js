@@ -1,70 +1,62 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
-import memberRouter from './api/member.js';
 import session from 'express-session';
+import memberRouter from './api/member.js';
 import loginRouter from './api/login.js';
 import sessionRouter from './api/check-session.js';
-
-console.log('Mounting server routes...');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // === CORS 設定 ===
-const allowedOrigins = ['https://fjedu.online', 'https://fjedu-web.pages.dev'];
+const allowedOrigins = [
+  'https://fjedu.online',
+  'https://fjedu-web.pages.dev',
+  'https://fjedu-web-460q.onrender.com'
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
     } else {
-      return callback(new Error('Not allowed by CORS'));
+      callback(new Error('Not allowed by CORS'));
     }
   },
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
 
-app.use(cors({
-  origin: ['https://fjedu.online'],
-  credentials: true
-}));
-app.options('*', cors({
-  origin: ['https://fjedu.online'],
-  credentials: true
-}));
+// ✅ 順序非常重要：先套 CORS
+app.use(cors(corsOptions));
+// ✅ 預檢請求也要允許
+app.options('*', cors(corsOptions));
 
+// ✅ 再套 session（CORS 要先）
 app.use(session({
   secret: 'mySecretKey',
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false,
-    sameSite: 'lax',
+    secure: false,         // 若使用 HTTPS，請設為 true
+    sameSite: 'lax'
   }
 }));
 
-// 解析 body (放在 CORS 之後)
+// ✅ 再解析 body
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// member 註冊 API
+// === API 路由 ===
 app.use('/api', memberRouter);
 app.use('/api', loginRouter);
 app.use('/api', sessionRouter);
 
-app.get('/api/check-session', (req, res) => {
-  if (req.session.user) {
-    res.json({ username: req.session.user.username });
-  } else {
-    res.status(401).json({ error: '尚未登入' });
-  }
-});
+// ✅ 若已在 `./api/check-session.js` 寫好 /api/check-session，就不需要再寫一次
+// 否則請刪除這段，避免重複
+// app.get('/api/check-session', (req, res) => { ... });
 
-// 郵件寄送功能
+// === 寄信 API ===
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
