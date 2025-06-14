@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import cors from 'cors';
 import memberRouter from './api/member.js';
 import session from 'express-session';
+import loginRouter from './api/login.js';
 
 console.log('Mounting server routes...');
 
@@ -35,6 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // member 註冊 API
 app.use('/api', memberRouter);
+app.use('/api', loginRouter);
 
 app.use(session({
   secret: 'mySecretKey',

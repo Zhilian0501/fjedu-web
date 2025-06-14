@@ -1,44 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('loginForm').addEventListener('submit', async e => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+// /api/login.js
+import express from 'express';
+import bcrypt from 'bcrypt';
+import pool from '../routes/db.js'; // 或你正確的 db 匯入方式
 
-    const res = await fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ email, password })
-    });
+const router = express.Router();
 
-    const msg = document.getElementById('message');
-    try {
-      const data = await res.json();
-      if (res.ok) {
-        alert('登入成功，正在跳轉...');
-        window.location.href = '/member-profile.html';
-      } else {
-        msg.textContent = data.error;
-      }
-    } catch (err) {
-      msg.textContent = '伺服器回傳資料異常';
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const [rows] = await pool.execute('SELECT * FROM users WHERE email = ?', [email]);
+    if (rows.length === 0) {
+      return res.status(401).json({ error: '使用者不存在' });
     }
-  });
+
+    const user = rows[0];
+    const match = await bcrypt.compare(password, user.password);
+
+    if (!match) {
+      return res.status(401).json({ error: '密碼錯誤' });
+    }
+
+    req.session.user = { id: user.id, username: user.username };
+
+    res.json({ message: '登入成功', user: req.session.user });
+  } catch (err) {
+    console.error('登入失敗：', err);
+    res.status(500).json({ error: '伺服器錯誤' });
+  }
 });
 
-// login.js（登入處理檔案）
-function onLoginSuccess(username) {
-  localStorage.setItem("loggedIn", "true");
-  localStorage.setItem("username", username);
-
-  // 檢查 URL 是否帶有 redirect 參數
-  const params = new URLSearchParams(window.location.search);
-  const redirectTo = params.get("redirect");
-
-  if (redirectTo) {
-    window.location.href = redirectTo; // 回會員頁面
-  } else {
-    window.location.href = "/index.html"; // 或回首頁
-  }
-}
-
+export default router;
