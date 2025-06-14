@@ -32,15 +32,18 @@ app.use(cors({
   origin: ['https://fjedu.online'],
   credentials: true
 }));
-app.options('*', cors(corsOptions));
+app.options('*', cors({
+  origin: ['https://fjedu.online'],
+  credentials: true
+}));
 
 app.use(session({
   secret: 'mySecretKey',
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true,    // 測試用 HTTP 時用 false，正式 HTTPS 用 true
-    sameSite: 'lax'   // 同源
+    secure: false,
+    sameSite: 'lax',
   }
 }));
 
