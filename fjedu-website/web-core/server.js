@@ -4,7 +4,7 @@ import cors from 'cors';
 import memberRouter from './api/member.js';
 import session from 'express-session';
 import loginRouter from './api/login.js';
-import sessionRouter from './api/session.js';
+import sessionRouter from './api/check-session.js';
 
 console.log('Mounting server routes...');
 
