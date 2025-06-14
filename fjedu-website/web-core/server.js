@@ -34,7 +34,7 @@ app.options('*', cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/login', loginRouter);
+app.use('/api', loginRouter);
 
 // member 註冊 API
 app.use('/api', memberRouter);
