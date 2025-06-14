@@ -1,7 +1,6 @@
-// /api/login.js
 import express from 'express';
 import bcrypt from 'bcrypt';
-import pool from '../routes/db.js'; // 或你正確的 db 匯入方式
+import pool from '../routes/db.js';
 
 const router = express.Router();
 
@@ -22,7 +21,6 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.user = { id: user.id, username: user.username };
-
     res.json({ message: '登入成功', user: req.session.user });
   } catch (err) {
     console.error('登入失敗：', err);
