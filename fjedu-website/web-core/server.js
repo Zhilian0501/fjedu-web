@@ -4,6 +4,7 @@ import cors from 'cors';
 import memberRouter from './api/member.js';
 import session from 'express-session';
 import loginRouter from './api/login.js';
+import sessionRouter from './api/session.js';
 
 console.log('Mounting server routes...');
 
@@ -47,6 +48,7 @@ app.use(express.urlencoded({ extended: false }));
 // member 註冊 API
 app.use('/api', memberRouter);
 app.use('/api', loginRouter);
+app.use('/api', sessionRouter);
 
 app.get('/api/check-session', (req, res) => {
   if (req.session.user) {
