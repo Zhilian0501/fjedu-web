@@ -20,11 +20,17 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
 
 // login.js（登入處理檔案）
 function onLoginSuccess(username) {
-  // 假設登入驗證成功後取得使用者名稱 username
   localStorage.setItem("loggedIn", "true");
   localStorage.setItem("username", username);
 
-  // 導回首頁
-  window.location.href = "index.html"; // 或根據你的首頁 URL 修改
+  // 檢查 URL 是否帶有 redirect 參數
+  const params = new URLSearchParams(window.location.search);
+  const redirectTo = params.get("redirect");
+
+  if (redirectTo) {
+    window.location.href = redirectTo; // 回會員頁面
+  } else {
+    window.location.href = "/index.html"; // 或回首頁
+  }
 }
 
