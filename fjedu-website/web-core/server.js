@@ -103,7 +103,7 @@ async function startServer() {
     }
   });
 
-  const PORT = process.env.PORT;
+  const PORT = process.env.PORT || 10000;
   app.listen(PORT, () => {
     console.log(`🚀 伺服器啟動在埠號: ${PORT}`);
   });
