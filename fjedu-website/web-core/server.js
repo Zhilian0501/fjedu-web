@@ -48,7 +48,6 @@ async function startServer() {
       sameSite: 'none',
       httpOnly: true,
       maxAge: 86400000,
-      domain: '.fjedu.online'
     }
   }));
 
