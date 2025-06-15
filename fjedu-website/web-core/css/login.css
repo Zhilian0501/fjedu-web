@@ -82,3 +82,10 @@ button[type="submit"]:hover {
   min-height: 24px;
   text-align: center;
 }
+
+.small-text {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 10px;
+  user-select: none; /* 避免被誤選 */
+}
