@@ -38,7 +38,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false,         // 若使用 HTTPS，請設為 true
+    secure: true,         // 若使用 HTTPS，請設為 true
     sameSite: 'none'
   }
 }));
