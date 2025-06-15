@@ -2,9 +2,8 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
 import session from 'express-session';
-import Redis from 'ioredis';
 import { createClient } from 'redis';
-import { RedisStore } from 'connect-redis';
+import connectRedisPkg from 'connect-redis';
 
 import memberRouter from './api/member.js';
 import loginRouter from './api/login.js';
@@ -14,13 +13,34 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // === Redis 設定 ===
-const redisClient = createClient({
-  url: 'redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910'
-});
+const RedisStore = connectRedisPkg(session); 
+async function startServer() {
+  const redisClient = createClient({
+    url: 'redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910'
+  });
 
-redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
-redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
-await redisClient.connect(); // 非常重要，要 await 才能用
+  redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
+  redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
+
+  await redisClient.connect(); // 等 Redis 連上
+
+  app.use(session({
+    store: new RedisStore({ client: redisClient }),
+    secret: 'mySecretKey',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: true,
+      sameSite: 'none',
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+    }
+  }));
+
+  app.listen(PORT, () => {
+    console.log(`伺服器已啟動，埠號: ${PORT}`);
+  });
+}
 
 // === CORS 設定 ===
 const allowedOrigins = ['https://fjedu.online'];
@@ -37,20 +57,6 @@ app.use(cors({
 }));
 
 app.options('*', cors({ origin: allowedOrigins, credentials: true }));
-
-// === Session 設定 ===
-app.use(session({
-  store: new RedisStore({ client: redisClient }),
-  secret: 'mySecretKey',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: true,          // 部署 HTTPS 時設為 true，開發時可設 false
-    sameSite: 'none',      // 跨域必須
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000,
-  }
-}));
 
 // 解析 body
 app.use(express.json());
@@ -95,6 +101,4 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`伺服器已啟動，埠號: ${PORT}`);
-});
+startServer();
