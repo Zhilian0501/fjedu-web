@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import cors from 'cors';
 import session from 'express-session';
 import Redis from 'ioredis';
-import connectRedis from 'connect-redis';
+import * as connectRedis from 'connect-redis';  // 用 * as 引入
 
 import memberRouter from './api/member.js';
 import loginRouter from './api/login.js';
@@ -12,11 +12,10 @@ import sessionRouter from './api/check-session.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// === Redis 設定 === ✅
-const RedisStore = connectRedis(session);
+// === Redis 設定 ===
+const RedisStore = connectRedis.default(session);  // 這裡加 .default
 const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
 
-// 連線狀態顯示 ✅
 redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
 redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
 
@@ -24,30 +23,33 @@ redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
 const allowedOrigins = ['https://fjedu.online'];
 
 app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
 }));
 
-app.options('*', cors({
-  origin: allowedOrigins,
-  credentials: true
-}));
+app.options('*', cors());
 
-// ✅ 使用 Redis 儲存 session
+// === Session 設定 ===
 app.use(session({
   store: new RedisStore({ client: redisClient }),
   secret: 'mySecretKey',
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true,          // 部署於 HTTPS 時設為 true
-    sameSite: 'none',      // 跨網域 cookie 必設為 none
+    secure: true,          // 部署 HTTPS 時設為 true，開發時可設 false
+    sameSite: 'none',      // 跨域必須
     httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000 // 1 天
+    maxAge: 24 * 60 * 60 * 1000,
   }
 }));
 
-// 解析請求主體
+// 解析 body
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -90,7 +92,6 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-// 啟動伺服器
 app.listen(PORT, () => {
   console.log(`伺服器已啟動，埠號: ${PORT}`);
 });
