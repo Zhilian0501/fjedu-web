@@ -5,12 +5,9 @@ import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
 import Redis from 'ioredis';
-import { default as connectRedis } from 'connect-redis';
-import nodemailer from 'nodemailer';  // 你有用到 nodemailer 要確保引入
+import nodemailer from 'nodemailer';
 
 const app = express();
-
-const RedisStore = connectRedis(session)
 
 const allowedOrigins = ['https://fjedu.online'];
 
@@ -32,6 +29,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 async function startServer() {
+  // 在 async 函式裡動態 import connect-redis
+  const connectRedisModule = await import('connect-redis');
+  const connectRedis = connectRedisModule.default;
+
+  // 用 session 建立 RedisStore
+  const RedisStore = connectRedis(session);
+
   const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
 
   redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
@@ -44,7 +48,6 @@ async function startServer() {
     process.exit(1);
   }
 
-  // RedisStore 要在 redisClient 連線後使用
   app.use(session({
     store: new RedisStore({ client: redisClient }),
     secret: 'mySecretKey',
@@ -63,38 +66,38 @@ async function startServer() {
   app.use('/api', sessionRouter);
 
   // 郵件寄送功能
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'drte0004@gmail.com',
-    pass: 'opmu chma psuz wber'
-  }
-});
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'drte0004@gmail.com',
+      pass: 'opmu chma psuz wber'
+    }
+  });
 
-app.post('/send-email', async (req, res) => {
-  const { name, email, course, guardian } = req.body;
+  app.post('/send-email', async (req, res) => {
+    const { name, email, course, guardian } = req.body;
 
-  const mailOptions = {
-    from: '"學生報名表單" <drte0004@gmail.com>',
-    to: 'easy.fjedu@gmail.com',
-    subject: '新的課程報名',
-    html: `
-      <h3>有學生報名課程</h3>
-      <p><strong>姓名：</strong> ${name}</p>
-      <p><strong>電子郵件：</strong> ${email}</p>
-      <p><strong>報名課程：</strong> ${course}</p>
-      <p><strong>監護人姓名：</strong> ${guardian}</p>
-    `
-  };
+    const mailOptions = {
+      from: '"學生報名表單" <drte0004@gmail.com>',
+      to: 'easy.fjedu@gmail.com',
+      subject: '新的課程報名',
+      html: `
+        <h3>有學生報名課程</h3>
+        <p><strong>姓名：</strong> ${name}</p>
+        <p><strong>電子郵件：</strong> ${email}</p>
+        <p><strong>報名課程：</strong> ${course}</p>
+        <p><strong>監護人姓名：</strong> ${guardian}</p>
+      `
+    };
 
-  try {
-    await transporter.sendMail(mailOptions);
-    res.status(200).send('報名資料已成功寄出！');
-  } catch (err) {
-    console.error('郵件寄送失敗：', err);
-    res.status(500).send('寄送失敗');
-  }
-});
+    try {
+      await transporter.sendMail(mailOptions);
+      res.status(200).send('報名資料已成功寄出！');
+    } catch (err) {
+      console.error('郵件寄送失敗：', err);
+      res.status(500).send('寄送失敗');
+    }
+  });
 
   const PORT = process.env.PORT || 10000;
   app.listen(PORT, () => {
