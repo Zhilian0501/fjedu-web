@@ -17,13 +17,13 @@
           credentials: 'include'
         });
 
-        if (!res.ok) {
-          status.textContent = '尚未登入，正在跳轉回登入頁面...';
-          setTimeout(() => {
-            window.location.href = 'login.html';
-          }, 1500);
-          return;
-        }
+        //if (!res.ok) {
+        //  status.textContent = '尚未登入，正在跳轉回登入頁面...';
+        //  setTimeout(() => {
+        //    window.location.href = 'login.html';
+        //  }, 1500);
+        //  return;
+        //}
 
         const data = await res.json();
         status.innerHTML = `歡迎你，<strong>${data.username}</strong>`;
