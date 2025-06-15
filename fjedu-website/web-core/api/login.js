@@ -1,6 +1,6 @@
+import pool from '../routes/db.js'; // 假設你有這個 MySQL 連線池
 import express from 'express';
 import bcrypt from 'bcrypt';
-import pool from '../routes/db.js'; // 假設你有這個 MySQL 連線池
 
 const router = express.Router();
 
