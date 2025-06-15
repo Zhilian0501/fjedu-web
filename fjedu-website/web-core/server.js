@@ -5,11 +5,11 @@ import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
 import Redis from 'ioredis';
-import RedisStoreClass from 'connect-redis';
+import connectRedis from 'connect-redis';
 import nodemailer from 'nodemailer';  // 你有用到 nodemailer 要確保引入
 
 const app = express();
-const RedisStore = RedisStoreClass.default;  // 這樣才是正確取 default
+const RedisStore = connectRedis(session)
 
 const allowedOrigins = ['https://fjedu.online'];
 
