@@ -1,3 +1,6 @@
+import memberRouter from './api/member.js';
+import loginRouter from './api/login.js';
+import sessionRouter from './api/check-session.js';
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
