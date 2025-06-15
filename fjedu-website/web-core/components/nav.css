@@ -120,8 +120,8 @@
 }
 
 /* hover 或 focus 顯示下拉 */
-.member-area:hover .member-dropdown,
-.member-area:focus-within .member-dropdown {
+.member-hover-wrapper:hover .dropdown-content,
+.member-hover-wrapper:focus-within .dropdown-content {
   display: block;
 }
 
