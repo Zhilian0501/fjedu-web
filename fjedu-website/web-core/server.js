@@ -9,6 +9,7 @@ import connectRedis from 'connect-redis';
 import nodemailer from 'nodemailer';  // 你有用到 nodemailer 要確保引入
 
 const app = express();
+
 const RedisStore = connectRedis(session)
 
 const allowedOrigins = ['https://fjedu.online'];
