@@ -24,14 +24,21 @@
       const msg = document.getElementById('message');
 
       try {
+        console.log('🔵 正在送出登入請求');
         const res = await fetch('https://fjedu-web-460q.onrender.com/api/login', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include', // 必須，才會處理跨域 cookie
           body: JSON.stringify({ email, password })
         });
 
+        console.log('🟢 Response Status:', res.status);
+        console.log('🟡 Response Headers:', Array.from(res.headers.entries()));
+
         const data = await res.json();
+        console.log('🟠 Response JSON:', data);
 
         if (res.ok) {
           alert('登入成功，正在跳轉...');
@@ -41,7 +48,7 @@
         }
       } catch (err) {
         msg.textContent = '伺服器回傳資料異常：' + err.message;
-        console.error(err);
+        console.error('🔴 錯誤:', err);
       }
     });
   });
