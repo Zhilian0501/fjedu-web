@@ -9,7 +9,7 @@ router.post('/login', async (req, res) => {
   console.log('收到登入請求：', req.body);
 
   try {
-    const [rows] = await pool.query('SELECT * FROM members WHERE email = ?', [email]);
+    const [rows] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
 
     console.log('查詢結果：', rows);
 
