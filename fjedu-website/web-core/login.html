@@ -15,6 +15,7 @@
   <p id="message" style="color: red;"></p>
 
   <script>
+  document.cookie.split(';').forEach(c => console.log(c));
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('loginForm').addEventListener('submit', async e => {
       e.preventDefault();

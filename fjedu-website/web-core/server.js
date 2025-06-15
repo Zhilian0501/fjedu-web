@@ -29,7 +29,10 @@ app.use(cors({
   origin: allowedOrigins,
   credentials: true
 }));
-app.options('*', cors(corsOptions));
+app.options('*', cors({
+  origin: 'https://fjedu.online',
+  credentials: true
+}));
 
 // ✅ 再套 session（CORS 要先）
 app.use(session({
