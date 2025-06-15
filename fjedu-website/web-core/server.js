@@ -6,6 +6,7 @@ import cors from 'cors';
 import session from 'express-session';
 import Redis from 'ioredis';
 import connectRedis from 'connect-redis';
+const RedisStore = connectRedis.default(session);
 
 const app = express();
 
@@ -27,8 +28,6 @@ app.options('*', (req, res) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-const RedisStore = connectRedis(session);
 
 async function startServer() {
   const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
