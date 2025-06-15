@@ -6,7 +6,8 @@ import cors from 'cors';
 import session from 'express-session';
 import Redis from 'ioredis';
 import * as connectRedis from 'connect-redis';
-const RedisStore = connectRedis.default(session);
+
+const RedisStore = connectRedis(session); 
 
 const app = express();
 
