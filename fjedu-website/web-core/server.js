@@ -12,15 +12,13 @@ import sessionRouter from './api/check-session.js';
 const app = express();
 const RedisStore = connectRedis(session);  // ✅ 這是 v6 正確寫法
 
-const allowedOrigins = ['https://fjedu.online'];
-
 app.use(cors({
-  origin: allowedOrigins,
+  origin: 'https://fjedu.online',
   credentials: true,
 }));
 
 app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Origin', allowedOrigins);
+  res.header('Access-Control-Allow-Origin', 'https://fjedu.online');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');

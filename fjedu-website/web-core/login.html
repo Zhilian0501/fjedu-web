@@ -20,17 +20,14 @@
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-
     const msg = document.getElementById('message');
 
     try {
       console.log('🔵 正在送出登入請求');
       const res = await fetch('https://fjedu-web-460q.onrender.com/api/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include', // 必須，才會處理跨域 cookie
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         mode: 'cors',
         body: JSON.stringify({ email, password })
       });
@@ -42,20 +39,23 @@
       console.log('🟠 Response JSON:', data);
 
       if (res.ok) {
-        alert('登入成功，開始測試 Session...');
+        msg.textContent = '登入成功，開始測試 Session...';
 
         const check = await fetch('https://fjedu-web-460q.onrender.com/api/check-session', {
-          credentials: 'include'
+          method: 'GET',
+          credentials: 'include',
+          mode: 'cors'
         });
+
         const checkData = await check.json();
 
-        if (check.ok) {
-          console.log('✅ Session 正常，username:', checkData.username);
-          alert('Session 正常：' + checkData.username);
+        if (check.ok && checkData.user) {
+          console.log('✅ Session 正常，username:', checkData.user.username);
+          msg.textContent = 'Session 正常：' + checkData.user.username;
           window.location.href = '/member-profile.html';
         } else {
           console.warn('❌ Session 錯誤', checkData);
-          alert('Session 錯誤：' + JSON.stringify(checkData));
+          msg.textContent = 'Session 錯誤：' + JSON.stringify(checkData);
         }
       } else {
         msg.textContent = data.error || '登入失敗';
