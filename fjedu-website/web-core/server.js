@@ -10,7 +10,7 @@ import loginRouter from './api/login.js';
 import sessionRouter from './api/check-session.js';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 // === CORS 設定：這段一定要在最前面 ===
 const allowedOrigins = ['https://fjedu.online'];
