@@ -3,7 +3,8 @@ import nodemailer from 'nodemailer';
 import cors from 'cors';
 import session from 'express-session';
 import Redis from 'ioredis';
-import * as connectRedis from 'connect-redis';  // 用 * as 引入
+import { createClient } from 'redis';
+import { RedisStore } from 'connect-redis';
 
 import memberRouter from './api/member.js';
 import loginRouter from './api/login.js';
@@ -13,11 +14,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // === Redis 設定 ===
-const RedisStore = connectRedis.default(session);  // 這裡加 .default
-const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
+const redisClient = createClient({
+  url: 'redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910'
+});
 
 redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
 redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
+await redisClient.connect(); // 非常重要，要 await 才能用
 
 // === CORS 設定 ===
 const allowedOrigins = ['https://fjedu.online'];
@@ -33,7 +36,7 @@ app.use(cors({
   credentials: true,
 }));
 
-app.options('*', cors());
+app.options('*', cors({ origin: allowedOrigins, credentials: true }));
 
 // === Session 設定 ===
 app.use(session({
