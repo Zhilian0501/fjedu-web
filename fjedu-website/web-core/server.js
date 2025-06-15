@@ -2,6 +2,9 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
 import session from 'express-session';
+import Redis from 'ioredis';
+import connectRedis from 'connect-redis';
+
 import memberRouter from './api/member.js';
 import loginRouter from './api/login.js';
 import sessionRouter from './api/check-session.js';
@@ -9,55 +12,49 @@ import sessionRouter from './api/check-session.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// === Redis 設定 === ✅
+const RedisStore = connectRedis(session);
+const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
+
+// 連線狀態顯示 ✅
+redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
+redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
+
 // === CORS 設定 ===
 const allowedOrigins = ['https://fjedu.online'];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
-};
-
-// ✅ 順序非常重要：先套 CORS
-// CORS 一定要允許 origin 和 credentials
 app.use(cors({
   origin: allowedOrigins,
   credentials: true
 }));
+
 app.options('*', cors({
-  origin: 'https://fjedu.online',
+  origin: allowedOrigins,
   credentials: true
 }));
 
-// ✅ 再套 session（CORS 要先）
+// ✅ 使用 Redis 儲存 session
 app.use(session({
+  store: new RedisStore({ client: redisClient }),
   secret: 'mySecretKey',
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true,   // 如果你用 https，這裡要 true
-    sameSite: 'none', // 跨域 cookie 必備
-    maxAge: 24 * 60 * 60 * 1000, // cookie 一天有效
+    secure: true,          // 部署於 HTTPS 時設為 true
+    sameSite: 'none',      // 跨網域 cookie 必設為 none
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000 // 1 天
   }
 }));
 
-// ✅ 再解析 body
+// 解析請求主體
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// === API 路由 ===
+// === 路由 ===
 app.use('/api', memberRouter);
 app.use('/api', loginRouter);
 app.use('/api', sessionRouter);
-
-// ✅ 若已在 `./api/check-session.js` 寫好 /api/check-session，就不需要再寫一次
-// 否則請刪除這段，避免重複
-// app.get('/api/check-session', (req, res) => { ... });
 
 // === 寄信 API ===
 const transporter = nodemailer.createTransport({
