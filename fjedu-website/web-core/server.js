@@ -4,6 +4,7 @@ import sessionRouter from './api/check-session.js';
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
+import connectRedis from 'connect-redis';
 import Redis from 'ioredis';
 import nodemailer from 'nodemailer';
 
