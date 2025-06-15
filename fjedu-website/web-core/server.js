@@ -30,11 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 
 async function startServer() {
   // 在 async 函式裡動態 import connect-redis
-  const connectRedisModule = await import('connect-redis');
-  const connectRedis = connectRedisModule.default;
-
-  // 用 session 建立 RedisStore
-  const RedisStore = connectRedis(session);
+  const { default: RedisStore } = await import('connect-redis');
 
   const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
 
