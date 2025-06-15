@@ -9,21 +9,18 @@ const app = express();
 const allowedOrigins = ['https://fjedu.online'];
 
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-}));
-
-// 處理預檢請求
-app.options('*', cors({
   origin: allowedOrigin,
   credentials: true,
 }));
+
+// ⬇️ 一定要加這段來處理 OPTIONS 預檢請求
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', allowedOrigin);
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.sendStatus(204);
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
