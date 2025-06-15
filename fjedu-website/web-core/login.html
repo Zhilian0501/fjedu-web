@@ -48,7 +48,7 @@
         console.log('🧪 Session Check Data:', checkData);
 
         if (check.status === 200 && checkData.username) {
-          console.log('✅ Session 正常，username:', checkData.username);
+          console.log('✅ Session 正常，username:', checkData.username, '正在跳轉至會員頁面');
           msg.textContent = 'Session 正常：' + checkData.username;
           window.location.href = '/member-profile.html';
         } else {
