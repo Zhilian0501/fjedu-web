@@ -29,13 +29,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 async function startServer() {
-  // 在 async 函式裡動態 import connect-redis
-  const { default: RedisStore } = await import('connect-redis');
-
+  // 這是關鍵！先用 dynamic import 拿到真正的 RedisStore 類別
+  const { default: RedisStoreClass } = await import('connect-redis');
   const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
 
   redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
   redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
+
+  // 注意：不用再 redisClient.connect()
+
+  const RedisStore = new RedisStoreClass({
+    client: redisClient
+  });
 
   app.use(session({
     store: new RedisStore({ client: redisClient }),
