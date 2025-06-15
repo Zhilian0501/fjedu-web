@@ -1,14 +1,16 @@
-import memberRouter from './api/member.js';
-import loginRouter from './api/login.js';
-import sessionRouter from './api/check-session.js';
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
-import connectRedis from 'connect-redis';
 import Redis from 'ioredis';
+import connectRedis from 'connect-redis';
 import nodemailer from 'nodemailer';
 
+import memberRouter from './api/member.js';
+import loginRouter from './api/login.js';
+import sessionRouter from './api/check-session.js';
+
 const app = express();
+const RedisStore = connectRedis(session);  // ✅ 這是 v6 正確寫法
 
 const allowedOrigins = ['https://fjedu.online'];
 
@@ -17,7 +19,6 @@ app.use(cors({
   credentials: true,
 }));
 
-// ⬇️ 處理預檢請求
 app.options('*', (req, res) => {
   res.header('Access-Control-Allow-Origin', allowedOrigins);
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -30,17 +31,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 async function startServer() {
-  const { default: RedisStoreFactory } = await import('connect-redis');
   const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
 
   redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
   redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
 
-  const RedisStore = RedisStoreFactory(session);
-  const store = new RedisStore({ client: redisClient });
+  // ❗️ioredis 不要額外呼叫 redisClient.connect()，它會自己處理連線（會報錯「already connecting」）
 
   app.use(session({
-    store,
+    store: new RedisStore({ client: redisClient }),
     secret: 'mySecretKey',
     resave: false,
     saveUninitialized: false,
@@ -48,7 +47,7 @@ async function startServer() {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'none',
       httpOnly: true,
-      maxAge: 24 * 60 * 60 * 1000,
+      maxAge: 86400000,
     }
   }));
 
@@ -56,7 +55,7 @@ async function startServer() {
   app.use('/api', loginRouter);
   app.use('/api', sessionRouter);
 
-  // 郵件寄送功能
+  // 寄信功能
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -67,7 +66,6 @@ async function startServer() {
 
   app.post('/send-email', async (req, res) => {
     const { name, email, course, guardian } = req.body;
-
     const mailOptions = {
       from: '"學生報名表單" <drte0004@gmail.com>',
       to: 'easy.fjedu@gmail.com',
