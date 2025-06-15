@@ -93,3 +93,24 @@ button[type="submit"]:hover {
   min-height: 24px;
   text-align: center;
 }
+
+.login-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  user-select: none;
+}
+
+.login-link a {
+  color: #aa00ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+  color: #8800cc;
+  text-decoration: underline;
+  cursor: pointer;
+}

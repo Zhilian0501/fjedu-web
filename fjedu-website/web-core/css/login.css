@@ -89,3 +89,24 @@ button[type="submit"]:hover {
   margin-top: 10px;
   user-select: none; /* 避免被誤選 */
 }
+
+.register-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  user-select: none;
+}
+
+.register-link a {
+  color: #aa00ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #8800cc;
+  text-decoration: underline;
+  cursor: pointer;
+}
