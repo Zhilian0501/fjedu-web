@@ -5,7 +5,7 @@ import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
 import Redis from 'ioredis';
-import connectRedis from 'connect-redis';
+import { default as connectRedis } from 'connect-redis';
 import nodemailer from 'nodemailer';  // 你有用到 nodemailer 要確保引入
 
 const app = express();
