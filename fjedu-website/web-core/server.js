@@ -10,7 +10,6 @@ import loginRouter from './api/login.js';
 import sessionRouter from './api/check-session.js';
 
 const app = express();
-const PORT = process.env.PORT;
 
 // === CORS 設定：這段一定要在最前面 ===
 const allowedOrigins = ['https://fjedu.online'];
@@ -104,8 +103,9 @@ async function startServer() {
     }
   });
 
+  const PORT = process.env.PORT;
   app.listen(PORT, () => {
-    console.log(`🚀 伺服器已啟動，埠號: ${PORT}`);
+    console.log(`🚀 伺服器啟動在埠號: ${PORT}`);
   });
 }
 
