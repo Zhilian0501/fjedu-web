@@ -4,8 +4,8 @@ import sessionRouter from './api/check-session.js';
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
-import { createClient } from 'redis';
-import connectRedisPkg from 'connect-redis';
+import Redis from 'ioredis';
+import connectRedis from 'connect-redis';
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(cors({
   credentials: true,
 }));
 
-// ⬇️ 一定要加這段來處理 OPTIONS 預檢請求
+// ⬇️ 處理預檢請求
 app.options('*', (req, res) => {
   res.header('Access-Control-Allow-Origin', allowedOrigins);
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -28,12 +28,10 @@ app.options('*', (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const RedisStore = connectRedisPkg(session);
+const RedisStore = connectRedis(session);
 
 async function startServer() {
-  const redisClient = createClient({
-    url: 'redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910'
-  });
+  const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
 
   redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
   redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
@@ -51,7 +49,7 @@ async function startServer() {
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === 'production',  // production 才啟用
+      secure: process.env.NODE_ENV === 'production',
       sameSite: 'none',
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
