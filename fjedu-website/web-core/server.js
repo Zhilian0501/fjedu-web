@@ -18,7 +18,7 @@ app.use(cors({
 
 // ⬇️ 一定要加這段來處理 OPTIONS 預檢請求
 app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Origin', allowedOrigin);
+  res.header('Access-Control-Allow-Origin', allowedOrigins);
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
