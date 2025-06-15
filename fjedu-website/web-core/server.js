@@ -9,13 +9,13 @@ const app = express();
 const allowedOrigins = ['https://fjedu.online'];
 
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: allowedOrigin,
+  credentials: true,
+}));
+
+// 處理預檢請求
+app.options('*', cors({
+  origin: allowedOrigin,
   credentials: true,
 }));
 
