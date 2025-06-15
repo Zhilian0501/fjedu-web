@@ -74,7 +74,8 @@
 .member-dropdown {
   position: absolute;
   top: 48px;
-  right: 0;
+  right: 10px; /* 往左縮 10px 避免貼到邊界 */
+  transform: translateX(0); /* 確保無位移 */
   background: #fff;
   border: 1px solid #ddd;
   box-shadow: 0 6px 12px rgba(0,0,0,0.1);
@@ -106,6 +107,16 @@
   border-radius: 4px;
   margin-top: 8px;
   width: 100%;
+}
+
+#member-dropdown {
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+
+#member-dropdown-content {
+  right: 0;
+  left: auto;
 }
 
 /* hover 或 focus 顯示下拉 */
