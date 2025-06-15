@@ -12,6 +12,8 @@ import sessionRouter from './api/check-session.js';
 const app = express();
 const RedisStore = connectRedis(session);  // ✅ 這是 v6 正確寫法
 
+app.set('trust proxy', 1);
+
 app.use(cors({
   origin: 'https://fjedu.online',
   credentials: true,
