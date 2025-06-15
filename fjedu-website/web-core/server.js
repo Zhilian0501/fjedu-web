@@ -10,11 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // === CORS 設定 ===
-const allowedOrigins = [
-  'https://fjedu.online',
-  'https://fjedu-web.pages.dev',
-  'https://fjedu-web-460q.onrender.com'
-];
+const allowedOrigins = ['https://fjedu.online'];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -30,7 +26,7 @@ const corsOptions = {
 // ✅ 順序非常重要：先套 CORS
 // CORS 一定要允許 origin 和 credentials
 app.use(cors({
-  origin: 'https://fjedu.online',  // ✅ 你的前端
+  origin: allowedOrigins,
   credentials: true
 }));
 app.options('*', cors(corsOptions));
@@ -41,8 +37,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true,         // 若使用 HTTPS，請設為 true
-    sameSite: 'none'
+    secure: true,   // 如果你用 https，這裡要 true
+    sameSite: 'none', // 跨域 cookie 必備
+    maxAge: 24 * 60 * 60 * 1000, // cookie 一天有效
   }
 }));
 
