@@ -29,7 +29,10 @@ const corsOptions = {
 
 // ✅ 順序非常重要：先套 CORS
 // CORS 一定要允許 origin 和 credentials
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'https://fjedu.online',  // ✅ 你的前端
+  credentials: true
+}));
 app.options('*', cors(corsOptions));
 
 // ✅ 再套 session（CORS 要先）
