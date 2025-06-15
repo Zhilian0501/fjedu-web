@@ -37,13 +37,6 @@ async function startServer() {
   redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
   redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
 
-  try {
-    await redisClient.connect();
-  } catch (err) {
-    console.error('Redis 連線失敗', err);
-    process.exit(1);
-  }
-
   app.use(session({
     store: new RedisStore({ client: redisClient }),
     secret: 'mySecretKey',
