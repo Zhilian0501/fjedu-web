@@ -9,7 +9,7 @@ const app = express();
 const allowedOrigins = ['https://fjedu.online'];
 
 app.use(cors({
-  origin: allowedOrigin,
+  origin: allowedOrigins,
   credentials: true,
 }));
 
