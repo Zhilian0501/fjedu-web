@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>會員專區</title>
-  <link rel="stylesheet" href="/css/member-profile.css">
+  <link rel="stylesheet" href="/css/member-profile.css" />
 </head>
 <body>
 
-  <!-- 上方歡迎區塊 -->
-  <div class="header">
-    <img src="image/avatar-default.png" alt="頭像" class="avatar">
-    <div class="welcome" id="status">歡迎你，<strong>${data.username}</strong></div>
-  </div>
+<header>
+  <img id="avatar" src="https://i.pravatar.cc/150?u=default" alt="頭貼" />
+  <div id="usernameDisplay">你好，訪客</div>
+</header>
 
-  <!-- 主內容 -->
-  <div class="dashboard">
-    <!-- 左側功能清單 -->
-    <nav class="sidebar">
-      <ul>
-        <li onclick="loadContent('account')">修改帳號資訊</li>
-        <li onclick="loadContent('binding')">綁定第三方帳號</li>
-      </ul>
-    </nav>
+<main>
+  <nav>
+    <ul>
+      <li id="nav-account" class="active">修改帳號資訊</li>
+      <li id="nav-bind">綁定第三方帳號</li>
+    </ul>
+  </nav>
 
-    <!-- 右側內容區 -->
-    <section class="content" id="content-area">
-      <h2>請選擇功能</h2>
-    </section>
-  </div>
+  <section id="content-area">
+    <p>載入中...</p>
+  </section>
+</main>
 
-  <script src="/js/member-profile.js"></script>
+<script src="member.js"></script>
+
 </body>
 </html>
