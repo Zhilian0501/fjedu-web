@@ -20,6 +20,7 @@ async function loadUserInfo() {
 async function loadAccount() {
   try {
     const res = await fetch('https://fjedu-web-460q.onrender.com/api/user-profile', {
+      method: 'GET',
       credentials: 'include'
     });
     if (!res.ok) throw new Error('讀取會員資料失敗');
