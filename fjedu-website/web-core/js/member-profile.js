@@ -69,7 +69,7 @@ async function loadAccount() {
       };
 
       try {
-        const res = await fetch('/api/update-profile', {
+        const res = await fetch('/api/updata-profile', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
