@@ -1,30 +1,15 @@
-const usernameDisplay = document.getElementById('usernameDisplay');
-const avatar = document.getElementById('avatar');
 const contentArea = document.getElementById('content-area');
-
-async function loadUserInfo() {
-  try {
-    const res = await fetch('https://fjedu-web-460q.onrender.com/api/user-profile', {
-      credentials: 'include'
-    });
-    if (!res.ok) throw new Error('未登入或讀取失敗');
-    const data = await res.json();
-    usernameDisplay.textContent = `你好，${data.username}`;
-    avatar.src = data.avatarUrl || `https://i.pravatar.cc/150?u=${data.username}`;
-  } catch (err) {
-    console.error(err);
-    window.location.href = 'login.html';
-  }
-}
+const loadingMsg = document.getElementById('loadingMessage');
 
 async function loadAccount() {
   try {
     const res = await fetch('https://fjedu-web-460q.onrender.com/api/user-profile', {
-      method: 'GET',
       credentials: 'include'
     });
     if (!res.ok) throw new Error('讀取會員資料失敗');
     const data = await res.json();
+
+    if (loadingMsg) loadingMsg.remove();
 
     contentArea.innerHTML = `
       <h2>修改帳號資訊</h2>
@@ -89,12 +74,11 @@ async function loadAccount() {
     });
 
   } catch (err) {
-    contentArea.innerHTML = `<p>讀取會員資料失敗，請稍後重試。</p>`;
+    if (loadingMsg) loadingMsg.textContent = '讀取會員資料失敗，請稍後重試。';
     console.error(err);
   }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  loadUserInfo();
   loadAccount();
 });
