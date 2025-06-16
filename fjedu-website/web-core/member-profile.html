@@ -2,42 +2,103 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>會員專區</title>
   <link rel="stylesheet" href="/css/member-profile.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      background-color: #1e3a8a;
+      color: white;
+      padding: 1rem;
+    }
+    header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+    .container {
+      display: flex;
+      height: calc(100vh - 80px); /* remove header height */
+    }
+    nav {
+      width: 200px;
+      background-color: #f3f4f6;
+      padding: 1rem;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav li {
+      padding: 0.75rem;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    nav li.active, nav li:hover {
+      background-color: #e0e7ff;
+      font-weight: bold;
+    }
+    main {
+      flex-grow: 1;
+      padding: 2rem;
+      overflow-y: auto;
+      position: relative;
+    }
+    .spinner-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .spinner {
+      width: 30px;
+      height: 30px;
+      border: 4px solid #ccc;
+      border-top: 4px solid #1e3a8a;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <!-- 可選：網站 logo 或標題 -->
+  <img id="avatar" src="https://i.pravatar.cc/150?u=default" alt="使用者大頭照" />
+  <div id="usernameDisplay">載入中...</div>
 </header>
 
-<main>
-  <!-- 左側選單 -->
+<div class="container">
   <nav>
     <ul>
       <li id="nav-account" class="active">修改帳號資訊</li>
       <li id="nav-bind">綁定第三方帳號</li>
+      <!-- 可以加入更多項目 -->
     </ul>
   </nav>
 
-  <!-- 右側內容區 -->
-  <section id="content-area">
-    <div id="userHeader">
-      <img id="avatar" src="https://i.pravatar.cc/150?u=default" alt="頭貼" />
-      <div id="usernameDisplay"></div>
-    </div>
-
-    <div id="loadingMessage" class="spinner-container">
-      <div class="spinner"></div>
-      <p>資料載入中...</p>
-    </div>
-
-    <div id="formContainer"></div>
-  </section>
-</main>
+  <main>
+    <section id="content-area">
+      <div id="loadingMessage" class="spinner-container">
+        <div class="spinner"></div>
+        <p>資料載入中...</p>
+      </div>
+      <div id="formContainer"></div>
+    </section>
+  </main>
+</div>
 
 <script src="/js/member-profile.js"></script>
-
 </body>
 </html>

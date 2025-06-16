@@ -9,36 +9,42 @@ async function loadAccount() {
     if (!res.ok) throw new Error('讀取會員資料失敗');
     const data = await res.json();
 
+    // 移除 loading
     if (loadingMsg) loadingMsg.remove();
 
-    contentArea.innerHTML = `
+    // 建立動態表單內容
+    const formHTML = `
       <div class="fade-slide-down">
         <h2>修改帳號資訊</h2>
-      <form id="updateForm">
-        <div class="field-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" value="${data.email || ''}" required />
-        </div>
-        <div class="field-group">
-          <label for="phone">電話</label>
-          <input type="text" id="phone" name="phone" value="${data.phone || ''}" />
-        </div>
-        <div class="field-group">
-          <label for="backupEmail">備援用 Email</label>
-          <input type="email" id="backupEmail" name="backupEmail" value="${data.backupEmail || ''}" />
-        </div>
-        <div class="field-group">
-          <label for="idNumber">身分證字號</label>
-          <input type="text" id="idNumber" name="idNumber" value="${data.idNumber || ''}" />
-        </div>
-        <button type="submit">儲存</button>
-      </form>
-    <div>
+        <form id="updateForm">
+          <div class="field-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="${data.email || ''}" required />
+          </div>
+          <div class="field-group">
+            <label for="phone">電話</label>
+            <input type="text" id="phone" name="phone" value="${data.phone || ''}" />
+          </div>
+          <div class="field-group">
+            <label for="backupEmail">備援用 Email</label>
+            <input type="email" id="backupEmail" name="backupEmail" value="${data.backupEmail || ''}" />
+          </div>
+          <div class="field-group">
+            <label for="idNumber">身分證字號</label>
+            <input type="text" id="idNumber" name="idNumber" value="${data.idNumber || ''}" />
+          </div>
+          <button type="submit">儲存</button>
+        </form>
+      </div>
     `;
+
+    // 插入表單
+    contentArea.innerHTML = formHTML;
 
     const form = document.getElementById('updateForm');
     const submitBtn = form.querySelector('button');
 
+    // 表單提交
     form.addEventListener('submit', async e => {
       e.preventDefault();
 
@@ -76,11 +82,11 @@ async function loadAccount() {
     });
 
   } catch (err) {
-    if (loadingMsg) loadingMsg.textContent = '讀取會員資料失敗，請稍後重試。';
+    if (loadingMsg) {
+      loadingMsg.innerHTML = '<p>讀取會員資料失敗，請稍後重試。</p>';
+    }
     console.error(err);
   }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  loadAccount();
-});
+window.addEventListener('DOMContentLoaded', loadAccount);
