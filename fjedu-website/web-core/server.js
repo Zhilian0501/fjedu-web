@@ -69,14 +69,6 @@ async function startServer() {
     next();
   });
 
-  // ✅ 靜態檔案目錄（前端網站打包後放這）
-  app.use(express.static(path.join(__dirname, 'public')));
-
-  // ✅ SPA 前端路由支援
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  });
-
   // 寄信功能
   const transporter = nodemailer.createTransport({
     service: 'gmail',
