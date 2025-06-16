@@ -5,7 +5,7 @@ import pool from '../routes/db.js';
 const router = express.Router();
 
 // 更新會員資料
-router.post('/updata-profile', async (req, res) => {
+router.post('/update-profile', async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: '未登入' });
   }
