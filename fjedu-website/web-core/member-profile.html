@@ -3,38 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>會員專區</title>
+  <link rel="stylesheet" href="/css/member-profile.css">
 </head>
 <body>
-  <h2>會員資料</h2>
-  <div id="status">載入中...</div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      const status = document.getElementById('status');
+  <!-- 上方歡迎區塊 -->
+  <div class="header">
+    <img src="image/avatar-default.png" alt="頭像" class="avatar">
+    <div class="welcome" id="status">載入中...</div>
+  </div>
 
-      try {
-        const res = await fetch('https://fjedu-web-460q.onrender.com/api/check-session', {
-          credentials: 'include'
-        });
+  <!-- 主內容 -->
+  <div class="dashboard">
+    <!-- 左側功能清單 -->
+    <nav class="sidebar">
+      <ul>
+        <li onclick="loadContent('account')">修改帳號資訊</li>
+        <li onclick="loadContent('binding')">綁定第三方帳號</li>
+      </ul>
+    </nav>
 
-        if (!res.ok) {
-          status.textContent = '尚未登入，正在跳轉回登入頁面...';
-          setTimeout(() => {
-            window.location.href = 'login.html';
-          }, 1500);
-          return;
-        }
+    <!-- 右側內容區 -->
+    <section class="content" id="content-area">
+      <h2>請選擇功能</h2>
+    </section>
+  </div>
 
-        const data = await res.json();
-        status.innerHTML = `歡迎你，<strong>${data.username}</strong>`;
-      } catch (err) {
-        console.error('連線錯誤：', err);
-        status.textContent = '系統錯誤，正在跳轉回登入頁面...';
-        setTimeout(() => {
-          window.location.href = 'login.html';
-        }, 1500);
-      }
-    });
-  </script>
+  <script src="/js/member-profile.js"></script>
 </body>
 </html>
