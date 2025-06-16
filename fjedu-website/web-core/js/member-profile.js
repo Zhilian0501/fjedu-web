@@ -13,7 +13,7 @@ async function loadUserInfo() {
     avatar.src = data.avatarUrl || `https://i.pravatar.cc/150?u=${data.username}`;
   } catch (err) {
     console.error(err);
-    window.location.href = 'login.html';
+    //window.location.href = 'login.html';
   }
 }
 
