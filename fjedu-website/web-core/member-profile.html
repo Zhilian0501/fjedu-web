@@ -9,13 +9,11 @@
 <body>
 
 <header>
-  <img id="avatar" src="https://i.pravatar.cc/150?u=default" alt="頭貼" />
-  <div id="usernameDisplay"></div>
-    <img id="avatar" alt="使用者大頭照" />
-  <div id="content-area"></div>
+  <!-- 可選：網站 logo 或標題 -->
 </header>
 
 <main>
+  <!-- 左側選單 -->
   <nav>
     <ul>
       <li id="nav-account" class="active">修改帳號資訊</li>
@@ -23,16 +21,23 @@
     </ul>
   </nav>
 
- <section id="content-area">
-  <div id="loadingMessage" class="spinner-container">
-    <div class="spinner"></div>
-    <p>資料載入中...</p>
-  </div>
-  <div id="formContainer"></div>
-</section>
+  <!-- 右側內容區 -->
+  <section id="content-area">
+    <div id="userHeader">
+      <img id="avatar" src="https://i.pravatar.cc/150?u=default" alt="頭貼" />
+      <div id="usernameDisplay"></div>
+    </div>
+
+    <div id="loadingMessage" class="spinner-container">
+      <div class="spinner"></div>
+      <p>資料載入中...</p>
+    </div>
+
+    <div id="formContainer"></div>
+  </section>
 </main>
 
-  <script src="/js/member-profile.js"></script>
+<script src="/js/member-profile.js"></script>
 
 </body>
 </html>
