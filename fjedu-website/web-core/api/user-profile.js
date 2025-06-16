@@ -5,7 +5,7 @@ import pool from '../routes/db.js';
 const router = express.Router();
 
 // 取得會員資料
-router.get('/api/user-profile', async (req, res) => {
+router.get('/user-profile', async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: '未登入' });
   }
