@@ -26,7 +26,7 @@ body {
 .dropdown-content li a {
   display: block;
   padding: 12px 18px;
-  color: #6b007b;
+  color: #133bc0;
   white-space: nowrap;
   font-weight: 500;
   font-size: 0.95rem;
@@ -44,7 +44,7 @@ body {
   }
   
   .course-section h1 {
-    color: #4a0072;
+    color: #e807f0;
     margin-bottom: 40px;
   }
   
@@ -65,7 +65,7 @@ body {
   }
   
   .course-card h3 {
-    color: #8800cc;
+    color: #0cf7ff;
     margin-bottom: 10px;
   }
 
