@@ -4,7 +4,7 @@ const contentArea = document.getElementById('content-area');
 
 async function loadUserInfo() {
   try {
-    const res = await fetch('/api/user-profile', {
+    const res = await fetch('/user-profile', {
       credentials: 'include'
     });
     if (!res.ok) throw new Error('未登入或讀取失敗');
@@ -13,13 +13,13 @@ async function loadUserInfo() {
     avatar.src = data.avatarUrl || `https://i.pravatar.cc/150?u=${data.username}`;
   } catch (err) {
     console.error(err);
-    //window.location.href = 'login.html';
+    window.location.href = 'login.html';
   }
 }
 
 async function loadAccount() {
   try {
-    const res = await fetch('/api/user-profile', {
+    const res = await fetch('https://fjedu-web-460q.onrender.com/api/user-profile', {
       credentials: 'include'
     });
     if (!res.ok) throw new Error('讀取會員資料失敗');
@@ -65,7 +65,7 @@ async function loadAccount() {
       };
 
       try {
-        const res = await fetch('/api/update-profile', {
+        const res = await fetch('https://fjedu-web-460q.onrender.com/api/update-profile', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
