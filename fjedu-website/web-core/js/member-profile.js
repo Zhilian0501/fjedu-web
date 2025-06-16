@@ -12,7 +12,8 @@ async function loadAccount() {
     if (loadingMsg) loadingMsg.remove();
 
     contentArea.innerHTML = `
-      <h2>修改帳號資訊</h2>
+      <div class="fade-slide-down">
+        <h2>修改帳號資訊</h2>
       <form id="updateForm">
         <div class="field-group">
           <label for="email">Email</label>
@@ -32,6 +33,7 @@ async function loadAccount() {
         </div>
         <button type="submit">儲存</button>
       </form>
+    <div>
     `;
 
     const form = document.getElementById('updateForm');
