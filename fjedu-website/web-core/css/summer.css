@@ -44,14 +44,6 @@ body {
   color: #000;
 }
 
-.main-nav {
-  background: #1b58ffad;
-}
-
-.nav-links a {
-  color: rgb(255, 153, 216);
-}
-
 .section {
   padding: 60px 0;
   display: flex;

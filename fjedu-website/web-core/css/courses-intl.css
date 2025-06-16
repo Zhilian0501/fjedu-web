@@ -6,15 +6,6 @@ body {
   position: relative;
 }
 
-.main-nav {
-  background: #22beb6a9;
-}
-
-.nav-links a {
-  color: #6670a8;
-}
-
-
 /* 下拉選單 */
 .dropdown-content {
   display: none;

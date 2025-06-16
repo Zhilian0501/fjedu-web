@@ -6,7 +6,7 @@
   transform: translateX(-50%);
   width: 100%;
   padding: 15px;
-  background: rgba(245, 180, 2, 0.747);
+  background: rgba(248, 248, 248, 0.747);
   backdrop-filter: blur(12px);
   border-radius: 0px 0px 22px 22px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -27,7 +27,7 @@
 /* Logo 靠左 */
 .main-nav .logo {
   justify-self: start;
-  max-width: 160px;
+  max-width: 150px;
   height: auto;
   overflow: hidden;
 }
@@ -99,7 +99,7 @@
 }
 
 .member-dropdown button {
-  background: #f44336;
+  background: #f505e9;
   border: none;
   padding: 6px 12px;
   color: white;
@@ -183,7 +183,7 @@
 }
 
 .nav-links a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgb(9, 5, 245);
   transform: scale(1.05);
 }
 
@@ -207,7 +207,7 @@
 .dropdown-content li a {
   display: block;
   padding: 12px 18px;
-  color: #6b007b;
+  color: #cb1fe2;
   white-space: nowrap;
   font-weight: 500;
   font-size: 0.95rem;
@@ -290,12 +290,12 @@
 
   /* ✅ 手機版 nav link 顏色修改在這裡 */
   .main-nav.active .nav-links a {
-    color: #00ced1; /* 例如象牙白 */
+    color: #05f0f8; /* 例如象牙白 */
   }
 
   .main-nav.active .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #000;
+    background-color: rgba(231, 6, 252, 0.2);
+    color: #fffefe;
   }
 
   .hamburger {
@@ -310,6 +310,6 @@
   }
 
   .member-area {
-    padding-right: 4px;
+    padding-right: 2px;
   }
 }

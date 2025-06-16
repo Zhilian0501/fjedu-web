@@ -2,14 +2,6 @@ body {
   padding-top: 60px; /* 上方加 20px 空間 */
 }
 
-.main-nav {
-  background: #abff24af;
-}
-
-.nav-links a {
-  color: #42caad;
-}
-
 .dropdown {
   position: relative;
 }
