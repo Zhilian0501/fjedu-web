@@ -88,6 +88,22 @@ form button:disabled {
   cursor: not-allowed;
 }
 
+.loading-popup {
+  position: fixed;
+  right: 20px;    /* 距離右邊20px */
+  bottom: 20px;   /* 距離底部20px */
+  background: rgba(0,0,0,0.75);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  z-index: 9999; /* 保證在最上層 */
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
 .spinner-container {
   display: flex;
   flex-direction: column;
