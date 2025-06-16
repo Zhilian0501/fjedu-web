@@ -7,44 +7,45 @@ async function loadAccount() {
       credentials: 'include'
     });
     if (!res.ok) throw new Error('讀取會員資料失敗');
+
     const data = await res.json();
 
-    // 移除 loading
+    // 移除 loading 畫面
     if (loadingMsg) loadingMsg.remove();
 
-    // 建立動態表單內容
-    const formHTML = `
-      <div class="fade-slide-down">
-        <h2>修改帳號資訊</h2>
-        <form id="updateForm">
-          <div class="field-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="${data.email || ''}" required />
-          </div>
-          <div class="field-group">
-            <label for="phone">電話</label>
-            <input type="text" id="phone" name="phone" value="${data.phone || ''}" />
-          </div>
-          <div class="field-group">
-            <label for="backupEmail">備援用 Email</label>
-            <input type="email" id="backupEmail" name="backupEmail" value="${data.backupEmail || ''}" />
-          </div>
-          <div class="field-group">
-            <label for="idNumber">身分證字號</label>
-            <input type="text" id="idNumber" name="idNumber" value="${data.idNumber || ''}" />
-          </div>
-          <button type="submit">儲存</button>
-        </form>
-      </div>
+    // 創建包裹容器
+    const wrapper = document.createElement('div');
+    wrapper.className = 'fade-slide-down'; // CSS 動畫類別
+
+    wrapper.innerHTML = `
+      <h2>修改帳號資訊</h2>
+      <form id="updateForm">
+        <div class="field-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" value="${data.email || ''}" required />
+        </div>
+        <div class="field-group">
+          <label for="phone">電話</label>
+          <input type="text" id="phone" name="phone" value="${data.phone || ''}" />
+        </div>
+        <div class="field-group">
+          <label for="backupEmail">備援用 Email</label>
+          <input type="email" id="backupEmail" name="backupEmail" value="${data.backupEmail || ''}" />
+        </div>
+        <div class="field-group">
+          <label for="idNumber">身分證字號</label>
+          <input type="text" id="idNumber" name="idNumber" value="${data.idNumber || ''}" />
+        </div>
+        <button type="submit">儲存</button>
+      </form>
     `;
 
-    // 插入表單
-    contentArea.innerHTML = formHTML;
+    contentArea.innerHTML = ''; // 清除舊內容
+    contentArea.appendChild(wrapper);
 
     const form = document.getElementById('updateForm');
     const submitBtn = form.querySelector('button');
 
-    // 表單提交
     form.addEventListener('submit', async e => {
       e.preventDefault();
 
@@ -84,6 +85,8 @@ async function loadAccount() {
   } catch (err) {
     if (loadingMsg) {
       loadingMsg.innerHTML = '<p>讀取會員資料失敗，請稍後重試。</p>';
+    } else {
+      contentArea.innerHTML = '<p>讀取會員資料失敗，請稍後重試。</p>';
     }
     console.error(err);
   }
