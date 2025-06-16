@@ -5,6 +5,23 @@ body {
   flex-direction: column;
   height: 100vh;
 }
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #eee;
+  padding: 20px;
+}
+
+.main-content {
+  flex-grow: 1;
+  background-color: white;
+  padding: 20px;
+  position: relative;
+}
 header {
   background: #0066cc;
   color: white;
@@ -53,10 +70,14 @@ nav li.active {
   color: white;
 }
 #content-area {
-  flex: 1;
-  padding: 24px;
-  overflow-y: auto;
-  box-sizing: border-box;
+  background-color: #ffffff;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  /* 讓表單寬度不會太大，適應右側區塊 */
+  max-width: 600px;
+  /* 可加入動畫效果 */
+  animation: fadeSlideDown 0.5s ease forwards;
 }
 form .field-group {
   margin-bottom: 16px;
@@ -135,5 +156,5 @@ form button:disabled {
 }
 
 .fade-slide-down {
-  animation: fadeSlideDown 0.5s ease forwards;
+  animation: fadeSlideDown 1.4s ease forwards;
 }
