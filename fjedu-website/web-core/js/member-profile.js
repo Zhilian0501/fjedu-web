@@ -1,10 +1,6 @@
-// 📄 member-profile.js
 const usernameDisplay = document.getElementById('usernameDisplay');
 const avatar = document.getElementById('avatar');
 const contentArea = document.getElementById('content-area');
-const navAccount = document.getElementById('nav-account');
-const navBind = document.getElementById('nav-bind');
-const navItems = [navAccount, navBind];
 
 async function loadUserInfo() {
   try {
@@ -69,7 +65,7 @@ async function loadAccount() {
       };
 
       try {
-        const res = await fetch('/api/updata-profile', {
+        const res = await fetch('/api/update-profile', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
@@ -97,28 +93,7 @@ async function loadAccount() {
   }
 }
 
-function loadBind() {
-  contentArea.innerHTML = `
-    <h2>綁定第三方帳號</h2>
-    <p>這邊可以放第三方登入的綁定功能介面（如 LINE、Google、Facebook）</p>
-    <p>功能尚未實作，請稍後再回來！</p>
-  `;
-}
-
-function setActiveNav(target) {
-  navItems.forEach(item => item.classList.remove('active'));
-  target.classList.add('active');
-}
-
 window.addEventListener('DOMContentLoaded', () => {
   loadUserInfo();
-  navAccount.addEventListener('click', () => {
-    setActiveNav(navAccount);
-    loadAccount();
-  });
-  navBind.addEventListener('click', () => {
-    setActiveNav(navBind);
-    loadBind();
-  });
   loadAccount();
 });
