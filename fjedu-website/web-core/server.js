@@ -4,10 +4,7 @@ import session from 'express-session';
 import Redis from 'ioredis';
 import connectRedis from 'connect-redis';
 import nodemailer from 'nodemailer';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-// Router
 import memberRouter from './api/member.js';
 import loginRouter from './api/login.js';
 import sessionRouter from './api/check-session.js';
@@ -15,9 +12,7 @@ import userProfileRouter from './api/user-profile.js';
 import updataProfileRouter from './api/updata-profile.js';
 
 const app = express();
-const RedisStore = connectRedis(session);
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const RedisStore = connectRedis(session);  // ✅ 這是 v6 正確寫法
 
 app.set('trust proxy', 1);
 
@@ -27,7 +22,7 @@ app.use(cors({
 }));
 
 app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'https://fjedu.online');
+ res.header('Access-Control-Allow-Origin', 'https://fjedu.online');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -43,6 +38,8 @@ async function startServer() {
   redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
   redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
 
+  // ❗️ioredis 不要額外呼叫 redisClient.connect()，它會自己處理連線（會報錯「already connecting」）
+
   app.use(session({
     store: new RedisStore({ client: redisClient }),
     secret: 'mySecretKey',
@@ -56,18 +53,16 @@ async function startServer() {
     }
   }));
 
-  // ✅ API 路由
   app.use('/api', memberRouter);
   app.use('/api', loginRouter);
   app.use('/api', sessionRouter);
   app.use('/api', userProfileRouter);
   app.use('/api', updataProfileRouter);
 
-  // ✅ Debug session
   app.use((req, res, next) => {
-    console.log('Session:', req.session);
-    next();
-  });
+  console.log('Session:', req.session);
+  next();
+});
 
   // 寄信功能
   const transporter = nodemailer.createTransport({
