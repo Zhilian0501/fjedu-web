@@ -47,4 +47,13 @@ router.post('/login', async (req, res) => {
   }
 });
 
+export function authenticateToken(req, res, next) {
+  if (req.session && req.session.user) {
+    req.user = req.session.user; // 把使用者資訊放到 req.user 方便後續使用
+    next(); // 放行
+  } else {
+    res.status(401).json({ error: '未授權，請先登入' });
+  }
+}
+
 export default router;

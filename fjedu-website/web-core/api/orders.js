@@ -1,7 +1,7 @@
 import express from 'express';
 import axios from 'axios';
 import db from '../routes/db.js';  // 你的資料庫連線模組
-import { authenticateToken } from '../middleware/auth.js';  // 你的驗證中介軟體
+import { authenticateToken } from '../routes/auth.js';  // 你的驗證中介軟體
 
 const router = express.Router();
 
