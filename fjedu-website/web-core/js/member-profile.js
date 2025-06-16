@@ -10,6 +10,12 @@ async function loadAccount() {
 
     const data = await res.json();
 
+    // 插入使用者資訊
+    const usernameDisplay = document.getElementById('usernameDisplay');
+    const avatar = document.getElementById('avatar');
+    if (usernameDisplay) usernameDisplay.textContent = `你好，${data.username}`;
+    if (avatar) avatar.src = data.avatarUrl || `https://i.pravatar.cc/150?u=${data.username}`;
+
     // 移除 loading 畫面
     if (loadingMsg) loadingMsg.remove();
 
