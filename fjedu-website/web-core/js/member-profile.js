@@ -1,3 +1,4 @@
+// 📄 member-profile.js
 const usernameDisplay = document.getElementById('usernameDisplay');
 const avatar = document.getElementById('avatar');
 const contentArea = document.getElementById('content-area');
@@ -5,15 +6,13 @@ const navAccount = document.getElementById('nav-account');
 const navBind = document.getElementById('nav-bind');
 const navItems = [navAccount, navBind];
 
-// 載入 session 使用者資訊（包含頭貼、username）
 async function loadUserInfo() {
   try {
-    const res = await fetch('https://fjedu-web-460q.onrender.com/api/user-profile', {
+    const res = await fetch('/api/user-profile', {
       credentials: 'include'
     });
     if (!res.ok) throw new Error('未登入或讀取失敗');
     const data = await res.json();
-
     usernameDisplay.textContent = `你好，${data.username}`;
     avatar.src = data.avatarUrl || `https://i.pravatar.cc/150?u=${data.username}`;
   } catch (err) {
@@ -22,10 +21,9 @@ async function loadUserInfo() {
   }
 }
 
-// 載入「修改帳號資訊」內容
 async function loadAccount() {
   try {
-    const res = await fetch('https://fjedu-web-460q.onrender.com/api/user-profile', {
+    const res = await fetch('/api/user-profile', {
       credentials: 'include'
     });
     if (!res.ok) throw new Error('讀取會員資料失敗');
@@ -71,7 +69,7 @@ async function loadAccount() {
       };
 
       try {
-        const res = await fetch('https://fjedu-web-460q.onrender.com/api/user-profile', {
+        const res = await fetch('/api/update-profile', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
@@ -99,7 +97,6 @@ async function loadAccount() {
   }
 }
 
-// 載入「綁定第三方帳號」頁面（示意）
 function loadBind() {
   contentArea.innerHTML = `
     <h2>綁定第三方帳號</h2>
@@ -108,16 +105,13 @@ function loadBind() {
   `;
 }
 
-// 切換選單項目
 function setActiveNav(target) {
   navItems.forEach(item => item.classList.remove('active'));
   target.classList.add('active');
 }
 
-// 頁面初始化
 window.addEventListener('DOMContentLoaded', () => {
   loadUserInfo();
-
   navAccount.addEventListener('click', () => {
     setActiveNav(navAccount);
     loadAccount();
@@ -126,6 +120,5 @@ window.addEventListener('DOMContentLoaded', () => {
     setActiveNav(navBind);
     loadBind();
   });
-
   loadAccount();
 });
