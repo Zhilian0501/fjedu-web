@@ -98,4 +98,15 @@ async function loadAccount() {
   }
 }
 
-window.addEventListener('DOMContentLoaded', loadAccount);
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadAccount();
+
+  document.querySelectorAll('nav li').forEach(li => {
+    li.addEventListener('click', () => {
+      document.querySelectorAll('nav li').forEach(el => el.classList.remove('active'));
+      li.classList.add('active');
+    });
+  });
+});
