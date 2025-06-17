@@ -183,7 +183,7 @@
 }
 
 .nav-links a:hover {
-  background-color: rgb(9, 5, 245);
+  background-color: rgb(245, 5, 233);
   transform: scale(1.05);
 }
 
@@ -215,7 +215,7 @@
 
 .dropdown-content li a:hover {
   background-color: #cccccc;
-  color: #000;
+  color: #f0f1f1;
 }
 
 .hamburger {
@@ -301,7 +301,7 @@
   .hamburger {
     display: block;
     position: absolute;
-    right: 20px;
+    right: 10px;
     top: 0px;
   }
 
@@ -310,6 +310,6 @@
   }
 
   .member-area {
-    padding-right: 2px;
+    padding-right: 4px;
   }
 }
