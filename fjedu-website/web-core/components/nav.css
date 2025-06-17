@@ -29,7 +29,7 @@
   justify-self: start;
   max-width: 150px;
   height: auto;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .main-nav .logo img {
@@ -301,7 +301,7 @@
   .hamburger {
     display: block;
     position: absolute;
-    right: 10px;
+    right: 4px;
     top: 0px;
   }
 
@@ -310,6 +310,6 @@
   }
 
   .member-area {
-    padding-right: 4px;
+    padding-left: 4px;
   }
 }
