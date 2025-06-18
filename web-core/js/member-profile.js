@@ -102,7 +102,6 @@ async function loadAccount() {
 
 window.addEventListener('DOMContentLoaded', () => {
   loadAccount();
-  loadUserVideos();
 
   document.querySelectorAll('nav li').forEach(li => {
     li.addEventListener('click', () => {
