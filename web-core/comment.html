@@ -84,12 +84,15 @@
   <h2>留下評論</h2>
   <div id="starInput"></div>
   <textarea id="comment" placeholder="輸入評論內容..."></textarea><br>
-  <button onclick="submitReview()">送出</button>
+  <button onclick="submitReviewBtn">送出</button>
 
   <h3>所有評論</h3>
   <div id="reviewList"></div>
 
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('submitReviewBtn').addEventListener('click', submitReview);
+    });
     let selectedRating = 0;
     const starInput = document.getElementById('starInput');
     const reviewList = document.getElementById('reviewList');
@@ -114,73 +117,79 @@
     }
 
     async function submitReview() {
-      const comment = document.getElementById('comment').value.trim();
-      if (!selectedRating || !comment) return alert('請填寫星數與評論');
+  const comment = document.getElementById('comment').value.trim();
+  if (!selectedRating || !comment) return alert('請填寫星數與評論');
 
-      await fetch('https://fjedu-web-460q.onrender.com/api/submitReview', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-        user_id: 目前登入的會員ID, // 👈 這要加進去
+  try {
+    // 1. 取得登入使用者資料
+    const sessionRes = await fetch('https://fjedu-web-460q.onrender.com/api/check-session', {
+      method: 'GET',
+      credentials: 'include'
+    });
+    const sessionData = await sessionRes.json();
+
+    if (!sessionData || !sessionData.id) {
+      alert('請先登入會員才能評論');
+      return;
+    }
+
+    const user_id = sessionData.id;
+
+    // 2. 送出評論
+    const res = await fetch('https://fjedu-web-460q.onrender.com/api/submitReview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        user_id,
         rating: selectedRating,
         comment
-        })
-      });
+      })
+    });
 
+    const result = await res.json();
+    if (res.status !== 200) {
+      alert('送出失敗：' + result.message);
+    } else {
       document.getElementById('comment').value = '';
       selectedRating = 0;
       updateStars();
       loadReviews();
     }
+  } catch (err) {
+    console.error('送出評論失敗', err);
+    alert('伺服器錯誤，請稍後再試');
+  }
+}
 
     async function loadReviews() {
-      const res = await fetch('https://fjedu-web-460q.onrender.com/api/getReviews');
-      const data = await res.json();
-      reviewList.innerHTML = '';
-      data.forEach(r => {
-        const div = document.createElement('div');
-        div.className = 'review';
-        div.innerHTML = `
-          <div>${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
-          <p>${r.comment}</p>
-          <small>${new Date(r.timestamp).toLocaleString('zh-TW')}</small>
-        `;
-        reviewList.appendChild(div);
-      });
+      try {
+        const res = await fetch('https://fjedu-web-460q.onrender.com/api/getReviews', {
+          method: 'GET',
+          credentials: 'include'
+        });
+        const reviews = await res.json();
+
+        reviewList.innerHTML = '';
+        reviews.forEach(review => {
+          const reviewDiv = document.createElement('div');
+          reviewDiv.classList.add('review');
+          reviewDiv.innerHTML = `
+            <div class="stars">
+              ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+            </div>
+            <p>${review.comment}</p>
+            <small>由 ${review.username} 於 ${new Date(review.created_at).toLocaleString()}</small>
+          `;
+          reviewList.appendChild(reviewDiv);
+        });
+      } catch (err) {
+        console.error('載入評論失敗', err);
+      }
     }
 
+    // 初始載入評論
     loadReviews();
-  </script>
-  <script>
-  fetch("/components/nav.html").then(res => res.text()).then(data => {
-    document.getElementById("nav-placeholder").innerHTML = data;
-  });
-  fetch("/components/footer.html").then(res => res.text()).then(data => {
-    document.getElementById("footer-placeholder").innerHTML = data;
-  });
-  document.addEventListener("click", e => {
-    if (e.target.classList.contains("hamburger")) {
-      document.querySelector(".main-nav").classList.toggle("active");
-    }
-  });
-
-    let prevScrollPos = window.pageYOffset;
-  const scrollThreshold = 10;
-
-  window.addEventListener("scroll", () => {
-    const currentScrollPos = window.pageYOffset;
-    const diff = prevScrollPos - currentScrollPos;
-
-    if (diff > scrollThreshold) {
-      navbar.style.top = "0";
-      navbar.classList.remove("transparent");
-    } else if (diff < -scrollThreshold) {
-      navbar.style.top = "-80px";
-      navbar.classList.add("transparent");
-    }
-
-    prevScrollPos = currentScrollPos;
-  });
 
 </script>
 </body>
