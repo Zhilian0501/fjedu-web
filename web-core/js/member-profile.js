@@ -31,7 +31,8 @@ async function loadAccount() {
     wrapper.className = 'fade-slide-down'; // CSS 動畫類別
 
     wrapper.innerHTML = `
-      <h2>修改帳號資訊</h2>
+      <h2>帳號資訊</h2>
+      <h3>可以修改並儲存帳號資訊</h3>
       <form id="updateForm">
         <div class="field-group">
           <label for="email">Email</label>
