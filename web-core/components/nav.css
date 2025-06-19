@@ -159,8 +159,8 @@
   .main-nav .logo {
     max-width: 100px;
     position: absolute;
-    left: 20px;
-    top: 12px;
+    left: 25px;
+    top: 9px;
   }
 
   .member-hover-wrapper {
@@ -180,8 +180,8 @@
   .hamburger {
     display: block;
     position: absolute;
-    right: 20px;
-    top: 12px;
+    right: 25px;
+    top: 9px;
     width: 30px;
     height: 20px;
     cursor: pointer;
