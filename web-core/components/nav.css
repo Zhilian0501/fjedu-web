@@ -279,6 +279,13 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
+  .main-nav {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+  }
+
   .main-nav.active .nav-links {
     display: flex;
     transform: translateX(0);
@@ -286,6 +293,10 @@
     flex-direction: column;
     max-height: 80vh; /* 限高但不切斷 */
     overflow-y: auto;  /* 可捲動顯示所有項目 */
+  }
+
+  .main-nav .logo {
+    max-width: 120px;
   }
 
   /* ✅ 手機版 nav link 顏色修改在這裡 */
@@ -299,6 +310,8 @@
   }
 
   .hamburger {
+    order: 3;
+    position: static;
     display: block;
     position: absolute;
     right: 4px;
@@ -310,6 +323,8 @@
   }
 
   .member-area {
-    padding-left: 4px;
+    order: 2; /* 會員頭像排中間 */
+    margin: 0 auto;
+    padding: 0;
   }
 }
