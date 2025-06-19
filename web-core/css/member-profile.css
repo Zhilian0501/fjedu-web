@@ -132,6 +132,41 @@ main {
   animation: spin 1s linear infinite;
 }
 
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 讓整個 sidebar 撐滿高度 */
+  padding: 1rem;
+  background-color: #f2f2f2;
+}
+
+.nav-list {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  margin-bottom: 1rem;
+}
+
+.nav-list .return-home {
+  margin-top: auto; /* ⬅ 讓它推到底 */
+}
+
+.nav-list .return-home a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-list .return-home a:hover {
+  text-decoration: underline;
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
