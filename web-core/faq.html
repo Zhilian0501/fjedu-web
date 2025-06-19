@@ -30,7 +30,7 @@
 </section>
 
 <div id="footer-placeholder"></div>
-
+<script src="/components/nav.js"></script>
 <script>
   fetch("/components/nav.html").then(res => res.text()).then(data => {
     document.getElementById("nav-placeholder").innerHTML = data;
