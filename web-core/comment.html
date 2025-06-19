@@ -117,10 +117,14 @@
       const comment = document.getElementById('comment').value.trim();
       if (!selectedRating || !comment) return alert('請填寫星數與評論');
 
-      await fetch('/api/submitReview', {
+      await fetch('https://fjedu-web-460q.onrender.com/api/submitReview', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ rating: selectedRating, comment })
+        body: JSON.stringify({
+        user_id: 目前登入的會員ID, // 👈 這要加進去
+        rating: selectedRating,
+        comment
+        })
       });
 
       document.getElementById('comment').value = '';
@@ -130,7 +134,7 @@
     }
 
     async function loadReviews() {
-      const res = await fetch('/api/getReviews');
+      const res = await fetch('https://fjedu-web-460q.onrender.com/api/getReviews');
       const data = await res.json();
       reviewList.innerHTML = '';
       data.forEach(r => {

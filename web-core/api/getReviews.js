@@ -1,10 +1,17 @@
-import fs from 'fs';
-import path from 'path';
+import db from '../routes/db';
 
-export default function handler(req, res) {
-  const filePath = path.resolve('reviews.json');
-  if (!fs.existsSync(filePath)) return res.json([]);
+export default async function handler(req, res) {
+  try {
+    const [rows] = await db.execute(
+      `SELECT r.id, r.comment, r.rating, r.created_at, u.username
+       FROM reviews r
+       JOIN users u ON r.user_id = u.id
+       ORDER BY r.created_at DESC`
+    );
 
-  const reviews = JSON.parse(fs.readFileSync(filePath));
-  res.status(200).json(reviews);
+    res.status(200).json(rows);
+  } catch (err) {
+    console.error('讀取評論失敗：', err);
+    res.status(500).json({ message: '伺服器錯誤' });
+  }
 }
