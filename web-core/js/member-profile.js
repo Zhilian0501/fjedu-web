@@ -6,6 +6,13 @@ async function loadAccount() {
     const res = await fetch('https://fjedu-web-460q.onrender.com/api/user-profile', {
       credentials: 'include'
     });
+
+    if (res.status === 401) {
+      // 尚未登入，跳轉登入頁
+      window.location.href = '/login.html'; // 根據實際登入頁面路徑調整
+      return;
+    }
+
     if (!res.ok) throw new Error('讀取會員資料失敗');
 
     const data = await res.json();
