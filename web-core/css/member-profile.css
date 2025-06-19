@@ -184,6 +184,14 @@ h3 {
     margin-bottom: 20px;
   }
 
+.nav-list a {
+  text-decoration: none;
+}
+
+.nav-list a:hover {
+  text-decoration: underline;
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }

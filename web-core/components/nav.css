@@ -148,6 +148,14 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
+  .nav-links a {
+    text-decoration: none;
+  }
+
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+
   .main-nav.active .nav-links {
     display: flex;
     transform: translateX(0);
