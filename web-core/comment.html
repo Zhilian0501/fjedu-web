@@ -78,7 +78,6 @@
 </head>
 <body>
 <div id="nav-placeholder"></div>
-<div id="nav-placeholder"></div>
 
   <h2>留下評論</h2>
   <div id="starInput"></div>
@@ -87,6 +86,7 @@
 
   <h3>所有評論</h3>
   <div id="reviewList"></div>
+  <div id="footer-placeholder"></div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -189,6 +189,38 @@
 
     // 初始載入評論
     loadReviews();
+
+</script>
+<script>
+  fetch("/components/nav.html").then(res => res.text()).then(data => {
+    document.getElementById("nav-placeholder").innerHTML = data;
+  });
+  fetch("/components/footer.html").then(res => res.text()).then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("hamburger")) {
+      document.querySelector(".main-nav").classList.toggle("active");
+    }
+  });
+
+    let prevScrollPos = window.pageYOffset;
+  const scrollThreshold = 10;
+
+  window.addEventListener("scroll", () => {
+    const currentScrollPos = window.pageYOffset;
+    const diff = prevScrollPos - currentScrollPos;
+
+    if (diff > scrollThreshold) {
+      navbar.style.top = "0";
+      navbar.classList.remove("transparent");
+    } else if (diff < -scrollThreshold) {
+      navbar.style.top = "-80px";
+      navbar.classList.add("transparent");
+    }
+
+    prevScrollPos = currentScrollPos;
+  });
 
 </script>
 <script src="/components/nav.js"></script>
