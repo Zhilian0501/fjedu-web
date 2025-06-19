@@ -128,20 +128,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    grid-template-rows: 25px 35px 25px; /* 上中下三行，可以依你需要調整 */
-  }
-
-  .nav-top {
-    height: 25px; /* 上面行高 */
-  }
-
-  .nav-middle {
-    height: 35px; /* 中間行高 */
-  }
-
-  .nav-bottom {
-    height: 25px; /* 下面行高 */
+    padding: 40px;
   }
 
   .nav-links {
