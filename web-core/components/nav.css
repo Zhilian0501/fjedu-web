@@ -280,7 +280,7 @@
   }
 
   .main-nav {
-    display: flex !important;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 16px;
@@ -309,7 +309,7 @@
     color: #fffefe;
   }
 
-  .member-area {
+  .member-hover-wrapper {
     order: 2; /* 會員頭像排中間 */
     margin: 0 auto;
     padding: 0;
