@@ -1,14 +1,14 @@
 /* 主導航條 */
 .main-nav {
   position: fixed;
-  top: 0px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   padding: 15px;
   background: rgba(248, 248, 248, 0.747);
   backdrop-filter: blur(12px);
-  border-radius: 0px 0px 22px 22px;
+  border-radius: 0 0 22px 22px;
   box-shadow: 0 10px 25px rgba(228, 3, 248, 0.15);
   z-index: 999;
   display: grid;
@@ -28,135 +28,12 @@
 .main-nav .logo {
   justify-self: start;
   max-width: 150px;
-  height: auto;
-  overflow: auto;
 }
 
 .main-nav .logo img {
   width: 100%;
   height: auto;
   display: block;
-}
-
-.member-hover-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  justify-self: end; /* 仍靠右對齊 */
-  max-width: 100%; /* 限制寬度不超出 */
-  padding-right: 24px; /* 改用 padding 取代 margin-right */
-  box-sizing: border-box; /* 避免 overflow */
-}
-
-.member-avatar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.member-avatar img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-  user-select: none;
-}
-
-.member-name {
-  font-weight: 600;
-  color: #333;
-  display: none; /* 預設未登入不顯示 */
-}
-
-/* 下拉選單 */
-.member-dropdown {
-  position: absolute;
-  top: 48px;
-  right: 10px; /* 往左縮 10px 避免貼到邊界 */
-  transform: translateX(0); /* 確保無位移 */
-  background: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  min-width: 180px;
-  height: auto;
-  padding: 10px;
-  border-radius: 5px;
-  display: none;
-  z-index: 999;
-  font-size: 14px;
-  color: #555;
-}
-
-.member-dropdown a {
-  color: #0bcee7;
-  text-decoration: none;
-}
-
-.member-dropdown a:hover {
-  text-decoration: underline;
-}
-
-.member-dropdown button {
-  background: #f505e9;
-  border: none;
-  padding: 6px 12px;
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-top: 8px;
-  width: 100%;
-}
-
-#member-dropdown {
-  padding-right: 12px;
-  box-sizing: border-box;
-}
-
-#member-dropdown-content {
-  right: 0;
-  left: auto;
-}
-
-/* hover 或 focus 顯示下拉 */
-.member-hover-wrapper:hover .dropdown-content,
-.member-hover-wrapper:focus-within .dropdown-content {
-  display: block;
-}
-
-/* 已登入顯示名稱 */
-.logged-in .member-name {
-  display: inline-block;
-}
-
-/* hamburger 靠右 */
-.hamburger {
-  display: none;
-  justify-self: end;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  position: relative;
-  z-index: 1001;
-}
-
-.nav-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap; /* ⬅️ 禁止換行 */
-  overflow-x: auto;  /* ⬅️ 防止擠爆，會變成可滑動 */
-  gap: 20px;
-}
-
-@keyframes navIn {
-  to {
-    opacity: 1;
-    transform: translateX(-50%);
-  }
 }
 
 /* 導覽連結 */
@@ -169,8 +46,11 @@
   padding: 0;
 }
 
+.nav-links li {
+  position: relative;
+}
+
 .nav-links a {
-  text-decoration: none;
   padding: 10px 16px;
   font-size: 1rem;
   font-weight: 500;
@@ -178,17 +58,14 @@
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.nav-links li {
-  position: relative;
-}
-
 .nav-links a:hover {
   background-color: rgb(238, 112, 227);
   transform: scale(1.05);
 }
 
-/* 下拉選單 */
-.dropdown-content {
+/* 課程與會員的下拉選單 */
+.dropdown-content,
+.member-dropdown-content {
   display: none;
   position: absolute;
   background-color: rgba(219, 180, 193, 0.95);
@@ -200,68 +77,56 @@
   z-index: 1000;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.member-hover-wrapper:hover .member-dropdown-content {
   display: block;
 }
 
-.dropdown-content li a {
+.dropdown-content li a,
+.member-dropdown-content a {
   display: block;
   padding: 12px 18px;
   color: #cb1fe2;
-  white-space: nowrap;
   font-weight: 500;
   font-size: 0.95rem;
+  white-space: nowrap;
 }
 
-.dropdown-content li a:hover {
+.dropdown-content li a:hover,
+.member-dropdown-content a:hover {
   background-color: #cccccc;
   color: #f0f1f1;
 }
 
-.hamburger {
-  width: 30px;
-  height: 20px;
+/* 會員頭像區塊 */
+.member-hover-wrapper {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
+  justify-self: end;
+  padding-right: 24px;
+  box-sizing: border-box;
 }
 
-.hamburger span {
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: rgb(250, 232, 255);
-  border-radius: 3px;
-  transition: 0.3s;
+#member-avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  user-select: none;
 }
 
-.hamburger span:nth-child(1) {
-  top: 0;
-}
-
-.hamburger span:nth-child(2) {
-  top: 9px;
-}
-
-.hamburger span:nth-child(3) {
-  bottom: 0;
-}
-
-/* 動畫切換為 X */
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 9px;
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg);
-  bottom: 9px;
-}
-
+/* 手機版調整 */
 @media screen and (max-width: 768px) {
+  .main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -279,34 +144,19 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  .main-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 16px;
-  }
-
   .main-nav.active .nav-links {
     display: flex;
     transform: translateX(0);
     opacity: 1;
-    flex-direction: column;
-    max-height: 80vh; /* 限高但不切斷 */
-    overflow-y: auto;  /* 可捲動顯示所有項目 */
+    max-height: 80vh;
+    overflow-y: auto;
   }
 
   .main-nav .logo {
     max-width: 120px;
-  }
-
-  /* ✅ 手機版 nav link 顏色修改在這裡 */
-  .main-nav.active .nav-links a {
-    color: #05f0f8; /* 例如象牙白 */
-  }
-
-  .main-nav.active .nav-links a:hover {
-    background-color: rgba(231, 6, 252, 0.2);
-    color: #fffefe;
+    position: absolute;
+    left: 16px;
+    top: 12px;
   }
 
   .member-hover-wrapper {
@@ -316,19 +166,54 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1; /* 推到中間 */
+    flex: 1;
+    position: absolute;
+    left: 50%;
+    top: 12px;
+    transform: translateX(-50%);
   }
 
   .hamburger {
-    order: 3;
-    position: static;
     display: block;
     position: absolute;
-    right: 4px;
-    top: 0px;
+    right: 16px;
+    top: 12px;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
   }
+}
 
-  .nav-links li {
-    text-align: center;
+/* 漢堡按鈕動畫 */
+.hamburger span {
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: rgb(250, 232, 255);
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { bottom: 0; }
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  bottom: 9px;
+}
+
+/* 進場動畫 */
+@keyframes navIn {
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
   }
 }

@@ -1,4 +1,5 @@
 <!-- components/nav.html -->
+<!-- components/nav.html -->
 <nav class="main-nav">
   <!-- 左：Logo -->
   <a href="/" class="logo">
@@ -16,6 +17,7 @@
     <li><a href="/summer.html">暑期</a></li>
     <li><a href="/comment.html">評論</a></li>
 
+    <!-- 課程下拉 -->
     <li class="dropdown">
       <a href="/courses-folder/course.html">課程</a>
       <ul class="dropdown-content">
@@ -28,34 +30,36 @@
     <li><a href="/register.html">報名</a></li>
     <li><a href="/policy.html">條款</a></li>
     <li><a href="/contact.html">聯絡</a></li>
-
-    <!-- ✅ 加入會員下拉 -->
-    <li class="dropdown" id="member-dropdown">
-      <div class="member-hover-wrapper" style="display: flex; align-items: center;">
-        <a href="/member-profile.html" id="member-link" style="display: flex; align-items: center; gap: 6px;">
-          <img id="member-avatar-img" src="../image/default-avatar.png" alt="會員頭貼"
-            style="height: 24px; width: 24px; border-radius: 50%;">
-        </a>
-      </div>
-      <ul class="dropdown-content" id="member-dropdown-content" style="min-width: 200px;">
-        <li id="not-logged-in" style="display:none; padding: 8px; color: #888;">
-          請先 <a href="/login.html">登入</a>
-        </li>
-        <li id="logged-in" style="display:none; padding: 8px;">
-          <div>帳號：<span id="dropdown-username"></span></div>
-          <div>電子郵件：<span id="dropdown-email"></span></div>
-          <div>電話號碼：<span id="dropdown-phone"></span></div>
-          <hr>
-          <a href="/member-profile.html">修改資料</a>
-          <a href="javascript:void(0)" id="logout-btn">登出</a>
-        </li>
-      </ul>
-    </li>
   </ul>
 
-  <!-- 右：漢堡 -->
+  <!-- 中間（手機）／右邊（桌機）：會員頭像 -->
+  <div class="member-wrapper">
+    <div class="member-hover-wrapper" style="display: flex; align-items: center;">
+      <a href="/member-profile.html" id="member-link" style="display: flex; align-items: center; gap: 6px;">
+        <img id="member-avatar-img" src="../image/default-avatar.png" alt="會員頭貼"
+          style="height: 28px; width: 28px; border-radius: 50%;">
+      </a>
+    </div>
+    <ul class="member-dropdown-content" id="member-dropdown-content">
+      <li id="not-logged-in" style="display:none; padding: 8px; color: #888;">
+        請先 <a href="/login.html">登入</a>
+      </li>
+      <li id="logged-in" style="display:none; padding: 8px;">
+        <div>帳號：<span id="dropdown-username"></span></div>
+        <div>電子郵件：<span id="dropdown-email"></span></div>
+        <div>電話號碼：<span id="dropdown-phone"></span></div>
+        <hr>
+        <a href="/member-profile.html">修改資料</a>
+        <a href="javascript:void(0)" id="logout-btn">登出</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 手機漢堡選單 -->
   <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </nav>
 
