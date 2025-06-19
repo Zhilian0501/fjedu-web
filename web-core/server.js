@@ -11,6 +11,7 @@ import sessionRouter from './api/check-session.js';
 import userProfileRouter from './api/user-profile.js';
 import updateProfileRouter from './api/update-profile.js';
 import ordersRouter from './api/orders.js';
+import reviewRoutes from './api/reviews.js';
 
 const app = express();
 const RedisStore = connectRedis(session);  // ✅ 這是 v6 正確寫法
@@ -60,6 +61,7 @@ async function startServer() {
   app.use('/api', userProfileRouter);
   app.use('/api', updateProfileRouter);
   app.use('/api', ordersRouter);
+  app.use('/api', reviewRoutes);
 
   app.use((req, res, next) => {
   console.log('Session:', req.session);
