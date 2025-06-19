@@ -309,6 +309,12 @@
     color: #fffefe;
   }
 
+  .member-area {
+    order: 2; /* 會員頭像排中間 */
+    margin: 0 auto;
+    padding: 0;
+  }
+
   .hamburger {
     order: 3;
     position: static;
@@ -320,11 +326,5 @@
 
   .nav-links li {
     text-align: center;
-  }
-
-  .member-area {
-    order: 2; /* 會員頭像排中間 */
-    margin: 0 auto;
-    padding: 0;
   }
 }
