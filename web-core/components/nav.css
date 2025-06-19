@@ -129,7 +129,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    grid-template-rows: 50px 60px 50px; /* 上中下三行，可以依你需要調整 */
+    grid-template-rows: 25px 35px 25px; /* 上中下三行，可以依你需要調整 */
   }
 
   .nav-top {
