@@ -118,6 +118,10 @@
   user-select: none;
 }
 
+.hamburger {
+  display: none;
+}
+
 /* 手機版調整 */
 @media screen and (max-width: 768px) {
   .main-nav {
@@ -181,6 +185,7 @@
     width: 30px;
     height: 20px;
     cursor: pointer;
+    z-index: 1001;
   }
 }
 
