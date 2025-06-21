@@ -126,6 +126,12 @@
   display: none;
 }
 
+@media screen and (min-width: 1025px) {
+  .nav-links {
+    display: flex !important; /* 強制桌機版顯示nav連結 */
+  }
+}
+
 /* 手機版調整 */
 @media screen and (max-width: 1024px) {
   .main-nav {
