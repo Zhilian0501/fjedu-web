@@ -15,7 +15,6 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   font-family: 'Noto Sans TC', sans-serif;
-  white-space: nowrap;
   transition: all 0.3s ease;
   opacity: 0;
   animation: navIn 0.6s ease forwards;
@@ -98,7 +97,7 @@
 
 .dropdown-content li a:hover,
 .member-dropdown-content a:hover {
-  background-color: #cccccc;
+  background-color: #ffa5f8;
   color: #f0f1f1;
 }
 
