@@ -14,80 +14,50 @@
   <!-- 導覽列 -->
   <div id="nav-placeholder"></div>
 
-  <div class="image-container">
-    <img src="image/index圖片.jpg" class="image-index" alt="圖片1">
-  </div>
-
-  <!-- 首頁主體 -->
-  <title>圖片輪播</title>
-  <style>
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      height: 400px; /* 固定高度 */
-      margin: auto;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-
-    .mySlides {
-     display: none;
-      width: 100%;
-      height: 100%;
-      animation: fade 1s ease-in-out;
-    }
-
-    .mySlides img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* 保持比例填滿，圖片不會變形 */
-    }
-
-    @keyframes fade {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style>
-
-  <section class="hero-banner">
-  <div class="banner-text">
-    <h1>啟發未來 · 飛翔少年</h1>
-    <p>我們致力於打造最優質的教育環境，讓每位孩子都能找到自己的翅膀。</p>
-    <a href="/register.html" class="banner-btn">立即了解</a>
-  </div>
-  <div class="banner-image">
-    <img src="image/index圖片.jpg" alt="橫幅圖">
-  </div>
-</section>
-
-  <div class="container">
-   <div class="slideshow-container">
+  <section class="carousel-section">
+  <div class="slideshow-container">
     <img class="mySlides" src="image/2024 AP_AP  新一季課程招募.png" alt="圖片1">
     <img class="mySlides" src="image/IMG_4316.webp" alt="圖片2">
     <img class="mySlides" src="image/IyC5GtFQ.jpeg" alt="圖片3">
     <img class="mySlides" src="image/課程宣傳_Algebra _ Geometry課程_Pre-Algebra.jpg" alt="圖片4">
     <img class="mySlides" src="image/課程宣傳_AMC 課程_高中自然總複習班 複本 2.jpg" alt="圖片5">
   </div>
+</section>
 
-  <section class="intro-section">
-    <h2>為什麼選擇我們？</h2>
-    <div class="features">
-      <div class="feature-box">
-        <h3>專業師資</h3>
-        <p>來自頂尖大學的教學團隊，教學經驗豐富。</p>
-      </div>
-      <div class="feature-box">
-        <h3>多元課程</h3>
-        <p>從基礎到進階，涵蓋台灣與國際各種升學需求。</p>
-      </div>
-      <div class="feature-box">
-        <h3>學習成果</h3>
-        <p>歷年升學成果輝煌，眾多學生進入心目標學府。</p>
-      </div>
+<!-- ✅ 3. 加入清楚導向的行動呼籲區塊 CTA（Call-To-Action） -->
+<section class="cta-section">
+  <h2>立即報名體驗課程</h2>
+  <p>為您的孩子開啟全新學習旅程。</p>
+  <a href="/register.html" class="banner-btn">立即預約</a>
+</section>
+
+<!-- ✅ 4. 美化 "為什麼選擇我們？" 為 cards/grid 排版，提升可讀性 -->
+<section class="intro-section">
+  <h2>為什麼選擇我們？</h2>
+  <div class="features">
+    <div class="feature-box">
+      <h3>專業師資</h3>
+      <p>來自頂尖大學的教學團隊，教學經驗豐富。</p>
     </div>
-  </section>
+    <div class="feature-box">
+      <h3>多元課程</h3>
+      <p>從基礎到進階，涵蓋台灣與國際各種升學需求。</p>
+    </div>
+    <div class="feature-box">
+      <h3>學習成果</h3>
+      <p>歷年升學成果輝煌，眾多學生進入心目標學府。</p>
+    </div>
   </div>
+</section>
+
+<!-- ✅ 5. 提供新聞區塊預覽＋按鈕連結完整頁面 -->
+<section class="news-preview">
+  <h2>最新消息</h2>
+  <div id="news-container"></div>
+  <div style="text-align:center; margin-top:1em">
+    <a href="/news" class="banner-btn">查看更多</a>
+  </div>
+</section>
 
   <section>
     <div id="news-container"></div>
