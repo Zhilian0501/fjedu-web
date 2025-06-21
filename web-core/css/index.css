@@ -1,216 +1,118 @@
-body{
-  padding-top: 60px
+body {
+  padding-top: 60px;
+  margin: 0;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
-.hero-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.carousel-section {
+  padding: 40px 0;
+  background-color: #f8f8ff;
   text-align: center;
-  padding: 60px 5%;
-  background: linear-gradient(to right, #d2a3ff, #fcd6f6, #ffffff);
-  color: #4a0072;
-  flex-wrap: wrap;
 }
-.banner-text {
-  flex: 1 1 50%;
-  max-width: 600px;
-}
-.banner-text h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-.banner-text p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-.banner-btn {
-  background-color: #0084ff;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-}
-.banner-image {
-  flex: 1 1 45%;
-}
-.banner-image img {
+
+.slideshow-container {
+  position: relative;
   width: 100%;
+  max-width: 800px;
+  height: 400px;
+  margin: auto;
+  overflow: hidden;
   border-radius: 12px;
 }
 
-.dropdown {
-  position: relative;
-}
-
-/* 下拉選單 */
-.dropdown-content {
+.mySlides {
   display: none;
-  position: absolute;
-  background-color: rgba(219, 180, 193, 0.95);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  top: 100%;
-  left: 0;
-  border-radius: 10px;
-  min-width: 150px;
-  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  animation: fade 1s ease-in-out;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.mySlides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.dropdown-content li a {
-  display: block;
-  padding: 12px 18px;
-  color: #6b007b;
-  white-space: nowrap;
-  font-weight: 500;
-  font-size: 0.95rem;
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
-.dropdown-content li a:hover {
-  background-color: #cccccc;
-  color: #000;
+.cta-section {
+  background: linear-gradient(to right, #fcd6f6, #d2a3ff);
+  text-align: center;
+  padding: 60px 20px;
+  color: #4a0072;
 }
 
-  .hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-  }
-  
-  .hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
-  }
-  
-  .hero-btn {
-    padding: 12px 24px;
-    background-color: #aa00ff;
-    color: white;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  .hero-btn:hover {
-    background-color: #8800cc;
-  }
-  
-  /* 介紹區 */
- .container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  gap: 20px;
+.cta-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.cta-section .banner-btn,
+.banner-btn {
+  padding: 12px 30px;
+  background-color: #0084ff;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.banner-btn:hover {
+  background-color: #0066cc;
 }
 
 .intro-section {
-  max-width: 800px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
 }
 
 .intro-section h2 {
-  margin-bottom: 1em;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .features {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .feature-box {
-  background: #f3f3f3;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
 }
-  
-  /* 最新消息預覽 */
-  .news-preview {
-    padding: 40px 20px;
-    background: linear-gradient(to left, #fcd6f6, #d2a3ff);
-    color: #4a0072;
-  }
-  
-  .news-preview h2 {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .news-preview ul {
-    list-style: none;
-    padding: 0;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .news-preview li {
-    margin-bottom: 12px;
-    font-size: 16px;
-  }
-  
-  .news-preview a {
-    text-decoration: none;
-    color: #4a0072;
-    transition: 0.3s;
-  }
-  
-  .news-preview a:hover {
-    text-decoration: underline;
-  }
 
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  .wrapper {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  main, section {
-    flex: 1;
-  }
-  
-  #footer-placeholder {
-    margin-top: auto;
-  }
-  
-  .slideshow-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      height: 400px; /* 固定高度 */
-      margin: auto;
-      overflow: hidden;
-      border-radius: 12px;
-    }
+.feature-box:hover {
+  transform: translateY(-5px);
+}
 
-    .mySlides {
-     display: none;
-      width: 100%;
-      height: 100%;
-      animation: fade 1s ease-in-out;
-    }
+.news-preview {
+  padding: 40px 20px;
+  background: linear-gradient(to left, #fcd6f6, #d2a3ff);
+  color: #4a0072;
+}
 
-    .mySlides img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* 保持比例填滿，圖片不會變形 */
-    }
+.news-preview h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-    @keyframes fade {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  
-  .image-index {
+.image-index {
   width: 100%;
   max-width: 100%;
   height: auto;
@@ -225,8 +127,19 @@ body{
 }
 
 @media (max-width: 768px) {
-  .image-index {
-    width: 100%;
-    height: auto;
+  .banner-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .cta-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-section {
+    padding: 40px 10px;
   }
 }
