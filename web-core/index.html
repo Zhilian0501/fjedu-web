@@ -63,13 +63,6 @@
   <!-- 載入 JS 模組與漢堡選單 -->
   <script src="/components/nav.js"></script>
   <script>
-  fetch('/news')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('news-container').innerHTML = html;
-    });
-  </script>
-  <script>
     fetch("/components/nav.html")
       .then(res => res.text())
       .then(data => document.getElementById("nav-placeholder").innerHTML = data);
