@@ -28,10 +28,8 @@ body {
   display: block !important;
   opacity: 1;
 }
-
-.carousel-section {
-  background: linear-gradient(to bottom, #ffe0f0, #d0e8ff);
-  padding: 80px 20px;
+.mySlides.fade-out {
+  opacity: 0;
 }
 
 @keyframes fade {
