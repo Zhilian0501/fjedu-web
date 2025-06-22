@@ -29,7 +29,7 @@
 /* Logo 靠左 */
 .main-nav .logo {
   justify-self: start;
-  max-width: 150px;
+  max-width: 80px;
 }
 
 .main-nav .logo img {
