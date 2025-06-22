@@ -104,20 +104,17 @@
     const slides = document.querySelectorAll(".mySlides");
 
     function showSlides() {
-      // 先把所有圖片都隱藏
-      slides.forEach(slide => {
-        slide.style.display = "none";
-      });
+  slides.forEach(slide => {
+    slide.classList.remove("fade-in");
+    slide.style.display = "none";
+  });
 
-      // 顯示目前要顯示的那一張圖片
-      slides[slideIndex].style.display = "block";
+  slides[slideIndex].style.display = "block";
+  slides[slideIndex].classList.add("fade-in");
 
-      // 下一張圖片的 index
-      slideIndex = (slideIndex + 1) % slides.length;
-
-      // 每 3 秒切換一次
-      setTimeout(showSlides, 3000);
-    }
+  slideIndex = (slideIndex + 1) % slides.length;
+  setTimeout(showSlides, 3000);
+}
 
     // 先手動顯示第一張圖片，避免一開始閃一下
     slides[slideIndex].style.display = "block";
