@@ -1,5 +1,5 @@
 body {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 .slideshow-container {
@@ -59,7 +59,7 @@ body {
 .cta-section {
   background: linear-gradient(to right, #fcd6f6, #d2a3ff);
   text-align: center;
-  padding: 60px 20px;
+  padding: 200px 20px;
   color: #4a0072;
 }
 
@@ -120,7 +120,7 @@ body {
 }
 
 .news-preview {
-  padding: 40px 20px;
+  padding: 200px 20px;
   background: linear-gradient(to left, #fcd6f6, #d2a3ff);
   color: #4a0072;
 }
