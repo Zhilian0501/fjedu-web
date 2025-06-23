@@ -3,14 +3,19 @@ body {
 }
 
 .sections-wrapper {
+  /* 深→淺→深 垂直漸層 */
   background: linear-gradient(
     to bottom,
-    #fcd6f6 0%,
-    #d2a3ff 33%,
-    #f9f0ff 66%,
-    #f9f0ff 100%
+    #6a2cbc 0%,       /* 深紫 */
+    #f9f0ff 50%,      /* 淺紫（中間） */
+    #6a2cbc 100%      /* 深紫 */
   );
-  padding: 40px 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 60px 0; /* 上下間距 */
+
+  /* 讓背景填滿整個可視區 */
+  box-sizing: border-box;
 }
 
 .slideshow-container {
@@ -92,6 +97,7 @@ body {
   color: #4a0072;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(210, 163, 255, 0.5);
+  width: 100vw;
 }
 
 .cta-section h2 {
@@ -153,6 +159,7 @@ body {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
+  width: 100vw;
 }
 
 .intro-section h2 {
@@ -201,6 +208,7 @@ body {
   box-shadow: 0 8px 20px rgba(210, 163, 255, 0.15);
   color: #4a0072;
   margin-top: 60px; /* 預留空間 */
+  width: 100vw;
 }
 
 .news-preview h2 {
