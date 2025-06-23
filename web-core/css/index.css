@@ -2,6 +2,17 @@ body {
   padding-top: 80px;
 }
 
+.sections-wrapper {
+  background: linear-gradient(
+    to bottom,
+    #fcd6f6 0%,
+    #d2a3ff 33%,
+    #f9f0ff 66%,
+    #f9f0ff 100%
+  );
+  padding: 40px 0;
+}
+
 .slideshow-container {
   position: relative;
   width: 90%;
@@ -77,7 +88,7 @@ body {
   background-size: 600% 600%;
   animation: gradientShift 15s ease infinite;
   text-align: center;
-  padding: 200px;
+  padding: 400px;
   color: #4a0072;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(210, 163, 255, 0.5);
@@ -184,14 +195,28 @@ body {
 }
 
 .news-preview {
-  padding: 200px 20px;
-  background: linear-gradient(to left, #fcd6f6, #d2a3ff);
+  background-color: #f9f0ff; /* 和 intro-section 呼應的淺紫色背景 */
+  border-radius: 20px;
+  padding: 60px 20px;
+  box-shadow: 0 8px 20px rgba(210, 163, 255, 0.15);
   color: #4a0072;
+  margin-top: 60px; /* 預留空間 */
 }
 
 .news-preview h2 {
+  color: #4a0072;
   margin-bottom: 20px;
   text-align: center;
+}
+
+#news-container {
+  /* 你可以根據內容自由設定 */
+  max-width: 900px;
+  margin: auto;
+}
+
+.news-preview .banner-btn {
+  margin-top: 20px;
 }
 
 .image-index {
