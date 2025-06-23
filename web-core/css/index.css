@@ -88,7 +88,15 @@ body {
   color: #4a0072;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(210, 163, 255, 0.5);
-  width: 100vw;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  animation: fade 2s ease-in-out;
+  margin-top: 60px; /* 預留空間 */
+  margin-right: calc(-50vw + 50%);
+  margin-left: calc(-50vw + 50%);
 }
 
 .cta-section h2 {
@@ -150,7 +158,15 @@ body {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
-  width: 100vw;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  animation: fade 2s ease-in-out;
+  margin-top: 60px; /* 預留空間 */
+  margin-right: calc(-50vw + 50%);
+  margin-left: calc(-50vw + 50%);
 }
 
 .intro-section h2 {
@@ -199,7 +215,14 @@ body {
   box-shadow: 0 8px 20px rgba(210, 163, 255, 0.15);
   color: #4a0072;
   margin-top: 60px; /* 預留空間 */
-  width: 100vw;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  animation: fade 2s ease-in-out;
+  margin-right: calc(-50vw + 50%);
+  margin-left: calc(-50vw + 50%);
 }
 
 .news-preview h2 {
