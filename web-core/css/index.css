@@ -159,14 +159,6 @@ body {
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
   width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  position: relative;
-  overflow: hidden;
-  animation: fade 2s ease-in-out;
-  margin-top: 60px; /* 預留空間 */
-  margin-right: calc(-50vw + 50%);
-  margin-left: calc(-50vw + 50%);
 }
 
 .intro-section h2 {
