@@ -1,7 +1,5 @@
 body {
   padding-top: 60px;
-  margin: 0;
-  font-family: 'Noto Sans TC', sans-serif;
 }
 
 .slideshow-container {
@@ -32,6 +30,10 @@ body {
 .mySlides.fade-out {
   opacity: 0;
 }
+
+.repair{
+    height: 20px;
+  }
 
 @keyframes fade {
   from {opacity: 0;}
