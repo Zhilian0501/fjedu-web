@@ -105,25 +105,20 @@
 
   // 等 DOM 載入完後才執行
   document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll(".mySlides");
+  const slides = document.querySelectorAll(".mySlides");
+  let slideIndex = 0;
 
-    function showSlides() {
-  slides.forEach(slide => {
-    slide.classList.remove("fade-in");
-    slide.style.display = "none";
-  });
+  function showSlides() {
+    slides.forEach((slide, idx) => {
+      slide.classList.toggle("active", idx === slideIndex);
+    });
 
-  slides[slideIndex].style.display = "block";
-  slides[slideIndex].classList.add("fade-in");
+    slideIndex = (slideIndex + 1) % slides.length;
+    setTimeout(showSlides, 3000); // 3秒切換一次
+  }
 
-  slideIndex = (slideIndex + 1) % slides.length;
-  setTimeout(showSlides, 3000);
-}
-
-    // 先手動顯示第一張圖片，避免一開始閃一下
-    slides[slideIndex].style.display = "block";
-    setTimeout(showSlides, 3000);
-  });
+  showSlides();
+});
   </script>
 
   <!-- 頁尾 -->
