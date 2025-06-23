@@ -92,7 +92,15 @@ body {
 .intro-section {
   max-width: 1100px;
   margin: auto;
-  padding: 60px 20px;
+  padding: 200px 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.intro-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .intro-section h2 {
