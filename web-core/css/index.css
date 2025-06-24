@@ -83,7 +83,7 @@ body {
   background-size: 600% 600%;
   animation: gradientShift 15s ease infinite;
   text-align: center;
-  padding: 400px;
+  padding: 400px 20px;
   color: #4a0072;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(210, 163, 255, 0.5);
@@ -209,7 +209,7 @@ body {
   background-size: 600% 600%;
   animation: gradientShift 15s ease infinite;
   text-align: center;
-  padding: 400px;
+  padding: 400px 20px;
   color: #4a0072;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(210, 163, 255, 0.5);
