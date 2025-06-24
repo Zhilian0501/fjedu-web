@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-
+  <div class="parallax-background"></div>
   <!-- 導覽列 -->
   <div id="nav-placeholder"></div>
 
@@ -142,6 +142,18 @@
       }
       lastScrollY = window.scrollY;
     });
+  });
+  </script>
+  <script>
+  window.addEventListener('scroll', () => {
+    const bg = document.querySelector('.parallax-background');
+    const scrollY = window.scrollY;
+    const vh = window.innerHeight;
+
+    // 隨滾動高度減少透明度，最多到 0（完全消失）
+    let opacity = 1 - (scrollY / vh);
+    opacity = Math.max(0, Math.min(1, opacity));
+    bg.style.opacity = opacity;
   });
   </script>
   <div class="bottom-nav-scroll" id="see-more">
