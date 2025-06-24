@@ -26,7 +26,7 @@
   position: relative;
   z-index: 1;
   background-color: white;
-  margin-top: calc(100vw * 9 / 32); /* ✅ 根據 32:9 圖片高度加間距 */
+  margin-top: calc(100vw * 9 / 32 + 80px); /* ✅ 根據 32:9 圖片高度加間距 */
 }
 
 .section-divider {
