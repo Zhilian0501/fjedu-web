@@ -10,6 +10,7 @@ body {
 
 .static-background {
   position: fixed;
+  padding-top: 80px;
   top: 0;
   left: 0;
   width: 100%;
