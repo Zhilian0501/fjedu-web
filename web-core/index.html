@@ -128,15 +128,18 @@
 });
   </script>
   <script>
-  const seeMore = document.getElementById('see-more');
+  let lastScrollY = window.scrollY;
 
   window.addEventListener('scroll', () => {
-    const threshold = 150; // 滾動超過 150px 就隱藏
-    if (window.scrollY > threshold) {
+    const seeMore = document.getElementById('see-more');
+    if (window.scrollY > lastScrollY) {
+      // 向下滑
       seeMore.classList.add('hide');
     } else {
+      // 向上滑
       seeMore.classList.remove('hide');
     }
+    lastScrollY = window.scrollY;
   });
 </script>
   <div class="bottom-nav-scroll">
