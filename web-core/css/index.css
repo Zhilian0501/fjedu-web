@@ -95,6 +95,12 @@ body {
   margin-top: 60px; /* 預留空間 */
   margin-right: calc(-50vw + 50%);
   margin-left: calc(-50vw + 50%);
+  text-align: center; 
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 200px;  
 }
 
 .cta-section h2 {
@@ -215,6 +221,12 @@ body {
   margin-top: 60px; /* 預留空間 */
   margin-right: calc(-50vw + 50%);
   margin-left: calc(-50vw + 50%);
+  text-align: center; 
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 200px;  
 }
 
 .news-preview h2 {
