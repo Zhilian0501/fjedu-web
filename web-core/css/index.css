@@ -6,7 +6,7 @@
 
 .static-background {
   position: fixed;
-  padding-top: 80px;
+  padding-top: 80px 0px;
   top: 0;
   left: 0;
   width: 100%;
