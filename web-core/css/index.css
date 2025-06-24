@@ -11,19 +11,15 @@ body {
 .parallax-wrapper {
   position: relative;
   width: 100%;
-  height: 100vh;
+  aspect-ratio: 32 / 9; /* ✅ 讓高度根據圖片比例自動算 */
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: black;
-  z-index: -1;
+  z-index: 0;
 }
 
 .parallax-image {
   width: 100%;
-  height: auto;
-  max-height: 100vh;
+  height: 100%;
   object-fit: contain;
   transform: scale(1);
   opacity: 1;
