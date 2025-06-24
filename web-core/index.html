@@ -148,14 +148,16 @@
   </script>
   <script>
   window.addEventListener('scroll', () => {
-    const bg = document.querySelector('.parallax-background');
+    const img = document.querySelector('.static-background img');
     const scrollY = window.scrollY;
-    const vh = window.innerHeight;
+  
+    // 設定最大放大倍數，例如1.2倍
+    const maxScale = 1.2;
+    // 根據滾動距離，計算縮放比例 (0 到 maxScale)
+    // 你可以調整 divisor 來控制放大速度
+    const scale = 1 + Math.min(scrollY / 1000, maxScale - 1);
 
-    // 隨滾動高度減少透明度，最多到 0（完全消失）
-    let opacity = 1 - (scrollY / vh);
-    opacity = Math.max(0, Math.min(1, opacity));
-    bg.style.opacity = opacity;
+    img.style.transform = `scale(${scale})`;
   });
   </script>
   <script>
