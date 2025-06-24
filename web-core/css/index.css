@@ -310,6 +310,24 @@ body {
   margin-top: 4px;
 }
 
+#see-more {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff4081;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: opacity 0.5s ease;
+  z-index: 999;
+}
+#see-more.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
   .banner-text h1 {
     font-size: 1.8rem;
