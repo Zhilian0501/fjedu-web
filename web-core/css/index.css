@@ -87,20 +87,20 @@ body {
   color: #4a0072;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(210, 163, 255, 0.5);
-  width: 100%;
-  max-width: 1200px;
+  width: 100vw;
+  max-width: 3000px;
   margin: auto;
   position: relative;
   overflow: hidden;
   margin-top: 60px; /* 預留空間 */
-  margin-right: calc(-50vw + 50%);
-  margin-left: calc(-50vw + 50%);
+  margin-right: -50vw;
+  margin-left: -50vw;
   text-align: center; 
   justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 200px;  
+  min-height: 200px; 
 }
 
 .cta-section h2 {
@@ -213,14 +213,14 @@ body {
   color: #4a0072;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(210, 163, 255, 0.5);
-  width: 100%;
-  max-width: 1200px;
+  width: 100vw;
+  max-width: 3000px;
   margin: auto;
   position: relative;
   overflow: hidden;
   margin-top: 60px; /* 預留空間 */
-  margin-right: calc(-50vw + 50%);
-  margin-left: calc(-50vw + 50%);
+  margin-right: -50vw;
+  margin-left: -50vw;
   text-align: center; 
   justify-content: center;
   display: flex;
