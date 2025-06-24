@@ -128,15 +128,15 @@
 });
   </script>
   <script>
+  const seeMore = document.getElementById('see-more');
   let lastScrollY = window.scrollY;
 
   window.addEventListener('scroll', () => {
-    const seeMore = document.getElementById('see-more');
     if (window.scrollY > lastScrollY) {
-      // 向下滑
+      // 使用者往下滑
       seeMore.classList.add('hide');
     } else {
-      // 向上滑
+      // 使用者往上滑
       seeMore.classList.remove('hide');
     }
     lastScrollY = window.scrollY;

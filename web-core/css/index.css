@@ -320,11 +320,13 @@ body {
   padding: 12px 24px;
   border-radius: 30px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
   z-index: 999;
 }
+
 #see-more.hide {
   opacity: 0;
+  transform: translateX(-50%) translateY(100px); /* 向下滑出畫面 */
   pointer-events: none;
 }
 
