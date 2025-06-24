@@ -55,8 +55,15 @@ body {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background-color: white; /* 或其他你想要的底色 */
   aspect-ratio: 16 / 9; 
   height: auto;         
+}
+
+.carousel-section {
+  background-color: white; /* 或其他你想要的底色 */
+  position: relative;
+  z-index: 1;
 }
 
 .mySlides {
