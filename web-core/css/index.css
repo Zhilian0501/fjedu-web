@@ -252,11 +252,15 @@ body {
 }
 
 .scroll-more {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  margin-top: 40px;
   cursor: pointer;
-  color: #fff; /* 或用 #4a0072 根據背景決定 */
+  color: #4a0072;
   animation: floatUpDown 3s ease-in-out infinite;
+  z-index: 2;
 }
 
 .arrow-circle {
