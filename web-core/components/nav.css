@@ -263,6 +263,31 @@
   margin-bottom: 20px;
 }
 
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  padding: 40px 20px;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  display: flex;
+}
+
+.close-btn {
+  font-size: 2rem;
+  text-align: right;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 .mobile-nav-links {
   list-style: none;
   padding: 0;

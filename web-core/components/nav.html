@@ -103,22 +103,22 @@
     </ul>
   </div>
 <script>
-  const nav = document.querySelector('.main-nav');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.querySelector('.nav-links');
+  const hamburger = document.getElementById("hamburger");
+  const overlay = document.getElementById("mobileMenu");
+  const closeBtn = document.getElementById("closeMenu");
 
-  // 切換漢堡選單與 nav
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    hamburger.classList.toggle('active');
+  hamburger.addEventListener("click", () => {
+    overlay.classList.add("active");
   });
 
-  // 滾動時變化樣式
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
+  closeBtn.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+
+  document.querySelectorAll(".submenu-toggle").forEach(toggle => {
+    toggle.addEventListener("click", () => {
+      const parent = toggle.closest(".has-submenu");
+      parent.classList.toggle("open");
+    });
   });
 </script>
