@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  padding-top: 80px;
-}
-
 .static-background {
   position: fixed;
   padding-top: 80px;
