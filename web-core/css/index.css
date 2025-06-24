@@ -82,7 +82,7 @@ body {
 .cta-section {
   background: linear-gradient(270deg, #fcd6f6, #d2a3ff, #fcd6f6);
   background-size: 600% 600%;
-  animation: gradientShift 15s ease infinite;
+  animation: gradientShift 4s ease infinite;
   text-align: center;
   padding: 400px;
   color: #4a0072;
@@ -203,7 +203,7 @@ body {
 .news-preview {
   background: linear-gradient(270deg, #fcd6f6, #d2a3ff, #fcd6f6);
   background-size: 600% 600%;
-  animation: gradientShift 15s ease infinite;
+  animation: gradientShift 4s ease infinite;
   text-align: center;
   padding: 400px;
   color: #4a0072;
