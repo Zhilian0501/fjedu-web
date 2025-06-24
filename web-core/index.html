@@ -128,20 +128,22 @@
 });
   </script>
   <script>
-  const seeMore = document.getElementById('see-more');
-  let lastScrollY = window.scrollY;
+  document.addEventListener("DOMContentLoaded", () => {
+    const seeMore = document.getElementById('see-more');
+    if (!seeMore) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > lastScrollY) {
-      // 使用者往下滑
-      seeMore.classList.add('hide');
-    } else {
-      // 使用者往上滑
-      seeMore.classList.remove('hide');
-    }
-    lastScrollY = window.scrollY;
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        seeMore.classList.add('hide');
+      } else {
+        seeMore.classList.remove('hide');
+      }
+      lastScrollY = window.scrollY;
+    });
   });
-</script>
+  </script>
   <div class="bottom-nav-scroll" id="see-more">
   <div onclick="document.getElementById('intro').scrollIntoView({ behavior: 'smooth' });">
     <svg class="arrow-circle" viewBox="0 0 24 24">

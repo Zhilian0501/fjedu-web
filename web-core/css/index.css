@@ -315,9 +315,9 @@ body {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: #ffffff;
+  background: #ff4081;
   color: white;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: 30px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -326,7 +326,7 @@ body {
 
 #see-more.hide {
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateX(-50%) translateY(80px); /* 滑出畫面 */
   pointer-events: none;
 }
 
