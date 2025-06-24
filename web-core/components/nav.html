@@ -6,15 +6,20 @@
     <img src="../image/fjedu.jpg" alt="飛翔少年專業教育機構" style="height: 40px;">
   </a>
 
-  <!-- 中：導覽連結 -->
+  <!-- 手機漢堡選單 -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- 中：導覽連結（桌機） -->
   <ul class="nav-links">
     <li><a href="/index.html">首頁</a></li>
     <li><a href="/about.html">關於飛翔</a></li>
     <li><a href="/exam-info.html">備考</a></li>
     <li><a href="/teachers.html">師資</a></li>
     <li><a href="/summer.html">暑期</a></li>
-
-    <!-- 課程下拉 -->
     <li class="dropdown">
       <a href="/courses-folder/course.html">課程</a>
       <ul class="dropdown-content">
@@ -23,7 +28,7 @@
       </ul>
     </li>
     <li class="dropdown">
-      <a href="">其他功能</a>
+      <a href="#">其他功能</a>
       <ul class="dropdown-content">
         <li><a href="/comment.html">評論</a></li>
         <li><a href="/news.html">資訊</a></li>
@@ -39,34 +44,15 @@
 
   <!-- 中間（手機）／右邊（桌機）：會員頭像 -->
   <div class="member-wrapper">
-    <div class="member-hover-wrapper" style="display: flex; align-items: center;">
-      <a href="/member-profile.html" id="member-link" style="display: flex; align-items: center; gap: 6px;">
-        <img id="member-avatar-img" src="../image/default-avatar.png" alt="會員頭貼"
-          style="height: 28px; width: 28px; border-radius: 50%;">
+    <div class="member-hover-wrapper">
+      <a href="/member-profile.html" id="member-link">
+        <img id="member-avatar-img" src="../image/default-avatar.png" alt="會員頭貼">
       </a>
     </div>
-    <ul class="member-dropdown-content" id="member-dropdown-content">
-      <li id="not-logged-in" style="display:none; padding: 8px; color: #888;">
-        請先 <a href="/login.html">登入</a>
-      </li>
-      <li id="logged-in" style="display:none; padding: 8px;">
-        <div>帳號：<span id="dropdown-username"></span></div>
-        <div>電子郵件：<span id="dropdown-email"></span></div>
-        <div>電話號碼：<span id="dropdown-phone"></span></div>
-        <hr>
-        <a href="/member-profile.html">修改資料</a>
-        <a href="javascript:void(0)" id="logout-btn">登出</a>
-      </li>
-    </ul>
   </div>
 
-  <!-- 手機漢堡選單 -->
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-<div class="mobile-menu-overlay" id="mobileMenu">
+  <!-- 滿版手機選單 -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
     <div class="close-btn" id="closeMenu">✕</div>
     <ul class="mobile-nav-links">
       <li><a href="/index.html">首頁</a></li>
@@ -102,23 +88,27 @@
       </li>
     </ul>
   </div>
+</nav>
+
 <script>
-  const hamburger = document.getElementById("hamburger");
-  const overlay = document.getElementById("mobileMenu");
-  const closeBtn = document.getElementById("closeMenu");
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const overlay = document.getElementById("mobileMenu");
+    const closeBtn = document.getElementById("closeMenu");
 
-  hamburger.addEventListener("click", () => {
-    overlay.classList.add("active");
-  });
+    hamburger.addEventListener("click", () => {
+      overlay.classList.add("active");
+    });
 
-  closeBtn.addEventListener("click", () => {
-    overlay.classList.remove("active");
-  });
+    closeBtn.addEventListener("click", () => {
+      overlay.classList.remove("active");
+    });
 
-  document.querySelectorAll(".submenu-toggle").forEach(toggle => {
-    toggle.addEventListener("click", () => {
-      const parent = toggle.closest(".has-submenu");
-      parent.classList.toggle("open");
+    document.querySelectorAll(".submenu-toggle").forEach(toggle => {
+      toggle.addEventListener("click", () => {
+        const parent = toggle.closest(".has-submenu");
+        parent.classList.toggle("open");
+      });
     });
   });
 </script>
