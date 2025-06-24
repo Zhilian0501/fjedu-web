@@ -65,6 +65,14 @@
     <a href="/news" class="banner-btn">查看更多</a>
   </div>
 </section>
+<section class="honor-board-section">
+  <h2>榮譽榜</h2>
+  <div class="honor-carousel">
+    <img class="honor-slide active" src="image/honor1.jpg" alt="榮譽1">
+    <img class="honor-slide" src="image/honor2.jpg" alt="榮譽2">
+    <img class="honor-slide" src="image/honor3.jpg" alt="榮譽3">
+  </div>
+</section>
 </div>
 
 
@@ -169,6 +177,22 @@
     img.style.opacity = Math.max(0, Math.min(1, opacity));
   });
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const honorSlides = document.querySelectorAll(".honor-slide");
+    let honorIndex = 0;
+
+    function showHonorSlides() {
+      honorSlides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === honorIndex);
+      });
+      honorIndex = (honorIndex + 1) % honorSlides.length;
+      setTimeout(showHonorSlides, 4000); // 每4秒切換
+    }
+
+  showHonorSlides();
+  });
+</script>
   <div class="bottom-nav-scroll" id="see-more">
   <div onclick="document.getElementById('intro').scrollIntoView({ behavior: 'smooth' });">
     <svg class="arrow-circle" viewBox="0 0 24 24">
