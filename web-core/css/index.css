@@ -27,7 +27,7 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
-
+  aspect-ratio: 16 / 9;
   opacity: 0;
   transition: opacity 1s ease-in-out;
   /* 初始隱藏，使用 opacity */
@@ -310,8 +310,20 @@ body {
     font-size: 1.8rem;
   }
 
-  .cta-section h2 {
-    font-size: 1.5rem;
+  .cta-section,
+  .news-preview {
+    padding: 100px 20px;
+    border-radius: 16px;
+  }
+
+  .cta-section h2,
+  .news-preview h2 {
+    font-size: 1.4rem;
+  }
+
+  .cta-section p,
+  .news-preview p {
+    font-size: 1rem;
   }
 
   .features {
