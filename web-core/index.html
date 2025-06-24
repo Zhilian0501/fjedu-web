@@ -10,7 +10,10 @@
   <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-  <div class="parallax-background"></div>
+  <div class="parallax-wrapper">
+  <img class="parallax-image" src="./image/index圖片.jpg" alt="背景圖">
+</div>
+<div class="section-divider"></div>
   <!-- 導覽列 -->
   <div id="nav-placeholder"></div>
 
@@ -154,6 +157,15 @@
     let opacity = 1 - (scrollY / vh);
     opacity = Math.max(0, Math.min(1, opacity));
     bg.style.opacity = opacity;
+  });
+  </script>
+  <script>
+  window.addEventListener('scroll', () => {
+    const img = document.querySelector('.parallax-image');
+    const scrollY = window.scrollY;
+    const vh = window.innerHeight;
+    let opacity = 1 - scrollY / vh;
+    img.style.opacity = Math.max(0, Math.min(1, opacity));
   });
   </script>
   <div class="bottom-nav-scroll" id="see-more">

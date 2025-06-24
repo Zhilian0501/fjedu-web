@@ -8,15 +8,23 @@ body {
   padding-top: 80px;
 }
 
-.parallax-background {
-  position: fixed;
-  top: 0; left: 0;
+.parallax-wrapper {
+  position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url('../image/index圖片.jpg'); /* ✅ 換成你要的圖 */
-  background-size: cover;
-  background-position: center;
-  z-index: -999;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.parallax-image {
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+  object-fit: contain;
   transition: opacity 0.5s ease;
 }
 
