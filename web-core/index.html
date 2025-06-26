@@ -32,10 +32,14 @@
   </div>
 </section>
 <!-- ✅ 3. 加入清楚導向的行動呼籲區塊 CTA（Call-To-Action） -->
-<section class="cta-section">
-  <h2>立即報名體驗課程</h2>
-  <p>為您的孩子開啟全新學習旅程。</p>
-  <a href="/register.html" class="banner-btn">立即預約</a>
+<section class="cta-hero">
+  <div id="particles-js"></div>
+  <div class="overlay"></div>
+  <div class="cta-content fade-in">
+    <h2>立即報名體驗課程</h2>
+    <p>為您的孩子開啟全新學習旅程。</p>
+    <a href="/register.html" class="banner-btn">立即預約</a>
+  </div>
 </section>
 
 <!-- ✅ 4. 美化 "為什麼選擇我們？" 為 cards/grid 排版，提升可讀性 -->
@@ -186,6 +190,21 @@
     img.style.opacity = Math.max(0, Math.min(1, opacity));
   });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 40 },
+    color: { value: "#ffffff" },
+    shape: { type: "circle" },
+    opacity: { value: 0.3 },
+    size: { value: 3 },
+    line_linked: { enable: false },
+    move: { speed: 0.8 }
+  },
+  interactivity: { detect_on: "canvas" }
+});
+</script>
   <script>
   document.addEventListener("DOMContentLoaded", () => {
     const honorSlides = document.querySelectorAll(".honor-slide");

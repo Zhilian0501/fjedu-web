@@ -122,53 +122,45 @@
   to {opacity: 1;}
 }
 
-.cta-section {
-  background: linear-gradient(270deg, #fcd6f6, #d2a3ff, #fcd6f6);
-  background-size: 600% 600%;
-  animation: gradientShift 15s ease infinite;
-  text-align: center;
-  padding: 400px 20px;
-  color: #4a0072;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(210, 163, 255, 0.5);
-  width: 100vw;
-  max-width: 3000px;
-  margin: auto;
+.cta-hero {
   position: relative;
-  overflow: hidden;
-  margin-top: 60px; /* 預留空間 */
-  text-align: center; 
-  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-image: url('/image/your-background.jpg'); /* ← 替換為你要的背景 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  min-height: 200px; 
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+  animation: zoomBackground 20s ease-in-out infinite alternate;
+  text-align: center;
+  padding: 100px 20px;
 }
 
-.cta-section h2 {
+.cta-hero h2 {
   animation: floatUpDown 3s ease-in-out infinite;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
-.cta-section p {
-  font-size: 1.1rem;
+.cta-hero p {
+  font-size: 1.2rem;
   margin-bottom: 20px;
 }
 
-.cta-section .banner-btn,
-.banner-btn {
-  position: relative;
-  z-index: 0;
-  transition: background-color 0.3s;
+.cta-hero .banner-btn {
   animation: floatUpDown 4s ease-in-out infinite;
-  display: inline-block;
+  font-size: 1rem;
   padding: 12px 30px;
   background-color: #0084ff;
-  color: #fff;
+  color: white;
   border-radius: 8px;
-  font-weight: bold;
   text-decoration: none;
+  position: relative;
+  z-index: 1;
 }
 
 .banner-btn::before {
@@ -191,6 +183,30 @@
 
 .banner-btn:hover {
   background-color: #0066cc;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.cta-hero * {
+  z-index: 1;
+}
+
+#particles-js {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+@keyframes zoomBackground {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
 }
 
 .intro-section {
