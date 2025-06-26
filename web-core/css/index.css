@@ -249,17 +249,26 @@
 
 /* 左半部 - 白底，斜切 */
 .intro-left {
-  position: relative;
-  width: 50%;
+  width: 60%;
   background-color: white;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  /* 上：左上、右上、右下偏左、左下 */
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px;
-  z-index: 2;
-  box-shadow: 5px 0 20px rgba(0,0,0,0.05);
 }
+
+.intro-right {
+  width: 40%;
+  position: relative;
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  /* 上：右上切15%，右上、右下、左下 */
+  overflow: hidden;
+}
+
 
 /* 包住文字內容的容器，控制 max width */
 .intro-content {
