@@ -244,8 +244,12 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
 }
 
+/* 背景圖像 */
 .intro-image {
   position: absolute;
   inset: 0;
@@ -261,53 +265,43 @@
 .image-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* 黑色透明遮罩 */
+  background: rgba(0, 0, 0, 0.3);
 }
 
+/* 白色內容層，左上斜切樣式 */
 .intro-content {
   position: relative;
   z-index: 2;
+  background-color: white;
   width: 100%;
   height: 100%;
-  padding: 80px;
-  background: white;
-  clip-path: polygon(
-    0 0,
-    70% 0,
-    65% 100%,
-    0 100%
-  );
+  padding: 60px 40px;
+  clip-path: polygon(0 0, 70% 0, 30% 100%, 0% 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   box-shadow: 10px 0 30px rgba(0,0,0,0.1);
 }
 
-.features {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+/* 標題 */
+.intro-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-/* canvas 覆蓋層 */
-.transition-mask {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-}
-
+/* 卡片自動換行排列 */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
+/* 卡片樣式 */
 .feature-box {
-  background: #ffffff;
-  border: 1px solid #d2a3ff;
-  border-radius: 12px;
+  background-color: #f8f8f8;
   padding: 20px;
-  box-shadow: 0 4px 15px rgba(210, 163, 255, 0.2);
-  color: #3a2f59;
-  transition: transform 0.3s ease;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .feature-box p {
