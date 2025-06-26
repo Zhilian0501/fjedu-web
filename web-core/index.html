@@ -251,21 +251,21 @@ const ctx = canvas.getContext('2d');
 function resizeCanvas() {
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
-  drawMask();
+  drawFragments();
 }
 
-function drawMask() {
-  const width = canvas.width;
-  const height = canvas.height;
+function drawFragments() {
+  const w = canvas.width;
+  const h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
 
-  ctx.clearRect(0, 0, width, height);
-  
-  // 粒子破碎三角形效果
-  const triangleCount = 100;
-  for (let i = 0; i < triangleCount; i++) {
-    const x = width * 0.4 + Math.random() * width * 0.6;
-    const y = Math.random() * height;
-    const size = Math.random() * 30 + 10;
+  const particleCount = 120;
+
+  for (let i = 0; i < particleCount; i++) {
+    const progress = i / particleCount;
+    const x = w * 0.6 + Math.random() * w * 0.4;
+    const y = Math.random() * h;
+    const size = Math.random() * 40 + 10;
 
     ctx.beginPath();
     ctx.moveTo(x, y);
