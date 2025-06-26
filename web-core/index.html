@@ -206,6 +206,25 @@
     img.style.opacity = Math.max(0, Math.min(1, opacity));
   });
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const ctaContent = document.querySelector('.cta-content');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        ctaContent.classList.add('in-view');
+      } else {
+        ctaContent.classList.remove('in-view');
+      }
+    });
+  }, {
+    threshold: 0.5 // 滾動進入一半就觸發
+  });
+
+  observer.observe(ctaContent);
+});
+</script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
   particlesJS("particles-js", {
