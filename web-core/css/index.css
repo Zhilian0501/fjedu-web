@@ -240,24 +240,16 @@
 }
 
 .intro-section {
-  display: flex;
   position: relative;
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
-  min-height: 500px;
-}
-
-.intro-content {
-  width: 50%;
-  padding: 60px;
-  z-index: 2;
-  background: white;
 }
 
 .intro-image {
-  width: 50%;
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
-  overflow: hidden;
 }
 
 .intro-image img {
@@ -270,15 +262,34 @@
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.4); /* 黑色透明遮罩 */
-  z-index: 2;
 }
 
+.intro-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 80px;
+  background: white;
+  clip-path: polygon(
+    0 0,
+    70% 0,
+    65% 100%,
+    0 100%
+  );
+  box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* canvas 覆蓋層 */
 .transition-mask {
   position: absolute;
-  left: -50px;
-  top: 0;
-  width: 150%;
-  height: 100%;
+  inset: 0;
   z-index: 3;
   pointer-events: none;
 }
