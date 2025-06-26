@@ -32,7 +32,7 @@
   </div>
 </section>
 <!-- ✅ 3. 加入清楚導向的行動呼籲區塊 CTA（Call-To-Action） -->
-<section class="cta-hero">
+<section class="cta-hero" style="background-image: url('/image/index圖片.jpg');">
   <div id="particles-js"></div>
   <div class="overlay"></div>
   <div class="cta-content fade-in">
@@ -152,6 +152,22 @@
   </script>
   <script>
   document.addEventListener("DOMContentLoaded", () => {
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 40 },
+      color: { value: "#ffffff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.3 },
+      size: { value: 3 },
+      line_linked: { enable: false },
+      move: { speed: 0.8 }
+    },
+      interactivity: { detect_on: "canvas" }
+    });
+  });
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
     const seeMore = document.getElementById('see-more');
     if (!seeMore) return;
 
@@ -191,9 +207,9 @@
   });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>
-particlesJS("particles-js", {
-  particles: {
+  <script>
+  particlesJS("particles-js", {
+    particles: {
     number: { value: 40 },
     color: { value: "#ffffff" },
     shape: { type: "circle" },
@@ -202,9 +218,9 @@ particlesJS("particles-js", {
     line_linked: { enable: false },
     move: { speed: 0.8 }
   },
-  interactivity: { detect_on: "canvas" }
-});
-</script>
+    interactivity: { detect_on: "canvas" }
+  });
+  </script>
   <script>
   document.addEventListener("DOMContentLoaded", () => {
     const honorSlides = document.querySelectorAll(".honor-slide");

@@ -126,7 +126,6 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url('/image/your-background.jpg'); /* ← 替換為你要的背景 */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
