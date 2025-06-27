@@ -80,9 +80,9 @@
 /* 放置輪播在電視螢幕的區域 */
 .tv-frame {
   position: absolute;
-  top: 25%;   /* 根據你上傳圖來微調 */
-  left: 4.5%; 
-  width: 25%;
+  top: 23%;   /* 根據你上傳圖來微調 */
+  left: 2.5%; 
+  width: 20%;
   aspect-ratio: 4 / 3;
   border-radius: 10px;
   overflow: hidden;
