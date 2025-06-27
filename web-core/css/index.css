@@ -88,6 +88,32 @@
   overflow: hidden;
 }
 
+.tv-container {
+  position: relative;
+  width: 600px; /* 根據你的圖片大小調整 */
+}
+
+.tv-base {
+  width: 100%;
+  display: block;
+}
+
+.tv-screen {
+  position: absolute;
+  top: 11%;     /* 根據你那張圖片的電視位置微調 */
+  left: 14%;
+  width: 72%;   /* 電視畫面佔比，視實際畫面微調 */
+  height: 58%;
+  overflow: hidden;
+  border-radius: 10px; /* 如果電視邊角是圓的 */
+}
+
+.screen-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .mySlides {
   position: absolute;
   top: 0; left: 0;
