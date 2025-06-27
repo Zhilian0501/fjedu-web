@@ -100,8 +100,8 @@
 
 .tv-screen {
   position: absolute;
-  top: 11%;     /* 根據你那張圖片的電視位置微調 */
-  left: 14%;
+  top: 8%;     /* 根據你那張圖片的電視位置微調 */
+  left: 10%;
   width: 72%;   /* 電視畫面佔比，視實際畫面微調 */
   height: 58%;
   overflow: hidden;
