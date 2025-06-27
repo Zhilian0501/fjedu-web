@@ -80,22 +80,12 @@
 /* 放置輪播在電視螢幕的區域 */
 .tv-frame {
   position: absolute;
-  top: 29.5%;   /* 根據你上傳圖來微調 */
-  left: 6.5%; 
-  width: 27%;
+  top: 25%;   /* 根據你上傳圖來微調 */
+  left: 4.5%; 
+  width: 25%;
   aspect-ratio: 4 / 3;
   border-radius: 10px;
   overflow: hidden;
-}
-
-.tv-container {
-  position: relative;
-  width: 600px; /* 根據你的圖片大小調整 */
-}
-
-.tv-base {
-  width: 100%;
-  display: block;
 }
 
 .tv-screen {
