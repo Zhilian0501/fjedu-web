@@ -42,6 +42,7 @@
 <section class="cta-hero" style="background-image: url('./images/5865806887_8f145e577b_o.jpg');">
   <div id="particles-js"></div>
   <div class="overlay"></div>
+  <canvas class="glass-mask"></canvas> <!-- 新增透明破碎 canvas 遮罩 -->
   <div class="cta-content fade-in">
     <h2>立即報名體驗課程</h2>
     <p>為您的孩子開啟全新學習旅程。</p>
@@ -206,6 +207,41 @@
     });
   });
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.querySelector(".glass-mask");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    drawGlass();
+  }
+
+  function drawGlass() {
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    for (let i = 0; i < 80; i++) {
+      const x = Math.random() * w;
+      const y = Math.random() * h;
+      const size = Math.random() * 80 + 20;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + size * 0.5, y + size * 0.2);
+      ctx.lineTo(x - size * 0.2, y + size);
+      ctx.closePath();
+      ctx.fillStyle = "rgba(255, 255, 255, " + (Math.random() * 0.12 + 0.05) + ")";
+      ctx.fill();
+    }
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+});
+</script>
   <script>
   document.addEventListener("DOMContentLoaded", () => {
     const seeMore = document.getElementById('see-more');
