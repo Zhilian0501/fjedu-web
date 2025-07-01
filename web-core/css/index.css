@@ -270,6 +270,7 @@
   height: 100vh;
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
 /* 左半部 - 白底，斜切 */
@@ -284,7 +285,6 @@
   align-items: center;
   justify-content: center;
   padding: 40px;
-  z-index: 2;
 }
 
 .intro-right {
@@ -336,7 +336,6 @@
   position: relative;
   width: 50%;
   overflow: hidden;
-  z-index: 2;
 }
 
 .intro-right img {
