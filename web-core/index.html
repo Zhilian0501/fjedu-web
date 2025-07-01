@@ -77,6 +77,7 @@
     <img src="./images/article-5d706cd7c4f6a.jpg" alt="背景圖像">
     <div class="image-overlay"></div>
   </div>
+  <canvas class="transition-mask"></canvas>
 </section>
 
 <!-- ✅ 5. 提供新聞區塊預覽＋按鈕連結完整頁面 -->
@@ -265,43 +266,45 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 <script>
-const canvas = document.querySelector('.transition-mask');
-const ctx = canvas.getContext('2d');
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.querySelector('.transition-mask');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
 
-function resizeCanvas() {
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-  drawFragments();
-}
-
-function drawFragments() {
-  const w = canvas.width;
-  const h = canvas.height;
-  ctx.clearRect(0, 0, w, h);
-
-  const particleCount = 120;
-
-  for (let i = 0; i < particleCount; i++) {
-    const progress = i / particleCount;
-    const x = w * 0.6 + Math.random() * w * 0.4;
-    const y = Math.random() * h;
-    const size = Math.random() * 40 + 10;
-
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + size, y + size * 0.3);
-    ctx.lineTo(x - size * 0.3, y + size);
-    ctx.closePath();
-    ctx.fillStyle = 'white';
-    ctx.globalAlpha = 0.05 + Math.random() * 0.2;
-    ctx.fill();
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    drawFragments();
   }
 
-  ctx.globalAlpha = 1;
-}
+  function drawFragments() {
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
 
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+    const particleCount = 120;
+
+    for (let i = 0; i < particleCount; i++) {
+      const x = w * 0.6 + Math.random() * w * 0.4;
+      const y = Math.random() * h;
+      const size = Math.random() * 40 + 10;
+
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + size, y + size * 0.3);
+      ctx.lineTo(x - size * 0.3, y + size);
+      ctx.closePath();
+      ctx.fillStyle = 'white';
+      ctx.globalAlpha = 0.05 + Math.random() * 0.2;
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+});
 </script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
