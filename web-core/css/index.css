@@ -335,6 +335,7 @@
   position: relative;
   width: 50%;
   overflow: hidden;
+  z-index: 2;
 }
 
 .intro-right img {
