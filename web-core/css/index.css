@@ -268,6 +268,11 @@
   pointer-events: none;
 }
 
+.intro-content {
+  max-width: 600px;
+  width: 100%;
+}
+
 .intro-section {
   display: flex;
   width: 100%;
@@ -290,37 +295,47 @@
 .diagonal-hero {
   display: flex;
   width: 100%;
-  height: 100vh;
-  position: relative;
+  height: auto; /* 不使用 100vh，避免斷開前後區段 */
+  min-height: 60vh; /* 根據內容與畫面調整 */
   overflow: hidden;
+  position: relative;
 }
 
+/* 左側白底區塊 + 斜切 */
 .diagonal-left {
   flex: 1;
   background-color: white;
-  clip-path: polygon(0 0, 70% 0, 50% 100%, 0% 100%);
-  z-index: 2;
+  clip-path: polygon(0 0, 60% 0, 45% 100%, 0% 100%);
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* 右側圖片區 + 反向斜切 */
 .diagonal-right {
   flex: 1;
   position: relative;
-  clip-path: polygon(50% 0, 100% 0, 100% 100%, 70% 100%);
+  clip-path: polygon(45% 0, 100% 0, 100% 100%, 60% 100%);
   overflow: hidden;
 }
 
+/* 圖片調整：放大 + 靠右 */
 .diagonal-right img {
-  width: 100%;
+  width: 120%;
   height: 100%;
   object-fit: cover;
+  object-position: center right;
   display: block;
 }
 
+/* 毛玻璃遮罩（Glassmorphism） */
 .glass-overlay {
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px) brightness(1.05);
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -348,13 +363,15 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-.feature-box p {
-  color: #555075;
+.feature-box h3 {
+  font-size: 1.2rem;
+  color: #4a0072;
+  margin-bottom: 8px;
 }
 
-.feature-box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px rgba(210, 163, 255, 0.4);
+.feature-box p {
+  color: #555075;
+  font-size: 0.95rem;
 }
 
 .news-preview {
