@@ -9,9 +9,10 @@
   top: 80px;
   left: 0;
   width: 100%;
-  aspect-ratio: 32 / 9; /* ✅ 根據圖片比例設定高度 */
-  z-index: -1; /* ✅ 永遠在最底層 */
+  height: calc(100vw * 9 / 32); /* 用 JS 的方式模擬 aspect-ratio */
+  z-index: 0;
   overflow: hidden;
+  background-color: #ccc; /* 加個底色測試是否區塊有出現 */
 }
 
 .static-background img {
