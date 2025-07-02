@@ -295,7 +295,7 @@
 .diagonal-left {
   flex: 1;
   background-color: white;
-  clip-path: polygon(0 0, 60% 0, 45% 100%, 0% 100%);
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
   padding: 60px 40px;
   display: flex;
   align-items: center;
@@ -306,7 +306,7 @@
 .diagonal-right {
   flex: 1;
   position: relative;
-  clip-path: polygon(45% 0, 100% 0, 100% 100%, 60% 100%);
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
   overflow: hidden;
 }
 
