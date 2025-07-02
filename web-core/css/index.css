@@ -257,9 +257,11 @@
 
 .glass-mask {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  backdrop-filter: blur(10px) brightness(0.9);
+  background: rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 2;
   pointer-events: none;
 }
@@ -273,23 +275,22 @@
   z-index: 2;
 }
 
-/* 左半部 - 白底，斜切 */
 .intro-left {
   width: 60%;
   background-color: white;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-  position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .intro-right {
   width: 40%;
   position: relative;
-  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
   overflow: hidden;
 }
 
@@ -297,6 +298,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .intro-right::after {
