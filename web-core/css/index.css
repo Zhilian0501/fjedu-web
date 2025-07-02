@@ -281,16 +281,6 @@
   overflow: hidden;
 }
 
-.intro-left {
-  flex: 6;
-  background: white;
-  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  z-index: 2;
-}
 
 .diagonal-hero {
   display: flex;
