@@ -277,8 +277,8 @@
 .intro-left {
   width: 60%;
   background-color: white;
-  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-  /* 上：左上、右上、右下偏左、左下 */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+  /* 下方 15% 對應右邊圖片的上方 15% */
   position: relative;
   z-index: 2;
   display: flex;
@@ -290,11 +290,19 @@
 .intro-right {
   width: 40%;
   position: relative;
-  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
-  /* 上：右上切15%，右上、右下、左下 */
+  clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+  /* 上方 85% 對應左邊白色的下角 15% */
   overflow: hidden;
 }
 
+.intro-right img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;   /* 可視需要調整 */
+  height: 120%;  /* 延伸填滿底下白色空隙 */
+  object-fit: cover;
+}
 
 /* 包住文字內容的容器，控制 max width */
 .intro-content {
@@ -305,6 +313,12 @@
 .intro-section {
   position: relative;
   overflow: hidden;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .transition-mask {
@@ -329,28 +343,6 @@
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-/* 右半部 - 圖片背景 */
-.intro-right {
-  position: relative;
-  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
-  overflow: visible; /* 改成 visible 讓圖片可外擴 */
-}
-
-.intro-right img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 120%;   /* 可視需要調整 */
-  height: 120%;  /* 延伸填滿底下白色空隙 */
-  object-fit: cover;
-}
-
-.image-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
 }
 
 .feature-box p {
