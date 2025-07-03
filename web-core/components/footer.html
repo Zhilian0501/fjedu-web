@@ -1,14 +1,53 @@
-<!-- components/footer.html -->
-<footer class="main-footer">
-  <link rel="stylesheet" href="../components/footer.css">
-    <div class="footer-content">
-      <p>聯絡我們：0983918005｜Email：easyfjedu@gmail.com</p>
-      <p>
-        <a href="/policy.html">隱私政策</a> |
-        <a href="/faq.html">常見問題</a> |
-        <a href="/contact.html">客服專區</a>
-      </p>
-      <p>© 2025 飛翔少年專業教育機構 All Rights Reserved.</p>
-    </div>
-  </footer>
-  
+<footer class="footer">
+  <style>
+    .footer {
+      background: linear-gradient(90deg, #fbc2eb, #a6c1ee, #b5f5ec);
+      padding: 2rem 1rem;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+    }
+    .footer-links,
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .footer-links a,
+    .footer-social a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .footer-social a {
+      font-size: 1.5rem;
+    }
+    .footer-links a:hover,
+    .footer-social a:hover {
+      color: #222;
+      transform: scale(1.2);
+    }
+    .footer-copy {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+
+  <div class="footer-links">
+    <a href="faq.html"><i class="fas fa-question-circle"></i> 常見問題</a>
+    <a href="policy.html"><i class="fas fa-file-contract"></i> 政策條款</a>
+  </div>
+
+  <div class="footer-social">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+    <a href="#"><i class="fab fa-threads"></i></a>
+    <a href="#"><i class="fab fa-line"></i></a>
+  </div>
+
+  <p class="footer-copy">© 2025 飛翔國際教育機構 | All Rights Reserved</p>
+</footer>

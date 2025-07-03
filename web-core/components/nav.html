@@ -1,113 +1,102 @@
-<!-- components/nav.html -->
-<!-- components/nav.html -->
-<nav class="main-nav">
-  <!-- 左：Logo -->
-  <a href="/" class="logo">
-    <img src="../image/fjedu.jpg" alt="飛翔少年專業教育機構" style="height: 40px;">
-  </a>
+<nav class="navbar">
+  <style>
+    .navbar {
+      background: linear-gradient(90deg, #a18cd1, #fbc2eb, #b5f5ec);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .logo img {
+      height: 50px;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.1);
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
 
-  <!-- 手機漢堡選單 -->
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: linear-gradient(90deg, #a18cd1, #fbc2eb, #b5f5ec);
+        flex-direction: column;
+        align-items: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+      }
+      .nav-links.active {
+        max-height: 500px;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+
+  <div class="logo">
+    <a href="index.html"><img src="assets/logo.svg" alt="Logo"></a>
   </div>
 
-  <!-- 中：導覽連結（桌機） -->
-  <ul class="nav-links">
-    <a href="/about.html" class="icon-text"><i class="fas fa-home"></i>首頁</a>
-    <li><a href="/exam-info.html">備考</a></li>
-    <li><a href="/teachers.html">師資</a></li>
-    <li><a href="/summer.html">暑期</a></li>
-    <li class="dropdown">
-      <a href="/courses-folder/course.html">課程</a>
-      <ul class="dropdown-content">
-        <li><a href="/courses-folder/courses-tw.html">台灣部</a></li>
-        <li><a href="/courses-folder/courses-intl.html">國際部</a></li>
-      </ul>
-    </li>
-    <li class="dropdown">
-      <a href="#">其他功能</a>
-      <ul class="dropdown-content">
-        <li><a href="/comment.html">評論</a></li>
-        <li><a href="/news.html">資訊</a></li>
-        <li><a href="/faq.html">問題</a></li>
-        <li><a href="/register.html">報名</a></li>
-        <li><a href="/policy.html">條款</a></li>
-        <li><a href="/contact.html">聯絡</a></li>
-        <li><a href="/news.html">最新消息</a></li>
-        <li><a href="/results.html">成果展示</a></li>
-      </ul>
-    </li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"><i class="fas fa-home"></i> 首頁</a></li>
+    <li><a href="courses_tw.html"><i class="fas fa-book"></i> 台灣部課程</a></li>
+    <li><a href="courses_intl.html"><i class="fas fa-globe"></i> 國際部課程</a></li>
+    <li><a href="honor.html"><i class="fas fa-award"></i> 榮譽榜</a></li>
+    <li><a href="teachers.html"><i class="fas fa-user-graduate"></i> 師資介紹</a></li>
+    <li><a href="about.html"><i class="fas fa-school"></i> 關於飛翔</a></li>
+    <li><a href="online.html"><i class="fas fa-laptop-code"></i> 線上課程</a></li>
+    <li><a href="login.html"><i class="fas fa-user"></i> 會員登入/註冊</a></li>
   </ul>
 
-  <!-- 中間（手機）／右邊（桌機）：會員頭像 -->
-  <div class="member-wrapper">
-    <div class="member-hover-wrapper">
-      <a href="/member-profile.html" id="member-link">
-        <img id="member-avatar-img" src="../image/default-avatar.png" alt="會員頭貼">
-      </a>
-    </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
 
-  <!-- 滿版手機選單 -->
-  <div class="mobile-menu-overlay" id="mobileMenu">
-    <div class="close-btn" id="closeMenu">✕</div>
-    <ul class="mobile-nav-links">
-      <li><a href="/index.html">首頁</a></li>
-      <li><a href="/about.html">關於飛翔</a></li>
-      <li><a href="/exam-info.html">備考</a></li>
-      <li><a href="/teachers.html">師資</a></li>
-      <li><a href="/summer.html">暑期</a></li>
-      <li class="has-submenu">
-        <div class="menu-item">
-          <a href="/courses-folder/course.html">課程</a>
-          <span class="submenu-toggle">+</span>
-        </div>
-        <ul class="submenu">
-          <li><a href="/courses-folder/courses-tw.html">台灣部</a></li>
-          <li><a href="/courses-folder/courses-intl.html">國際部</a></li>
-        </ul>
-      </li>
-      <li class="has-submenu">
-        <div class="menu-item">
-          <a href="#">其他功能</a>
-          <span class="submenu-toggle">+</span>
-        </div>
-        <ul class="submenu">
-          <li><a href="/comment.html">評論</a></li>
-          <li><a href="/news.html">資訊</a></li>
-          <li><a href="/faq.html">問題</a></li>
-          <li><a href="/register.html">報名</a></li>
-          <li><a href="/policy.html">條款</a></li>
-          <li><a href="/contact.html">聯絡</a></li>
-          <li><a href="/news.html">最新消息</a></li>
-          <li><a href="/results.html">成果展示</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
 </nav>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.getElementById("hamburger");
-    const overlay = document.getElementById("mobileMenu");
-    const closeBtn = document.getElementById("closeMenu");
-
-    hamburger.addEventListener("click", () => {
-      overlay.classList.add("active");
-    });
-
-    closeBtn.addEventListener("click", () => {
-      overlay.classList.remove("active");
-    });
-
-    document.querySelectorAll(".submenu-toggle").forEach(toggle => {
-      toggle.addEventListener("click", () => {
-        const parent = toggle.closest(".has-submenu");
-        parent.classList.toggle("open");
-      });
-    });
-  });
-</script>
