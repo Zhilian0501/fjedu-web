@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>台灣部課程 | 飛翔國際教育機構</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #fbc2eb, #e0f7fa, #dcedc8);
+      overflow-x: hidden;
+    }
+
+    .page-header {
+      padding: 100px 20px 50px;
+      text-align: center;
+      background: url('assets/bg-courses.svg') no-repeat center/cover;
+      color: #333;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(to right, #a18cd1, #fbc2eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .course-section {
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .course-card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 300px;
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .course-card i {
+      font-size: 2rem;
+      color: #f48fb1;
+      margin-bottom: 10px;
+    }
+
+    .course-card h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #444;
+    }
+
+    .course-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .course-card { width: 90%; }
+      .page-header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ 導入 Nav -->
+  <div id="nav-placeholder"></div>
+
+  <!-- ✅ 頁面標題 -->
+  <div class="page-header">
+    <h1><i class="fas fa-book-open"></i> 台灣部課程</h1>
+    <p>從基礎到進階，為台灣學生量身打造的專屬課程內容。</p>
+  </div>
+
+  <!-- ✅ 課程卡片區 -->
+  <section class="course-section">
+
+    <div class="course-card">
+      <i class="fas fa-child"></i>
+      <h3>小學課程</h3>
+      <p>著重閱讀理解、數理邏輯、基礎英文與生活素養。</p>
+    </div>
+
+    <div class="course-card">
+      <i class="fas fa-user-graduate"></i>
+      <h3>國中課程</h3>
+      <p>對接108課綱，強化學科核心素養與自主學習能力。</p>
+    </div>
+
+    <div class="course-card">
+      <i class="fas fa-user-tie"></i>
+      <h3>高中課程</h3>
+      <p>備戰學測與大學入學，結合AI診斷與補強教學。</p>
+    </div>
+
+  </section>
+
+  <!-- ✅ 導入 Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ✅ JS 導入 nav/footer -->
+  <script>
+    fetch("nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+
+</body>
+</html>

@@ -1,100 +1,137 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>飛翔少年｜師資介紹</title>
-  <link rel="stylesheet" href="/components/nav.css">
-  <link rel="stylesheet" href="/components/footer.css">
-  <link rel="stylesheet" href="/css/teachers.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>師資介紹 | 飛翔國際教育機構</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e1f5fe, #fce4ec, #e0f2f1);
+      overflow-x: hidden;
+    }
+
+    .page-header {
+      padding: 100px 20px 50px;
+      text-align: center;
+      background: url('assets/bg-teachers.svg') no-repeat center/cover;
+      color: #333;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(to right, #ba68c8, #81d4fa, #aed581);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .teacher-section {
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .teacher-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      width: 280px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .teacher-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .teacher-card h3 {
+      font-size: 1.2rem;
+      margin: 0;
+      color: #444;
+    }
+
+    .teacher-card span {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .teacher-card p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .teacher-card { width: 90%; }
+      .page-header h1 { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- 導覽列 -->
+  <!-- ✅ 導入 Nav -->
   <div id="nav-placeholder"></div>
-  <!-- 主體內容 -->
-  <section class="teachers-section">
-    <h1>師資介紹</h1>
 
-    <div class="filter-buttons">
-      <button onclick="filterTeachers('all')">全部</button>
-      <button onclick="filterTeachers('gold')">金牌老師</button>
-      <button onclick="filterTeachers('A')">A級教師</button>
-      <button onclick="filterTeachers('B')">B級老師</button>
+  <!-- ✅ 頁首區 -->
+  <div class="page-header">
+    <h1><i class="fas fa-chalkboard-teacher"></i> 師資介紹</h1>
+    <p>我們的團隊由頂尖的國際師資組成，致力於培養全球競爭力。</p>
+  </div>
+
+  <!-- ✅ 師資卡片區 -->
+  <section class="teacher-section">
+
+    <div class="teacher-card">
+      <img src="assets/teachers/john.jpg" alt="John">
+      <h3>John Wang</h3>
+      <span>數學 / SAT 專家</span>
+      <p>畢業於台大數學系，前紐約高中教師，專精於奧數與SAT培訓。</p>
     </div>
 
-    <div class="teachers-grid">
-      <div class="teacher-card gold all">
-        <img src="/images/teachers/S__15802375.jpg" alt="金牌老師">
-        <h3>陳明 老師</h3>
-      </div>
-      <div class="teacher-card B all">
-        <img src="/images/teachers/S__15802378.jpg" alt="B級老師">
-        <h3>Hannah 老師</h3>
-      </div>
-      <div class="teacher-card gold all">
-        <img src="/images/teachers/S__15802376.jpg" alt="金牌老師">
-        <h3>邱奕 老師</h3>
-      </div>
-           <div class="teacher-card B all">
-        <img src="/images/teachers/S__15802377.jpg" alt="B級老師">
-        <h3>琮琮 老師</h3>
-      </div>
+    <div class="teacher-card">
+      <img src="assets/teachers/linda.jpg" alt="Linda">
+      <h3>Linda Chen</h3>
+      <span>英文 / IELTS 專業</span>
+      <p>英國碩士學歷，曾任雅思官方考官，擁有十年國際教學經驗。</p>
     </div>
+
+    <div class="teacher-card">
+      <img src="assets/teachers/eric.jpg" alt="Eric">
+      <h3>Eric Liu</h3>
+      <span>科學 / 生物奧林匹亞教練</span>
+      <p>指導多位學生奪得 IBO 獎牌，熟悉IB與AP課程。</p>
+    </div>
+
   </section>
 
-  <!-- 頁尾 -->
+  <!-- ✅ 導入 Footer -->
   <div id="footer-placeholder"></div>
 
-  <!-- 載入 nav/footer 與 JS -->
+  <!-- ✅ JS 導入 nav/footer -->
   <script>
-    fetch("/components/nav.html")
+    fetch("nav.html")
       .then(res => res.text())
       .then(data => document.getElementById("nav-placeholder").innerHTML = data);
 
-    fetch("/components/footer.html")
+    fetch("footer.html")
       .then(res => res.text())
       .then(data => document.getElementById("footer-placeholder").innerHTML = data);
-
-    document.addEventListener("DOMContentLoaded", () => {
-      document.addEventListener("click", (e) => {
-        if (e.target.classList.contains("hamburger")) {
-          document.querySelector(".main-nav").classList.toggle("active");
-        }
-      });
-    });
-
-    // JS 篩選功能
-    function filterTeachers(subject) {
-      const cards = document.querySelectorAll('.teacher-card');
-      cards.forEach(card => {
-        if (subject === 'all' || card.classList.contains(subject)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    let prevScrollPos = window.pageYOffset;
-  const scrollThreshold = 10;
-
-  window.addEventListener("scroll", () => {
-    const currentScrollPos = window.pageYOffset;
-    const diff = prevScrollPos - currentScrollPos;
-
-    if (diff > scrollThreshold) {
-      navbar.style.top = "0";
-      navbar.classList.remove("transparent");
-    } else if (diff < -scrollThreshold) {
-      navbar.style.top = "-80px";
-      navbar.classList.add("transparent");
-    }
-
-  lastScrollTop = scrollTop;
-});
-
   </script>
-  <script src="./components/nav.js"></script>
+
 </body>
 </html>

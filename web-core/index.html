@@ -1,377 +1,140 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="這是一個專為青少年打造的學習與成長平台。">
-  <title>飛翔少年專業教育機構｜首頁</title>
-  <link rel="stylesheet" href="/components/nav.css">
-  <link rel="stylesheet" href="/components/footer.css">
-  <link rel="stylesheet" href="/css/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>飛翔國際教育機構 | 首頁</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e0f7fa, #fbc2eb, #e1bee7);
+      overflow-x: hidden;
+    }
+    section.hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px;
+      text-align: center;
+      color: #333;
+      background: url('assets/bg-hero.svg') no-repeat center/cover;
+    }
+    section.hero h1 {
+      font-size: 3rem;
+      background: linear-gradient(to right, #a18cd1, #fbc2eb, #b5f5ec);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+    section.hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      animation: fadeIn 1.2s ease-out;
+    }
+    .btn-main {
+      background: linear-gradient(to right, #a18cd1, #fbc2eb);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1rem;
+      margin-top: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-main:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+    section.features {
+      padding: 80px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 300px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    .feature-card i {
+      font-size: 2rem;
+      color: #a18cd1;
+      margin-bottom: 15px;
+    }
+    @keyframes floatIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @media (max-width: 768px) {
+      section.hero h1 { font-size: 2rem; }
+      .feature-card { width: 90%; }
+    }
+  </style>
 </head>
 <body>
-  <div class="static-background">
-    <img src="./image/index圖片.jpg" alt="背景圖" />
-  </div>
-  <!-- 導覽列 -->
+
+  <!-- ✅ nav 導入 -->
   <div id="nav-placeholder"></div>
 
-<div class="sections-wrapper">
-  <section class="carousel-section tv-scene">
-  <div class="tv-wrapper">
-    <div class="tv-frame">
-      <div class="slideshow-container">
-        <img class="mySlides" src="image/2024 AP_AP  新一季課程招募.png" alt="圖片1">
-        <img class="mySlides" src="image/IMG_4316.webp" alt="圖片2">
-        <img class="mySlides" src="image/IyC5GtFQ.jpeg" alt="圖片3">
-        <img class="mySlides" src="image/課程宣傳_Algebra _ Geometry課程_Pre-Algebra.jpg" alt="圖片4">
-        <img class="mySlides" src="image/課程宣傳_AMC 課程_高中自然總複習班 複本 2.jpg" alt="圖片5">
-      </div>
+  <!-- ✅ Hero 區塊 -->
+  <section class="hero">
+    <h1><i class="fas fa-graduation-cap"></i> 飛翔國際教育機構</h1>
+    <p>全球視野 × 在地深耕，打造下一代的教育新典範。</p>
+    <button class="btn-main" onclick="location.href='online.html'">立即開始學習</button>
+  </section>
+
+  <!-- ✅ 功能介紹區塊 -->
+  <section class="features">
+    <div class="feature-card">
+      <i class="fas fa-globe-americas"></i>
+      <h3>國際化課程</h3>
+      <p>跨國師資與雙語教學，讓孩子從小接軌世界。</p>
     </div>
-  </div>
-  <div class="sofa-wrapper">
-    <img src="./images/90529aed-1876-48f3-bf39-72e7fcedd97a.png" alt="沙發上的人" class="sofa-img">
-  </div>
-</section>
-
-<section class="repair">
-  <div>
-  </div>
-</section>
-<!-- ✅ 3. 加入清楚導向的行動呼籲區塊 CTA（Call-To-Action） -->
-<section class="cta-hero" style="background-image: url('./images/5865806887_8f145e577b_o.jpg');">
-  <div id="particles-js"></div>
-  <div class="overlay"></div>
-  <div class="cta-content fade-in">
-    <h2>立即報名體驗課程</h2>
-    <p>為您的孩子開啟全新學習旅程。</p>
-    <a href="/register.html" class="banner-btn">立即預約</a>
-  </div>
-</section>
-
-<!-- ✅ 4. 美化 "為什麼選擇我們？" 為 cards/grid 排版，提升可讀性 -->
-<section class="diagonal-hero">
-  <!-- 左邊：白底 + 文字內容 -->
-  <div class="intro-left diagonal-left">
-    <div class="intro-content">
-      <h2>為什麼選擇我們？</h2>
-      <div class="features">
-        <div class="feature-box">
-          <h3>專業師資</h3>
-          <p>來自頂尖大學的教學團隊，教學經驗豐富。</p>
-        </div>
-        <div class="feature-box">
-          <h3>多元課程</h3>
-          <p>從基礎到進階，涵蓋台灣與國際各種升學需求。</p>
-        </div>
-        <div class="feature-box">
-          <h3>學習成果</h3>
-          <p>歷年升學成果輝煌，眾多學生進入心目標學府。</p>
-        </div>
-      </div>
+    <div class="feature-card">
+      <i class="fas fa-chalkboard-teacher"></i>
+      <h3>名師團隊</h3>
+      <p>專業教師群，擁有多項國際認證與教學經驗。</p>
     </div>
-  </div>
+    <div class="feature-card">
+      <i class="fas fa-laptop-code"></i>
+      <h3>線上學習平台</h3>
+      <p>互動式課堂 + 錄播影片 + AI學習助理。</p>
+    </div>
+  </section>
 
-  <!-- 右邊：斜切背景 + 圖片 + 玻璃特效 -->
-  <div class="diagonal-right">
-    <img src="./images/article-5d706cd7c4f6a.jpg" alt="代表人物">
-    <div class="glass-overlay"></div>
-  </div>
-</section>
+  <!-- ✅ footer 導入 -->
+  <div id="footer-placeholder"></div>
 
-<!-- ✅ 5. 提供新聞區塊預覽＋按鈕連結完整頁面 -->
-<section class="news-preview">
-  <h2>最新消息</h2>
-  <div id="news-container"></div>
-  <div style="text-align:center; margin-top:1em">
-    <a href="/news" class="fancy-button">查看更多</a>
-  </div>
-</section>
-<style>
-  .fancy-button {
-  background-color: #0fb2e4;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-}
-
-.fancy-button:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-}
-
-</style>
-<section class="honor-board-section">
-  <h2>榮譽榜</h2>
-  <div class="honor-carousel">
-    <img class="honor-slide active" src="./images/students/01.jpg" alt="榮譽1">
-    <img class="honor-slide" src="./images/students/02.jpg" alt="榮譽2">
-    <img class="honor-slide" src="./images/students/S__6094867_0.jpg" alt="榮譽3">
-    <img class="honor-slide" src="./images/students/S__6094868_0.jpg" alt="榮譽4">
-    <img class="honor-slide" src="./images/students/S__6094869_0.jpg" alt="榮譽5">
-    <img class="honor-slide" src="./images/students/S__6094870_0.jpg" alt="榮譽6">
-    <img class="honor-slide" src="./images/students/S__6094871_0.jpg" alt="榮譽7">
-    <img class="honor-slide" src="./images/students/S__6094873.jpg" alt="榮譽8">
-    <img class="honor-slide" src="./images/students/S__6094875.jpg" alt="榮譽9">
-    <img class="honor-slide" src="./images/students/S__6094876.jpg" alt="榮譽10">
-    <img class="honor-slide" src="./images/students/S__6152252_0.jpg" alt="榮譽11">
-    <img class="honor-slide" src="./images/students/S__6152254_0.jpg" alt="榮譽12">
-  </div>
-</section>
-</div>
-
-
-  <!-- 載入 JS 模組與漢堡選單 -->
-  <script src="./components/nav.js"></script>
+  <!-- ✅ 導入 nav/footer 的 JS -->
   <script>
-    fetch("/components/nav.html")
+    // 導入 nav.html
+    fetch("nav.html")
       .then(res => res.text())
       .then(data => document.getElementById("nav-placeholder").innerHTML = data);
 
-    fetch("/components/footer.html")
+    // 導入 footer.html
+    fetch("footer.html")
       .then(res => res.text())
       .then(data => document.getElementById("footer-placeholder").innerHTML = data);
-
-    document.addEventListener("DOMContentLoaded", () => {
-      document.addEventListener("click", (e) => {
-        if (e.target.classList.contains("hamburger")) {
-          document.querySelector(".main-nav").classList.toggle("active");
-        }
-      });
-    });
-
-  let prevScrollPos = window.pageYOffset;
-  const scrollThreshold = 10;
-
-  window.addEventListener("scroll", () => {
-    const currentScrollPos = window.pageYOffset;
-    const diff = prevScrollPos - currentScrollPos;
-
-    if (diff > scrollThreshold) {
-      navbar.style.top = "0";
-      navbar.classList.remove("transparent");
-    } else if (diff < -scrollThreshold) {
-      navbar.style.top = "-80px";
-      navbar.classList.add("transparent");
-    }
-
-    prevScrollPos = currentScrollPos;
-  });
-
-  let slideIndex = 0;
-
-  // 等 DOM 載入完後才執行
-  document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".mySlides");
-  let slideIndex = 0;
-
-  function showSlides() {
-    slides.forEach((slide, idx) => {
-      slide.classList.toggle("active", idx === slideIndex);
-    });
-
-    slideIndex = (slideIndex + 1) % slides.length;
-    setTimeout(showSlides, 3000); // 3秒切換一次
-  }
-
-  showSlides();
-});
-
-  document.addEventListener("DOMContentLoaded", () => {
-  const intro = document.querySelector(".intro-section");
-  intro.classList.add("visible");
-});
   </script>
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-  particlesJS("particles-js", {
-    particles: {
-      number: { value: 40 },
-      color: { value: "#ffffff" },
-      shape: { type: "circle" },
-      opacity: { value: 0.3 },
-      size: { value: 3 },
-      line_linked: { enable: false },
-      move: { speed: 0.8 }
-    },
-      interactivity: { detect_on: "canvas" }
-    });
-  });
-  </script>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.querySelector(".glass-mask");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-    drawGlass();
-  }
-
-  function drawGlass() {
-    const w = canvas.width;
-    const h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-
-    for (let i = 0; i < 80; i++) {
-      const x = Math.random() * w;
-      const y = Math.random() * h;
-      const size = Math.random() * 80 + 20;
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x + size * 0.5, y + size * 0.2);
-      ctx.lineTo(x - size * 0.2, y + size);
-      ctx.closePath();
-      ctx.fillStyle = "rgba(255, 255, 255, " + (Math.random() * 0.12 + 0.05) + ")";
-      ctx.fill();
-    }
-  }
-
-  window.addEventListener("resize", resize);
-  resize();
-});
-</script>
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const seeMore = document.getElementById('see-more');
-    if (!seeMore) return;
-
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > lastScrollY) {
-        seeMore.classList.add('hide');
-      } else {
-        seeMore.classList.remove('hide');
-      }
-      lastScrollY = window.scrollY;
-    });
-  });
-  </script>
-  <script>
-  window.addEventListener('scroll', () => {
-    const img = document.querySelector('.static-background img');
-    const scrollY = window.scrollY;
-  
-    // 設定最大放大倍數，例如1.2倍
-    const maxScale = 2;
-    // 根據滾動距離，計算縮放比例 (0 到 maxScale)
-    // 你可以調整 divisor 來控制放大速度
-    const scale = 1 + Math.min(scrollY / 1000, maxScale - 1);
-
-    img.style.transform = `scale(${scale})`;
-  });
-  </script>
-  <script>
-  window.addEventListener('scroll', () => {
-    const img = document.querySelector('.parallax-image');
-    const scrollY = window.scrollY;
-    const vh = window.innerHeight;
-    let opacity = 1 - scrollY / vh;
-    img.style.opacity = Math.max(0, Math.min(1, opacity));
-  });
-  </script>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const ctaContent = document.querySelector('.cta-content');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        ctaContent.classList.add('in-view');
-      } else {
-        ctaContent.classList.remove('in-view');
-      }
-    });
-  }, {
-    threshold: 0.5 // 滾動進入一半就觸發
-  });
-
-  observer.observe(ctaContent);
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.querySelector('.transition-mask');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-    drawFragments();
-  }
-
-  function drawFragments() {
-    const w = canvas.width;
-    const h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-
-    const particleCount = 120;
-
-    for (let i = 0; i < particleCount; i++) {
-      const x = w * 0.6 + Math.random() * w * 0.4;
-      const y = Math.random() * h;
-      const size = Math.random() * 40 + 10;
-
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(x + size, y + size * 0.3);
-      ctx.lineTo(x - size * 0.3, y + size);
-      ctx.closePath();
-      ctx.fillStyle = 'white';
-      ctx.globalAlpha = 0.05 + Math.random() * 0.2;
-      ctx.fill();
-    }
-
-    ctx.globalAlpha = 1;
-  }
-
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-});
-</script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const honorSlides = document.querySelectorAll(".honor-slide");
-    let honorIndex = 0;
-
-    function showHonorSlides() {
-      honorSlides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === honorIndex);
-      });
-      honorIndex = (honorIndex + 1) % honorSlides.length;
-      setTimeout(showHonorSlides, 4000); // 每4秒切換
-    }
-
-  showHonorSlides();
-  });
-</script>
-  <div class="bottom-nav-scroll" id="see-more">
-  <div onclick="document.getElementById('intro').scrollIntoView({ behavior: 'smooth' });">
-    <svg class="arrow-circle" viewBox="0 0 24 24">
-      <path d="M12 16l-6-6h12z" fill="currentColor"/>
-    </svg>
-    <div class="dots">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="text">看更多</div>
-  </div>
-</div>
-
-  <!-- 頁尾 -->
-  <div id="footer-placeholder"></div>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 
 </body>
 </html>

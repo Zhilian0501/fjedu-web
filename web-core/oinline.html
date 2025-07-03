@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>線上課程 | 飛翔國際教育機構</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e0f2f1, #f3e5f5, #fffde7);
+      overflow-x: hidden;
+      color: #333;
+    }
+
+    .page-header {
+      padding: 100px 20px 40px;
+      text-align: center;
+      background: url('assets/bg-online.svg') no-repeat center/cover;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(to right, #7e57c2, #64b5f6, #4db6ac);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .courses {
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .course-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .course-content {
+      padding: 20px;
+    }
+
+    .course-content h3 {
+      font-size: 1.2rem;
+      margin: 0 0 10px;
+    }
+
+    .course-content p {
+      font-size: 0.95rem;
+      color: #666;
+      min-height: 60px;
+    }
+
+    .course-content .price {
+      color: #7e57c2;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: linear-gradient(to right, #7e57c2, #64b5f6);
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .course-card { width: 90%; }
+      .page-header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ 導入 Nav -->
+  <div id="nav-placeholder"></div>
+
+  <!-- ✅ 頁首區 -->
+  <div class="page-header">
+    <h1><i class="fas fa-laptop-code"></i> 線上課程</h1>
+    <p>購買後即可立即觀看，專屬你的學習影片課程平台。</p>
+  </div>
+
+  <!-- ✅ 課程卡片 -->
+  <section class="courses">
+
+    <div class="course-card">
+      <img src="assets/courses/math.jpg" alt="Math Course">
+      <div class="course-content">
+        <h3>奧林匹亞數學挑戰班</h3>
+        <p>針對小六～國三，從基礎思維培養到競賽應對。</p>
+        <div class="price">NT$ 2,980</div>
+        <button class="btn-buy"><i class="fas fa-cart-plus"></i> 加入購物車</button>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="assets/courses/ielts.jpg" alt="IELTS">
+      <div class="course-content">
+        <h3>IELTS高分寫作密技</h3>
+        <p>由前雅思考官主講，學術/一般訓練皆適用。</p>
+        <div class="price">NT$ 3,200</div>
+        <button class="btn-buy"><i class="fas fa-cart-plus"></i> 加入購物車</button>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="assets/courses/biology.jpg" alt="Biology">
+      <div class="course-content">
+        <h3>IB Biology HL 全攻略</h3>
+        <p>IB國際文憑課程完整錄製，輔以PDF筆記與模擬試題。</p>
+        <div class="price">NT$ 4,500</div>
+        <button class="btn-buy"><i class="fas fa-cart-plus"></i> 加入購物車</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ✅ 導入 Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ✅ JS 導入 nav/footer -->
+  <script>
+    fetch("nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+
+</body>
+</html>

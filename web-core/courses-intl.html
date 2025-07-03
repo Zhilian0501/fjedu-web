@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>國際部課程 | 飛翔國際教育機構</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e0f2f1, #fce4ec, #d1c4e9);
+      overflow-x: hidden;
+    }
+
+    .page-header {
+      padding: 100px 20px 50px;
+      text-align: center;
+      background: url('assets/bg-global.svg') no-repeat center/cover;
+      color: #333;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(to right, #7b9acc, #f48fb1, #b2ebf2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .course-section {
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .course-card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 300px;
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .course-card i {
+      font-size: 2rem;
+      color: #7b9acc;
+      margin-bottom: 10px;
+    }
+
+    .course-card h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #444;
+    }
+
+    .course-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .course-card { width: 90%; }
+      .page-header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ 導入 Nav -->
+  <div id="nav-placeholder"></div>
+
+  <!-- ✅ 頁面標題 -->
+  <div class="page-header">
+    <h1><i class="fas fa-globe"></i> 國際部課程</h1>
+    <p>跨文化 × 全英文 × 全球升學，邁向世界的教育橋樑。</p>
+  </div>
+
+  <!-- ✅ 課程卡片區 -->
+  <section class="course-section">
+
+    <div class="course-card">
+      <i class="fas fa-language"></i>
+      <h3>雙語教學系統</h3>
+      <p>中英並重的課程設計，提升語言實用力與跨文化理解。</p>
+    </div>
+
+    <div class="course-card">
+      <i class="fas fa-certificate"></i>
+      <h3>國際證照輔導</h3>
+      <p>TOEFL、IELTS、Cambridge 等語言考試全方位輔導。</p>
+    </div>
+
+    <div class="course-card">
+      <i class="fas fa-plane-departure"></i>
+      <h3>海外申請培訓</h3>
+      <p>提供升學顧問、作品集指導、申請模擬與模擬面試。</p>
+    </div>
+
+  </section>
+
+  <!-- ✅ 導入 Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ✅ JS 導入 nav/footer -->
+  <script>
+    fetch("nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+
+</body>
+</html>

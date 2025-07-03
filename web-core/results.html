@@ -1,86 +1,133 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>學習成果｜飛翔少年</title>
-  <link rel="stylesheet" href="/components/nav.css">
-  <link rel="stylesheet" href="/components/footer.css">
-  <link rel="stylesheet" href="/css/results.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>榮譽榜 | 飛翔國際教育機構</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f3e5f5, #b2ebf2, #c8e6c9);
+      overflow-x: hidden;
+    }
+
+    .page-header {
+      padding: 100px 20px 50px;
+      text-align: center;
+      background: url('assets/bg-honor.svg') no-repeat center/cover;
+      color: #333;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(to right, #f48fb1, #81d4fa, #ce93d8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .honor-section {
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .honor-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      width: 300px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .honor-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .honor-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .honor-card h3 {
+      font-size: 1.2rem;
+      margin: 0;
+      color: #444;
+    }
+
+    .honor-card p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .honor-card {
+        width: 90%;
+      }
+      .page-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div id="nav-placeholder"></div>
+  <!-- ✅ 導入 Nav -->
+  <div id="nav-placeholder"></div>
 
-<section class="results-section">
-  <h1>學習成果</h1>
-  <div class="result-grid">
-    <div class="result-card">
-      <img src="/images/students/01.jpg">
-    </div>
-    <div class="result-card">
-      <img src="/images/students/02.jpg">
-    </div>
-    <div class="result-card">
-      <img src="/images/students/S__6094867_0.jpg">
-    </div>
-     <div class="result-card">
-      <img src="/images/students/S__6094868_0.jpg">
-    </div>
-     <div class="result-card">
-      <img src="/images/students/S__6094869_0.jpg">
-    </div>
-     <div class="result-card">
-      <img src="/images/students/S__6094870_0.jpg">
-    </div>
-     <div class="result-card">
-      <img src="/images/students/S__6094871_0.jpg">
-    </div>
-     <div class="result-card">
-      <img src="/images/students/S__6094873.jpg">
-    </div>
-     <div class="result-card">
-      <img src="/images/students/S__6094875.jpg">
-    </div>
-     <div class="result-card">
-      <img src="/images/students/S__6094876.jpg">
+  <!-- ✅ 頁首區 -->
+  <div class="page-header">
+    <h1><i class="fas fa-trophy"></i> 榮譽榜</h1>
+    <p>表揚在學業與競賽中傑出表現的飛翔之星！</p>
   </div>
-</section>
 
-<div id="footer-placeholder"></div>
+  <!-- ✅ 榮譽卡片區 -->
+  <section class="honor-section">
 
-<script>
-  fetch("/components/nav.html").then(res => res.text()).then(data => {
-    document.getElementById("nav-placeholder").innerHTML = data;
-  });
-  fetch("/components/footer.html").then(res => res.text()).then(data => {
-    document.getElementById("footer-placeholder").innerHTML = data;
-  });
-  document.addEventListener("click", e => {
-    if (e.target.classList.contains("hamburger")) {
-      document.querySelector(".main-nav").classList.toggle("active");
-    }
-  });
+    <div class="honor-card">
+      <img src="assets/students/lisa.jpg" alt="Lisa" />
+      <h3>Lisa 陳怡君</h3>
+      <p>榮獲 2025 IBO 國際生物奧林匹亞金牌</p>
+    </div>
 
-  let prevScrollPos = window.pageYOffset;
-  const scrollThreshold = 10;
+    <div class="honor-card">
+      <img src="assets/students/kevin.jpg" alt="Kevin" />
+      <h3>Kevin 林楷翔</h3>
+      <p>代表台灣獲得 AP Calculus 全國滿分獎</p>
+    </div>
 
-  window.addEventListener("scroll", () => {
-    const currentScrollPos = window.pageYOffset;
-    const diff = prevScrollPos - currentScrollPos;
+    <div class="honor-card">
+      <img src="assets/students/mia.jpg" alt="Mia" />
+      <h3>Mia 陳宛庭</h3>
+      <p>入選牛津大學數學系全額獎學金錄取</p>
+    </div>
 
-    if (diff > scrollThreshold) {
-      navbar.style.top = "0";
-      navbar.classList.remove("transparent");
-    } else if (diff < -scrollThreshold) {
-      navbar.style.top = "-80px";
-      navbar.classList.add("transparent");
-    }
+  </section>
 
-  lastScrollTop = scrollTop;
-});
+  <!-- ✅ 導入 Footer -->
+  <div id="footer-placeholder"></div>
 
-</script>
-<script src="./components/nav.js"></script>
+  <!-- ✅ JS 導入 nav/footer -->
+  <script>
+    fetch("nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+
 </body>
 </html>
