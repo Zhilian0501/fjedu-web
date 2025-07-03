@@ -1,66 +1,139 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>常見問題｜飛翔少年</title>
-  <link rel="stylesheet" href="/components/nav.css">
-  <link rel="stylesheet" href="/components/footer.css">
-  <link rel="stylesheet" href="/css/faq.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>常見問題 | 飛翔國際教育機構</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e3f2fd, #f3e5f5, #fff8e1);
+      color: #333;
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 100px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      background: linear-gradient(to right, #7e57c2, #64b5f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 40px;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+
+    .faq-question {
+      padding: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question:hover {
+      background: #f3f4f6;
+    }
+
+    .faq-answer {
+      padding: 0 20px 20px;
+      display: none;
+      color: #555;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div id="nav-placeholder"></div>
+  <!-- ✅ 導入 Nav -->
+  <div id="nav-placeholder"></div>
 
-<section class="faq-section">
-  <h1>常見問題</h1>
-  <div class="faq-box">
-    <h3>Q：課程是否提供線上教學？</h3>
-    <p>A：大多數課程皆提供線上版，請洽客服確認。</p>
-  </div>
-  <div class="faq-box">
-    <h3>Q：可以試聽課程嗎？</h3>
-    <p>A：每位新生皆可申請一次免費試聽，歡迎體驗。</p>
-  </div>
-  <div class="faq-box">
-    <h3>Q：報名後如何確認是否成功？</h3>
-    <p>A：系統將寄出確認信，若未收到請聯絡客服。</p>
-  </div>
-</section>
+  <div class="faq-container">
+    <h1><i class="fas fa-question-circle"></i> 常見問題</h1>
 
-<div id="footer-placeholder"></div>
-<script src="./components/nav.js"></script>
-<script>
-  fetch("/components/nav.html").then(res => res.text()).then(data => {
-    document.getElementById("nav-placeholder").innerHTML = data;
-  });
-  fetch("/components/footer.html").then(res => res.text()).then(data => {
-    document.getElementById("footer-placeholder").innerHTML = data;
-  });
-  document.addEventListener("click", e => {
-    if (e.target.classList.contains("hamburger")) {
-      document.querySelector(".main-nav").classList.toggle("active");
+    <!-- ✅ FAQ 問答區塊 -->
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        如何購買線上課程？ <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        您可前往「線上課程」頁面，選擇喜愛的課程並點選「加入購物車」，完成付款後即可觀看課程影片。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        是否可以使用手機或平板觀看影片？ <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        可以，我們的平台支援電腦、手機、平板等多種裝置，您可隨時登入會員中心觀看課程。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        如果忘記密碼該怎麼辦？ <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        您可以在登入頁點選「忘記密碼」連結，透過電子信箱進行重設。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        購買後可以退費嗎？ <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        若您尚未觀看課程內容，可於購買後七日內申請退費。我們會由客服專員為您處理。
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ✅ 導入 Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ✅ JS 導入 nav/footer + FAQ切換 -->
+  <script>
+    fetch("nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+
+    function toggleFAQ(element) {
+      const item = element.parentElement;
+      item.classList.toggle("active");
     }
-  });
+  </script>
 
-  let prevScrollPos = window.pageYOffset;
-  const scrollThreshold = 10;
-
-  window.addEventListener("scroll", () => {
-    const currentScrollPos = window.pageYOffset;
-    const diff = prevScrollPos - currentScrollPos;
-
-    if (diff > scrollThreshold) {
-      navbar.style.top = "0";
-      navbar.classList.remove("transparent");
-    } else if (diff < -scrollThreshold) {
-      navbar.style.top = "-80px";
-      navbar.classList.add("transparent");
-    }
-
-  lastScrollTop = scrollTop;
-});
-
-</script>
 </body>
 </html>
